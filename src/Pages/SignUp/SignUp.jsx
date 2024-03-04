@@ -1,12 +1,15 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { imageUpload } from "../../api/utils";
+import useAuth from "../../Hooks/useAuth";
+import { getToken, saveUser } from "../../api/auth";
+import Swal from "sweetalert2";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 
 
 const SignUp = () => {
-  const { createUser, signInWithGoogle, updateUserProfile, loading } = useContext(AuthContext);
+  const { createUser, signInWithGoogle, updateUserProfile, loading } = useAuth();
   const navigate = useNavigate()
   const handleSubmit = async e => {
     e.preventDefault();
@@ -14,13 +17,66 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password)
+    const image = form.image.files[0];
     
+    try{
+      // upload image
+      const imageData = await imageUpload(image)
 
+      // user regtistration
+      const result = await createUser(email, password)
+      
+
+      // save username & profile photo
+      await updateUserProfile(name, imageData?.data?.display_url)
+      
+      // save user data in database
+      const dbResponse = await saveUser(result?.user)
+      console.log(dbResponse)
+
+      // get token 
+      await getToken(result?.user?.email)
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Signup Successful",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate('/')
+    }catch(err){
+      console.log(err)
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `${err}`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+    
   }
 
   const handleGoogleSignIn = async () => {
-    
+    try{
+      const result = await signInWithGoogle()
+
+      // save user data in database 
+      await saveUser(result?.user)
+      // get token 
+      await getToken(result?.user?.email)
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Signup Successful",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate('/')
+    }catch(err){
+      console.log(err)
+    }
   }
   return (
     <div className='flex justify-center items-center min-h-screen'>
@@ -45,7 +101,7 @@ const SignUp = () => {
                 name='name'
                 id='name'
                 placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-black bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -71,7 +127,7 @@ const SignUp = () => {
                 id='email'
                 required
                 placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-black bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -88,7 +144,7 @@ const SignUp = () => {
                 id='password'
                 required
                 placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-black bg-gray-200 text-gray-900'
               />
             </div>
           </div>
@@ -96,9 +152,11 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-rose-500 w-full rounded-md py-3 text-white'
+              className='bg-neutral-400 hover:bg-black w-full rounded-md py-3 text-white'
             >
-              {loading ? <TbFidgetSpinner className='animate-spin m-auto' /> : 'Continue'}
+              {loading ? 
+                <TbFidgetSpinner className='animate-spin m-auto' /> 
+                : 'Continue'}
             </button>
           </div>
         </form>
@@ -109,7 +167,7 @@ const SignUp = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div onClick={ handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+        <div onClick={handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>

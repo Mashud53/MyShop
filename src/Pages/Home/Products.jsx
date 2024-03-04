@@ -29,11 +29,12 @@ const Products = () => {
         setLoading(false)
     }, [allProducts, categories, setLoading])
 
-    if (loading) return <Loader></Loader>
+    // if (loading) return <Loader></Loader>
 
     return (
         <div>
-            {displayProducts && displayProducts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 font-catamaran text-base font-semibold pt-16 md:pt-10">
+            {
+                loading ? <Loader></Loader> : displayProducts && displayProducts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 font-catamaran text-base font-semibold pt-16 md:pt-10">
                 {displayProducts?.map(products => <ProductCard key={products._id} products={products} loading={loading}></ProductCard>)}
 
             </div> :
@@ -41,6 +42,15 @@ const Products = () => {
                     <Heading title={"No Products are available"} center={true} subTitle={"Choose other category"}></Heading>
                 </div>
             }
+            
+            {/* {displayProducts && displayProducts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 font-catamaran text-base font-semibold pt-16 md:pt-10">
+                {displayProducts?.map(products => <ProductCard key={products._id} products={products} loading={loading}></ProductCard>)}
+
+            </div> :
+                <div className="flex justify-center items-center min-h-[500px]">
+                    <Heading title={"No Products are available"} center={true} subTitle={"Choose other category"}></Heading>
+                </div>
+            } */}
         </div>
     );
 };

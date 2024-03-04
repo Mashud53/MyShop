@@ -78,9 +78,10 @@ const ProductDetails = () => {
                     <DescDevice operating_system={operating_system} screen={screen} screenSize={screenSize} wireless_network={wireless_network} network={network}/>
                     {/* normal product desc  */}
                     {
-                        desc?.length>0 && <div className="flex flex-col gap-1 mt-2 border-b-2 pb-6">
-                            {desc.map((item, index )=><div key={index}><h2>{item}</h2></div>)}
-                        </div>
+                        desc ? <h2>{desc}</h2> : 
+                        desc?.length>0 &&  <div className="flex flex-col gap-1 mt-2 border-b-2 pb-6">
+                            {desc?.map((item, index )=><div key={index}><h2>{item}</h2></div>)}
+                        </div> 
                     }
                     
             </div>

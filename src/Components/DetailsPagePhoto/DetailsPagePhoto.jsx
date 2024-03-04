@@ -15,7 +15,7 @@ const DetailsPagePhoto = ({ image1, image2, image3, image4, image5 }) => {
                 </div>
                 }
                 {
-                    image3.length > 0 && <div onClick={() => setImage(image3)} className="h-[50px] md:h-[100px] w-[50px] md:w-[100px] border-2 border-neutral-200 p-1 md:p-2 rounded-md cursor-pointer">
+                    image3?.length > 0 && <div onClick={() => setImage(image3)} className="h-[50px] md:h-[100px] w-[50px] md:w-[100px] border-2 border-neutral-200 p-1 md:p-2 rounded-md cursor-pointer">
                     <img className="h-full w-full" src={image3} alt="" />
                 </div>
                 }

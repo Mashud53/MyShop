@@ -1,7 +1,7 @@
 
 // import { useState } from 'react';
 
-import useProducts from '../../Hooks/useProducts';
+
 import { categories } from './CategoriesData';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import qs from 'query-string'
@@ -10,7 +10,7 @@ import qs from 'query-string'
 
 const Category = () => {
 
-    const [allProducts, loading] = useProducts()
+    
     const [params, setParams] = useSearchParams();
 
     const navigate = useNavigate()
@@ -42,6 +42,7 @@ const Category = () => {
     // const toy = allProducts.filter(product => product.category === 'Toy')
 
     // console.log(mobile, laptop, watch, man, women, accessories, shoe, toy)
+    
 
     return (
         <div className="w-full flex items-center justify-between font-catamaran text-base font-semibold pt-16 md:pt-10 px-4 lg:px-0 overflow-x-auto">
