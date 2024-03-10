@@ -1,16 +1,16 @@
-import useProducts from "../../Hooks/useProducts";
+// import useProducts from "../../Hooks/useProducts";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect,} from "react";
 import Heading from "../../Components/Heading/Heading";
 import Loader from "../../Components/Loader/Loader";
 
 
 
 
-const Products = () => {
-    const [allProducts, loading, setLoading] = useProducts()
-    const [displayProducts, setDisplayProduct] = useState()
+const Products = ({allProducts,loading, setLoading, displayProducts, setDisplayProduct}) => {
+    // const [allProducts, loading, setLoading] = useProducts()
+    // const [displayProducts, setDisplayProduct] = useState()
     const [params, setParams] = useSearchParams()
     const categories = params.get('category')
     useEffect(() => {
@@ -21,13 +21,13 @@ const Products = () => {
         }
         else if (categories) {
             setLoading(true)
-            const categoryProduct = allProducts.filter(product => product.category === categories || product.type === categories)
+            const categoryProduct = allProducts.filter(product => product.category === categories || product.type === categories || product.brand === categories)
             setDisplayProduct(categoryProduct)
 
         }
         else setDisplayProduct(allProducts)
         setLoading(false)
-    }, [allProducts, categories, setLoading])
+    }, [allProducts, categories, setDisplayProduct, setLoading])
 
     // if (loading) return <Loader></Loader>
 

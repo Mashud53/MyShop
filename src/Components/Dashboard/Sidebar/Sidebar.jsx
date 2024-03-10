@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // Components
-import Logo from '../Logo'
+// import Logo from '../Logo'
 import MenuItem from './MenuItem'
 import ToggleBtn from '../../ToggleButton/ToggleButton'
 // Icons
@@ -12,6 +12,7 @@ import useRole from '../../../Hooks/useRole'
 import AdminMenu from '../AdminMenu'
 import HostMenu from '../HostMenu'
 import GuestMenu from '../GuestMenu'
+import { Link } from 'react-router-dom'
 
 
 
@@ -19,9 +20,9 @@ import GuestMenu from '../GuestMenu'
 const Sidebar = () => {
   const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
-  const {logOut} = useAuth();
-  const [role]= useRole();
-    
+  const { logOut } = useAuth();
+  const [role] = useRole();
+
 
   //   For guest/host menu item toggle button
   const toggleHandler = event => {
@@ -37,7 +38,8 @@ const Sidebar = () => {
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
-            <Logo />
+            {/* logo  */}
+            <h2 className='font-catamaran'>My Shop</h2>
           </div>
         </div>
 
@@ -50,14 +52,15 @@ const Sidebar = () => {
       </div>
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed md:left-auto flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
-          isActive && '-translate-x-full'
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+        className={`z-10 md:fixed md:left-auto flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+          }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
-              <Logo />
+            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-black text-white cursor-pointer mx-auto'>
+              {/* <Logo /> */}
+              <Link to={'/'}><h2 className='font-catamaran'>My Shop</h2></Link>
+              
             </div>
           </div>
 
@@ -67,10 +70,10 @@ const Sidebar = () => {
             <ToggleBtn toggleHandler={toggleHandler} />
             <nav>
               {/* Menu Items */}
-              {role === 'admin' &&<AdminMenu></AdminMenu>}
-              {role === 'host' &&<HostMenu></HostMenu>}
-              {role === 'guest' &&<GuestMenu></GuestMenu>}             
-              
+              {role === 'admin' && <AdminMenu></AdminMenu>}
+              {role === 'host' && <HostMenu></HostMenu>}
+              {role === 'guest' && <GuestMenu></GuestMenu>}
+
             </nav>
           </div>
         </div>

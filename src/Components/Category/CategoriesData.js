@@ -4,12 +4,7 @@ export const categories = [
   {
     label: 'All'
   },
-  {
-    label: 'Men'
-  },
-  {
-    label: 'Women'
-  },
+ 
   {
     label: 'Mobile'
   },
@@ -19,15 +14,11 @@ export const categories = [
   {
     label: 'Accessories'
   },
-  {
-    label: 'Shoe'
-  },
+ 
   {
     label: 'Watch'
   },
-  {
-    label: 'Toy'
-  },
+  
   {
     label: 'Properties'
   },

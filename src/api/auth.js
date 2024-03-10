@@ -30,3 +30,8 @@ export const getRole = async email =>{
     const {data} = await axiosSecure.get(`/user/${email}`)
     return data.role
 }
+// get user information 
+export const getUser = async email =>{
+    const {data} = await axiosSecure.get(`/user/${email}`)
+    return data
+}

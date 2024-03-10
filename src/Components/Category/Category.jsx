@@ -22,6 +22,7 @@ const Category = () => {
         let currnetQuery = {}
         if (params) {
             currnetQuery = qs.parse(params.toString())
+            console.log(currnetQuery)
             const updatedQuery = { ...currnetQuery, category: label }
             const url = qs.stringifyUrl({
                 url: '/',
@@ -31,28 +32,17 @@ const Category = () => {
         }
     }
 
-
-    // const mobile = allProducts.filter(product => product.category === "Mobile")
-    // const laptop = allProducts.filter(product => product.category === 'Laptop')
-    // const watch = allProducts.filter(product => product.category === 'Watch')
-    // const man = allProducts.filter(product => product.type === 'Men')
-    // const women = allProducts.filter(product => product.type === 'Women')
-    // const accessories = allProducts.filter(product => product.category === 'Accessories')
-    // const shoe = allProducts.filter(product => product.category === 'Shoe')
-    // const toy = allProducts.filter(product => product.category === 'Toy')
-
-    // console.log(mobile, laptop, watch, man, women, accessories, shoe, toy)
-    
+   
 
     return (
-        <div className="w-full flex items-center justify-between font-catamaran text-base font-semibold pt-16 md:pt-10 px-4 lg:px-0 overflow-x-auto">
+        <div className="w-full grid grid-cols-3 md:grid-cols-6 lg:grid-cols-11 items-center justify-center md:gap-4 font-catamaran text-center text-xs md:sm font-semibold pt-16 md:pt-10 px-4 lg:px-0 overflow-x-auto">
             {categories?.map(category =>
                 <div
                     onClick={() => handleClik(category.label)}
-                    className={` text-neutral-400 hover:text-neutral-800 transition cursor-pointer `}
+                    className={` text-neutral-400 hover:text-neutral-800 transition cursor-pointer`}
                     key={category.label}>
-                    <div className='p-3'>
-                        <li  className={`border-b-2 border-b-neutral-400 list-none  ${selected === category.label ? "border-b-neutral-800 text-neutral-800 " : "border-b-neutral-400 text-netural-400"} `}>{category.label}</li>
+                    <div className=''>
+                        <li  className={`border-b-2 border-b-neutral-400 list-none ${selected === category.label ? "bg-cyan-400 rounded-lg text-white px-2 py-1 " : "border-b-neutral-400 text-netural-400"} `}>{category.label}</li>
                     </div>
                 </div>)}
 
