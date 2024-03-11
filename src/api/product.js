@@ -1,6 +1,6 @@
 import axiosSecure from "."
 
-export const addProduct = async roomData =>{
-    const {data} = await axiosSecure.post('/product', roomData)
+export const addProduct = async productData =>{
+    const {data} = await axiosSecure.post('/product', productData)
     return data
 }

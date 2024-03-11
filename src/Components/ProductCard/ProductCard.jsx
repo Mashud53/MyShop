@@ -22,7 +22,7 @@ const ProductCard = ({ products }) => {
                         <input type="radio" name="rating-4" className="mask mask-star-2 bg-orange-400" />
                         <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
                     </div>
-                    <p className="text-left lg:text-lg text-sm">$ {price1}</p>
+                    <p className="text-left lg:text-lg text-sm"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
                     <div className=" card-actions justify-end">
                         <button className="w-full flex justify-center items-center px-3 py-2  border-cyan-500 group-hover:bg-cyan-500 group-hover:border-0 group-hover:text-white">Add to Cart <FaCartArrowDown className="ml-2"></FaCartArrowDown></button>
                     </div>

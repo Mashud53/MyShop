@@ -1,21 +1,46 @@
 import { useState } from "react";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { orderProduct } from "../../api/order";
+import Swal from "sweetalert2";
 
 
-const DeliveryAddress = ({ closeModal, orderInfo }) => {
+
+
+const DeliveryAddress = ({ closeModal, orderInfo:productInfo }) => {
+    
     const [loading, setLoading] = useState(false)
-    console.log(orderInfo)
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const form = e.target;
+        const street =form.street.value;
+        const appartment = form.apartment.value;
+        const city = form.city.value;
+        const phone = form.mobile.value;
+        const date = new Date()
+        const contactInfo = {street, appartment, city, phone, date}        
+        
+        const orderInfo = Object.assign({}, contactInfo, productInfo)
+        
+
         setLoading(true)
-        console.log('click')
+       const data = await orderProduct(orderInfo)
+       if(data.insertedId){
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${productInfo.title} Place order successful`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+       }
         closeModal()
     }
     return (
         <div className='w-full  text-gray-800 rounded-xl bg-gray-50 font-catamaran'>
 
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row justify-around items-start gap-10">
-                <div className='w-1/2'>
+                <div className='w-full lg:w-1/2'>
                     <h2 className="my-4 text-lg font-bold">Delivery Address</h2>
                     <div className="my-6">
                         <h2 className="font-semibold">Country / Region</h2>
@@ -58,43 +83,59 @@ const DeliveryAddress = ({ closeModal, orderInfo }) => {
                             required
                         />
                     </div>
-
-                    <div className='space-y-1 text-sm'>
-                        <label htmlFor='description' className='block text-gray-600'>
-                            Description
+                    <div className='space-y-1 text-sm mt-6'>
+                        <label htmlFor='contactNumber' className='block text-gray-600'>
+                            Phone
                         </label>
-
-                        <textarea
-                            id='description'
-                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-cyan-300 focus:outline-cyan-500 '
-                            name='description'
-                        ></textarea>
+                        <input
+                            className='w-full px-4 py-3 text-gray-800 border border-cyan-300 focus:outline-cyan-500 rounded-md '
+                            name='mobile'
+                            id='mobile'
+                            type='number'
+                            placeholder='Contact Number'
+                            required
+                        />
                     </div>
 
-
-
-
                 </div>
-                <div className="w-2/5">
-                    <div className='mt-10 bg-white border-2 p-6'>
-                        <div className='mt-2'>
-                            <p className='text-sm text-gray-500'>
-                                Total Price: $ {orderInfo?.totalPrice}
-                            </p>
+                <div className="w-full lg:w-2/5">
+                    <div className='mt-10 bg-white border-2 p-6 font-sans'>
+                        <div className='mt-2 text-right'>
+                        <div className='flex justify-end items-center text-base text-gray-500'>
+                                Sub Total Price: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>{productInfo?.totalPrice}</p>
+                            </div>
+                        </div>
+                        <div className='mt-2 text-right'>
+                        <div className='flex justify-end items-center text-base text-gray-500'>
+                                Shiping Cost: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>0</p>
+                            </div>
+                        </div>
+                        <div className='mt-2 text-right'>
+                            <div className='flex justify-end items-center text-base text-gray-500'>
+                                Total Price: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>{productInfo?.totalPrice}</p>
+                            </div>
                         </div>
                         <hr className='mt-8 ' />
                         <h2 className='font-semibold'>Payment Method</h2>
                         <h2>Cash on delivery</h2>
                     </div>
 
-                    <button
-                        type='submit'
-                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500'
-                    >
-                        {loading ?
-                            <TbFidgetSpinner className='animate-spin m-auto' />
-                            : 'Place Order'}
-                    </button>
+                    <div className="flex justify-between items-center gap-4">
+                        <button
+                            type='submit'
+                            className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-cyan-500'
+                        >
+                            {loading ?
+                                <TbFidgetSpinner className='animate-spin m-auto' />
+                                : 'Place Order'}
+                        </button>
+                        <button onClick={()=>closeModal()}
+                            type='button'
+                            className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500'
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

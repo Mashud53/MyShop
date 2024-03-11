@@ -1,6 +1,6 @@
 
 
-import { useLoaderData } from "react-router-dom";
+import {  Link, useLoaderData, useLocation } from "react-router-dom";
 import DetailsPagePhoto from "../../Components/DetailsPagePhoto/DetailsPagePhoto";
 import ProductRating from "../../Components/Rating/ProductRating";
 import ProductStorage from "../../Components/ProductStorage/ProductStorage";
@@ -12,9 +12,13 @@ import BuyNowModal from "../../Components/Modal/BuyNowModal";
 
 
 
+
 const ProductDetails = () => {
     const product = useLoaderData();
     const { _id, image1, image2, image3, image4, image5, name, brand, price1, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, } = product;
+
+    const location = useLocation()
+    
 
     const [price, setPrice] = useState(price1);
     const [color, setColor] = useState(color1);
@@ -28,6 +32,7 @@ const ProductDetails = () => {
     }
 
     const buyHandle = async () => {
+        
         const quantity = document.getElementById('quantity').value;
         const totalPrice = quantity * price;
         const selectedColor = color;
@@ -44,7 +49,7 @@ const ProductDetails = () => {
 
     }
 
-
+      
     const cartHandle = async () => {
         const quantity = document.getElementById('quantity').value;
         const totalPrice = quantity * price;
@@ -76,7 +81,7 @@ const ProductDetails = () => {
                     {/* price  */}
                     <div className="flex justify-start gap-2 items-center mt-4">
                         {
-                            price1 > 0 && <h2 className="font-semibold text-xl">$ {price}</h2>
+                            price1 > 0 && <h2 className="font-semibold text-xl"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price}</h2>
                         }
                         {/* {
                         price2 > 0 && <h2 className="font-semibold text-xl">$ {price}</h2>
@@ -103,7 +108,11 @@ const ProductDetails = () => {
                             <input type="number" id="quantity" className="px-2 py-1 w-[70px] border-2 border-neutral-300" />
                         </div>
                         <div className="flex items-center gap-4">
-                            <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
+                        
+                            {
+                                user ? <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
+                                : <Link to="/login" state={{from:location}}><button  className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button></Link>
+                            }
                             <button onClick={cartHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Add to Cart</button>
                         </div>
                     </div>
@@ -133,7 +142,9 @@ const ProductDetails = () => {
             <div className="text-3xl font-bold">
                 add you may like similar product
             </div>
-            <BuyNowModal isOpen={isOpen} closeModal={closeModal} orderInfo={orderInfo}></BuyNowModal>
+           
+             <BuyNowModal isOpen={isOpen} closeModal={closeModal} orderInfo={orderInfo}></BuyNowModal>
+            
         </div>
     );
 };
