@@ -79,6 +79,27 @@ const AddProductForm = ({
                         </div>
                         <div className='space-y-1 text-sm'>
                             <label htmlFor='brand' className='block text-gray-600'>
+                                Brand
+                            </label>
+                            <select
+                                required
+                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                name='brand'
+                            >
+                                <option value={'Apple'}>Apple</option>
+                                <option value={'Samsung'}>Samsung</option>
+                                <option value={'Google Pixel'}>Cloth</option>
+                                <option value={'Xiaomi'}>Google Pixel</option>
+                                <option value={'One PlUs'}>One PlUs</option>
+                                <option value={'Oppo'}>Oppo</option>
+                                <option value={'Nokia'}>Nokia</option>
+                                <option value={'Huwei'}>Huwei</option>
+                                <option value={'Realme'}>Realme</option>
+
+                            </select>
+                        </div>
+                        {/* <div className='space-y-1 text-sm'>
+                            <label htmlFor='brand' className='block text-gray-600'>
                                 Brand Name
                             </label>
                             <input
@@ -89,7 +110,7 @@ const AddProductForm = ({
                                 placeholder='Brand Name'
 
                             />
-                        </div>
+                        </div> */}
                     </div>
 
 
@@ -198,6 +219,9 @@ const AddProductForm = ({
                                     id='price'
                                     type='number'
                                     placeholder='Price-1'
+                                    min="0"
+                                    step="0.01"
+                                    pattern="^\d+(?:\.\d{1,2})?$"
                                     required
                                 />
                             </div>
@@ -227,6 +251,22 @@ const AddProductForm = ({
 
                                 />
                             </div>
+                            <div className='space-y-1 text-sm'>
+                                <label htmlFor='productType' className='block text-gray-600'>
+                                    Product Type
+                                </label>
+                                <select
+                                    required
+                                    className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                    name='productType'
+                                >
+                                    <option value={'New'}>
+                                        New
+                                    </option>
+                                    <option value={'Used'}>Used</option>
+                                </select>
+                            </div>
+
                         </div>
 
                         <div>
@@ -421,6 +461,61 @@ const AddProductForm = ({
                             id='description'
                             className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
                             name='description'
+                        ></textarea>
+                    </div>
+                    <div className='space-y-1 text-sm'>
+                        <label htmlFor='description1' className='block text-gray-600'>
+                            Description
+                        </label>
+
+                        <textarea
+                            id='description1'
+                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
+                            name='description1'
+                        ></textarea>
+                    </div>
+                    <div className='space-y-1 text-sm'>
+                        <label htmlFor='description2' className='block text-gray-600'>
+                            Description
+                        </label>
+
+                        <textarea
+                            id='description2'
+                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
+                            name='description2'
+                        ></textarea>
+                    </div>
+                    <div className='space-y-1 text-sm'>
+                        <label htmlFor='description3' className='block text-gray-600'>
+                            Description
+                        </label>
+
+                        <textarea
+                            id='description3'
+                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
+                            name='description3'
+                        ></textarea>
+                    </div>
+                    <div className='space-y-1 text-sm'>
+                        <label htmlFor='description4' className='block text-gray-600'>
+                            Description
+                        </label>
+
+                        <textarea
+                            id='description4'
+                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
+                            name='description4'
+                        ></textarea>
+                    </div>
+                    <div className='space-y-1 text-sm'>
+                        <label htmlFor='description5' className='block text-gray-600'>
+                            Description
+                        </label>
+
+                        <textarea
+                            id='description5'
+                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
+                            name='description5'
                         ></textarea>
                     </div>
 

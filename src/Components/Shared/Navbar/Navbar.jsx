@@ -3,6 +3,7 @@ import { FiAlignJustify } from "react-icons/fi";
 import { BiCartAlt, BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
+import logo from '../../../assets/logo.png'
 
 
 const Navbar = () => {
@@ -24,9 +25,10 @@ const Navbar = () => {
 
 
     return (
-        <div className="max-w-screen-xl fixed navbar z-[20] bg-base-100 bg-opacity-75 font-catamaran">
+        <div className="max-w-screen-xl fixed navbar z-[20] bg-cyan-300 font-catamaran">
             <div className="navbar-start">
-                <a className=" font-bold uppercase">My Shop</a>
+                {/* <a className=" font-bold uppercase">My Shop</a> */}
+                <Link><img className="w-[60px]" src={logo} alt="" /></Link>
             </div>
 
             {/* <div className="navbar-center hidden lg:flex">
@@ -36,13 +38,13 @@ const Navbar = () => {
             </div> */}
             <div className="navbar-end">
 
-                <button className=" flex justify-center items-center mx-4 border border-1 rounded-lg p-1">
+                <button className=" flex justify-center items-center mx-4 border bg-white border-1 rounded-lg p-1">
                     <BiCartAlt />
                     <div className="badge bg-gray-500 text-white ml-2">+99</div>
                 </button>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="">
-                        <div className="flex items-center gap-2 border-2 border-neutral-100 rounded-lg">
+                        <div className="flex items-center gap-2 border-2 bg-white border-neutral-100 rounded-lg">
                             <div className="w-[30px] h-[30px] flex justify-center items-center rounded-full">
                                 {user ? <><img className="h-full w-full rounded-full" src={user?.photoURL} alt="" /></> : <BiUser></BiUser>}
                             </div>

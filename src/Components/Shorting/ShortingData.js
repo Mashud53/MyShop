@@ -31,3 +31,15 @@ export const shortingName = [
   
     
   ]
+
+  export const shortingLaptop = [
+    
+    {
+      label: 'Dell'
+    },
+    {
+      label: 'HP'
+    },
+     
+    
+  ]

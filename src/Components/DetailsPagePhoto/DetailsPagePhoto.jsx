@@ -30,7 +30,7 @@ const DetailsPagePhoto = ({ image1, image2, image3, image4, image5 }) => {
                 </div>
                 }
             </div>
-            <div className="p-2 border-2 border-neutral-200 bg-orange-50"><img className="h-[200px] w-[200px] md:h-[500px] md:w-[500px] object-contain" src={image} alt="" /></div>
+            <div className="p-2 border-2 border-neutral-200 bg-orange-50"><img className="h-[200px] w-[200px] md:h-[300px] md:w-[300px] lg:h-[500px] lg:w-[500px] object-contain" src={image} alt="" /></div>
 
         </div>
     );

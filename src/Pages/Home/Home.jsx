@@ -38,7 +38,7 @@ const Home = () => {
     },[])
 
     return (
-        <div>
+        <div className="min-h-[100vh]">
             <Helmet><title>My Shop | Home</title></Helmet>
             {/* <Navbar></Navbar> */}
             <div className="banner-section hidden md:block">
@@ -46,33 +46,37 @@ const Home = () => {
             </div>
             <div className="flex">
                 <div>
-                <div className={`hidden md:block side-bar w-40 mt-20 ${showfixedSidebar ?'md:fixed md:top-5 lg:top-20':'pt-20'} `}>
+                {/* <div className={`hidden md:block side-bar w-40 mt-20 ${showfixedSidebar ?'md:fixed md:top-5 lg:top-20':'pt-20'} `}>
+                    <Shorting allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Shorting>
+                    
+                </div> */}
+                <div className={`hidden md:block side-bar w-40 ${showfixedSidebar ?'pt-20':'pt-20'} `}>
                     <Shorting allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Shorting>
                     
                 </div>
-                <div className={`md:hidden w-24 mt-20 fixed top-0`}>
+                <div className={`md:hidden w-20 mt-20 fixed top-0`}>
                     <Shorting allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Shorting>
                     
                 </div>
                 </div>
                 <div>
-                <div className={`hidden md:block ${showfixedSidebar ? ' md:ml-[192px]':'md:ml-8 ml-[5px]'}`}>
+                {/* <div className={`hidden md:block ${showfixedSidebar ? ' md:ml-[192px]':'md:ml-8 ml-[5px]'}`}>
+                    <Category></Category>
+                    <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
+                    <Trand></Trand>
+                </div> */}
+                <div className={`hidden md:block ${showfixedSidebar ? 'md:ml-8 ml-[5px]':'md:ml-8 ml-[5px]'}`}>
                     <Category></Category>
                     <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
                     <Trand></Trand>
                 </div>
-                <div className={`md:hidden ml-[102px]`}>
+                <div className={`md:hidden ml-[85px]`}>
                     <Category></Category>
                     <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
                     <Trand></Trand>
                 </div>
                 </div>
-            </div>
-            {/* <Footer></Footer> */}
-
-
-
-
+            </div> 
         </div>
     );
 };

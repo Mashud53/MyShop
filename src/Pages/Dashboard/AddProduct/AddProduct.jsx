@@ -35,6 +35,7 @@ const AddProduct = () => {
         const color1 = form.color1.value;
         const color2 = form.color2.value;
         const color3 = form.color3.value;
+        const productType = form.productType.value;
         const operatingSystem = form.operatingSystem.value;
         const network = form.network.value;
         const wirelessNetwork = form.wirelessNetwork.value;
@@ -42,6 +43,11 @@ const AddProduct = () => {
         const screenSize = form.screenSize.value;
         const connector = form.connector.value;
         const desc = form.description.value;
+        const desc1 = form.description1.value;
+        const desc2 = form.description2.value;
+        const desc3 = form.description3.value;
+        const desc4 = form.description4.value;
+        const desc5 = form.description5.value;
 
         const image1Url = image1 && await  imageUpload(image1)
         const image2Url = image2 &&  await imageUpload(image2)
@@ -53,7 +59,7 @@ const AddProduct = () => {
         const productData = {
             name:title,brand, category, type, price1, price2, price3,
             storage1, storage2, storage3, color1, color2, color3, operatingSystem, 
-            network, wirelessNetwork, screen, screenSize, connector, desc,
+            network, wirelessNetwork, screen, screenSize, connector, desc, desc1, desc2, desc3, desc4, desc5, productType,
             image1: image1Url?.data?.display_url,
             image2: image2Url?.data?.display_url,
             image3: image3Url?.data?.display_url,
