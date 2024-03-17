@@ -19,7 +19,7 @@ import { GiDuration } from "react-icons/gi";
 
 const ProductDetails = () => {
     const product = useLoaderData();
-    const { _id, image1, image2, image3, image4, image5, name, brand, price1, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5 } = product;
+    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5 } = product;
 
     const location = useLocation()
     
@@ -79,11 +79,16 @@ const ProductDetails = () => {
 
     return (
         <div className="pt-24 px-10 lg:px-0">
-            <div className=" grid grid-rows-2 grid-cols-1 md:grid-rows-1 md:grid-cols-2 md:gap-4 lg:gap-6 font-catamaran  lg:pb-10 pb-10 border-b-2 ">
-                <div className="row-span-1 md:col-span-1">
-                    <DetailsPagePhoto image1={image1} image2={image2} image3={image3} image4={image4} image5={image5}></DetailsPagePhoto>
+            <div className=" grid grid-rows grid-cols-1 md:grid-rows-1 md:grid-cols-2 md:gap-4 lg:gap-6 font-catamaran  lg:pb-10 pb-10 border-b-2 ">
+                <div className=" md:col-span-1 mb-8">
+                    <DetailsPagePhoto image1={image1} image2={image2} image3={image3} image4={image4} image5={image5} imageURL1={imageURL1} imageURL2={imageURL2} imageURL3={imageURL3} imageURL4={imageURL4} imageURL5={imageURL5}
+
+
+
+
+></DetailsPagePhoto>
                 </div>
-                <div className="row-span-1 md:col-span-1">
+                <div className=" md:col-span-1">
                     <div className="text-xl font-bold">{name}</div>
                     {/* rating  */}
                     <div className="mt-4">
@@ -110,18 +115,18 @@ const ProductDetails = () => {
                     {
                         storage_Type?.length > 0 && <h2 className="mt-2 w-36 border-2 border-neutral-300 font-semibold p-1 rounded-lg">Storage Type: {storage_Type}</h2>
                     }
-                    <div className=" py-8 flex justify-start items-center gap-10">
+                    <div className=" py-8 flex justify-start items-start gap-10">
                         <div className="flex flex-col items-center justify-center">
                             <h2 className="w-[50px] h-[50px] border-2 rounded-full flex items-center justify-center"><TbTruckDelivery className="text-2xl font-bold"/></h2>
-                        <h2>Free Shipping</h2>
+                        <h2 className="text-center text-sm">Free Shipping</h2>
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <h2 className="w-[50px] h-[50px] border-2 rounded-full flex items-center justify-center"><GiDuration className="text-2xl font-bold"/></h2>
-                        <h2>Delivery in 3 Days</h2>
+                        <h2 className="text-center text-sm">Delivery in 3 Days</h2>
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <h2 className="w-[50px] h-[50px] border-2 rounded-full flex items-center justify-center"><TbReplace className="text-2xl font-bold"/></h2>
-                        <h2>7 days replacement</h2>
+                        <h2 className="text-center text-sm">7 days replacement</h2>
                         </div>
                         
                         
@@ -131,17 +136,18 @@ const ProductDetails = () => {
                     {
                         brand?.length > 0 && <h2 className="mt-2 font-semibold">Brand: {brand}</h2>
                     }
-                    <div className="flex flex-row justify-start items-end lg:items-end gap-4 mt-8">
-                        <div className="flex flex-col">
+                    <div className="flex flex-col justify-center items-start">
                             <label >Quantity</label>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-center items-center">
                                 <div onClick={handleMinus} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[30px] w-[40px] rounded-l-lg flex justify-center items-center"><FaMinus className=" text-white"/></div>
                                 <div className="border-2 w-[40px] h-[30px] flex justify-center items-center">{qt}</div>
                                 <div onClick={handlePlus} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[30px] w-[40px] rounded-r-lg flex justify-center items-center"><FaPlus className="text-white"/></div>
                             </div>
                             {/* <input type="number" id="quantity" className="px-2 py-1 w-[70px] border-2 border-neutral-300" /> */}
                         </div>
-                        <div className="flex items-center gap-4">
+                    
+                        
+                        <div className="flex justify-start items-center gap-4 mt-4 w-full">
                         
                             {
                                 user ? <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
@@ -149,7 +155,7 @@ const ProductDetails = () => {
                             }
                             <button onClick={cartHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Add to Cart</button>
                         </div>
-                    </div>
+                    
                 </div>
 
             </div>

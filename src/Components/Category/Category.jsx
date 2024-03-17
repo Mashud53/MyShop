@@ -8,7 +8,7 @@ import qs from 'query-string'
 
 
 
-const Category = () => {
+const Category = ({showfixedSidebar}) => {
 
     
     const [params, setParams] = useSearchParams();
@@ -33,17 +33,17 @@ const Category = () => {
     }
 
    
-
+    // grid grid-cols-3 md:grid-cols-6 lg:grid-cols-11
     return (
-        <div className="w-full grid grid-cols-3 md:grid-cols-6 lg:grid-cols-11 items-center justify-center md:gap-4 font-catamaran text-center text-xs md:text-base font-semibold pt-16 md:pt-10 px-4 lg:px-0">
+        <div className={` overflow-x-scroll flex items-center gap-4 md:gap-4 font-catamaran text-center text-xs md:text-base font-semibold py-4 px-4 lg:px-0 `}>
             {categories?.map(category =>
                 <div
                     onClick={() => handleClik(category.label)}
                     className={` text-neutral-400 transition cursor-pointer`}
-                    key={category.label}>
-                    <div className=''>
-                        <li  className={` list-none ${selected === category.label ? "bg-cyan-400 rounded-lg text-white px-2 py-1 " : " text-black hover:text-base"} `}>{category.label}</li>
-                    </div>
+                    key={category.label}> <li  className={` list-none ${selected === category.label ? "bg-cyan-400 rounded-lg text-white px-2 py-1 " : " text-black hover:text-base"} `}>{category.label}</li>
+                    {/* <div className='w-[50px] '>
+                       
+                    </div> */}
                 </div>)}
 
         </div>

@@ -32,9 +32,9 @@ const Products = ({allProducts,loading, setLoading, displayProducts, setDisplayP
     // if (loading) return <Loader></Loader>
 
     return (
-        <div>
+        <div className="w-full mt-10 md:mt-0">
             {
-                loading ? <Loader></Loader> : displayProducts && displayProducts.length > 0 ? <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 font-catamaran text-base font-semibold pt-16 md:pt-10 mx-auto">
+                loading ? <Loader></Loader> : displayProducts && displayProducts.length > 0 ? <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 font-catamaran text-base font-semibold pt-16 md:pt-10 ">
                 {displayProducts?.map(products => <ProductCard key={products._id} products={products} loading={loading}></ProductCard>)}
 
             </div> :

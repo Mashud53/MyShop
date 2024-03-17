@@ -22,5 +22,6 @@ export const categories = [
   {
     label: 'Properties'
   },
-  
+ 
+ 
 ]

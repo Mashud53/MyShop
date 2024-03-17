@@ -71,9 +71,14 @@ const AddProductForm = ({
                             >
                                 <option value={'Smartphone'}>Smartphone</option>
                                 <option value={'Laptop'}>Laptop</option>
+                                <option value={'iPad'}>iPad</option>
                                 <option value={'Cloth'}>Cloth</option>
                                 <option value={'Headphone'}>Headphone</option>
                                 <option value={'Men'}>Men</option>
+                                <option value={'Router'}>Router</option>
+                                <option value={'Charger'}>Charger</option>
+                                <option value={'PowerBank'}>Power Bank</option>
+                                <option value={'Other'}>Other</option>
 
                             </select>
                         </div>
@@ -95,6 +100,7 @@ const AddProductForm = ({
                                 <option value={'Nokia'}>Nokia</option>
                                 <option value={'Huwei'}>Huwei</option>
                                 <option value={'Realme'}>Realme</option>
+                                <option value={'Unknown'}>Unknown</option>
 
                             </select>
                         </div>
@@ -115,96 +121,166 @@ const AddProductForm = ({
 
 
                     {/* image uploade  */}
-                    <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4 bg-white w-full  m-auto rounded-lg'>
-                        <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                            <div className='flex flex-col items-center justify-center w-max mx-auto text-center'>
-                                <label>
-                                    <input
-                                        onChange={e => handleImageChange1(e.target.files[0])}
-                                        className='text-sm cursor-pointer w-36 hidden'
-                                        type='file'
-                                        name='image1'
-                                        id='image1'
-                                        accept='image/*'
-                                        hidden
-                                    />
-                                    <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                        {uploadButtonText1}
-                                    </div>
-                                </label>
+                    <div className='bg-white p-4'>
+                        <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4  w-full  m-auto rounded-lg'>
+                            <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                                <div className='flex flex-col items-center justify-center w-max mx-auto text-center'>
+                                    <label>
+                                        <input
+                                            onChange={e => handleImageChange1(e.target.files[0])}
+                                            className='text-sm cursor-pointer w-36 hidden'
+                                            type='file'
+                                            name='image1'
+                                            id='image1'
+                                            accept='image/*'
+                                            hidden
+                                        />
+                                        <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
+                                            {uploadButtonText1}
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                                <div className='flex flex-col w-max mx-auto text-center'>
+                                    <label>
+                                        <input
+                                            onChange={e => handleImageChange2(e.target.files[0])}
+                                            className='text-sm cursor-pointer w-36 hidden'
+                                            type='file'
+                                            name='image2'
+                                            id='image'
+                                            accept='image/*'
+                                            hidden
+                                        />
+                                        <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
+                                            {uploadButtonText2}
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                                <div className='flex flex-col w-max mx-auto text-center'>
+                                    <label>
+                                        <input
+                                            onChange={e => handleImageChange3(e.target.files[0])}
+                                            className='text-sm cursor-pointer w-36 hidden'
+                                            type='file'
+                                            name='image3'
+                                            id='image'
+                                            accept='image/*'
+                                            hidden
+                                        />
+                                        <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
+                                            {uploadButtonText3}
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                                <div className='flex flex-col w-max mx-auto text-center'>
+                                    <label>
+                                        <input
+                                            onChange={e => handleImageChange4(e.target.files[0])}
+                                            className='text-sm cursor-pointer w-36 hidden'
+                                            type='file'
+                                            name='image4'
+                                            id='image'
+                                            accept='image/*'
+                                            hidden
+                                        />
+                                        <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
+                                            {uploadButtonText4}
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                                <div className='flex flex-col w-max mx-auto text-center'>
+                                    <label>
+                                        <input
+                                            onChange={e => handleImageChange5(e.target.files[0])}
+                                            className='text-sm cursor-pointer w-36 hidden'
+                                            type='file'
+                                            name='image5'
+                                            id='image'
+                                            accept='image/*'
+                                            hidden
+                                        />
+                                        <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-600'>
+                                            {uploadButtonText5}
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                            <div className='flex flex-col w-max mx-auto text-center'>
-                                <label>
-                                    <input
-                                        onChange={e => handleImageChange2(e.target.files[0])}
-                                        className='text-sm cursor-pointer w-36 hidden'
-                                        type='file'
-                                        name='image2'
-                                        id='image'
-                                        accept='image/*'
-                                        hidden
-                                    />
-                                    <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                        {uploadButtonText2}
-                                    </div>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
+                            <div className='space-y-1 text-sm'>
+                                <label htmlFor='imgUrl' className='block text-gray-600'>
+                                    Image URL-1
                                 </label>
+                                <input
+                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                    name='imgUrl1'
+                                    id='imgUrl1'
+                                    type='text'
+                                    placeholder='Image URL -1'
+                                    
+                                />
                             </div>
-                        </div>
-                        <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                            <div className='flex flex-col w-max mx-auto text-center'>
-                                <label>
-                                    <input
-                                        onChange={e => handleImageChange3(e.target.files[0])}
-                                        className='text-sm cursor-pointer w-36 hidden'
-                                        type='file'
-                                        name='image3'
-                                        id='image'
-                                        accept='image/*'
-                                        hidden
-                                    />
-                                    <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                        {uploadButtonText3}
-                                    </div>
+                            <div className='space-y-1 text-sm'>
+                                <label htmlFor='imgUrl' className='block text-gray-600'>
+                                    Image URL-2
                                 </label>
+                                <input
+                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                    name='imgUrl2'
+                                    id='imgUrl2'
+                                    type='text'
+                                    placeholder='Image URL -2'
+                                    
+                                />
                             </div>
-                        </div>
-                        <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                            <div className='flex flex-col w-max mx-auto text-center'>
-                                <label>
-                                    <input
-                                        onChange={e => handleImageChange4(e.target.files[0])}
-                                        className='text-sm cursor-pointer w-36 hidden'
-                                        type='file'
-                                        name='image4'
-                                        id='image'
-                                        accept='image/*'
-                                        hidden
-                                    />
-                                    <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                        {uploadButtonText4}
-                                    </div>
+                            <div className='space-y-1 text-sm'>
+                                <label htmlFor='imgUrl' className='block text-gray-600'>
+                                    Image URL-3
                                 </label>
+                                <input
+                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                    name='imgUrl3'
+                                    id='imgUrl3'
+                                    type='text'
+                                    placeholder='Image URL -3'
+                                    
+                                />
                             </div>
-                        </div>
-                        <div className='file_upload py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                            <div className='flex flex-col w-max mx-auto text-center'>
-                                <label>
-                                    <input
-                                        onChange={e => handleImageChange5(e.target.files[0])}
-                                        className='text-sm cursor-pointer w-36 hidden'
-                                        type='file'
-                                        name='image5'
-                                        id='image'
-                                        accept='image/*'
-                                        hidden
-                                    />
-                                    <div className='bg-rose-500 text-xs text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-600'>
-                                        {uploadButtonText5}
-                                    </div>
+                            <div className='space-y-1 text-sm'>
+                                <label htmlFor='imgUrl' className='block text-gray-600'>
+                                    Image URL-4
                                 </label>
+                                <input
+                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                    name='imgUrl4'
+                                    id='imgUrl4'
+                                    type='text'
+                                    placeholder='Image URL -4'
+                                   
+                                />
                             </div>
+                            <div className='space-y-1 text-sm'>
+                                <label htmlFor='imgUrl' className='block text-gray-600'>
+                                    Image URL-5
+                                </label>
+                                <input
+                                    className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                    name='imgUrl5'
+                                    id='imgUrl5'
+                                    type='text'
+                                    placeholder='Image URL -5'
+                                   
+                                />
+                            </div>
+
                         </div>
                     </div>
                     <div className='flex justify-between gap-2'>
@@ -325,7 +401,7 @@ const AddProductForm = ({
                         </div>
                     </div>
 
-                    <div className='flex justify-between gap-2'>
+                    <div className='grid grid-cols-3 md:grid-cols-6 justify-between gap-2'>
                         <div className='space-y-1 text-sm'>
                             <label htmlFor='colors' className='block text-gray-600'>
                                 Color-1
@@ -362,6 +438,45 @@ const AddProductForm = ({
                                 id='color'
                                 type='text'
                                 placeholder='Color-3'
+
+                            />
+                        </div>
+                        <div className='space-y-1 text-sm'>
+                            <label htmlFor='colors' className='block text-gray-600'>
+                                Color-4
+                            </label>
+                            <input
+                                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                name='color4'
+                                id='color'
+                                type='text'
+                                placeholder='Color-4'
+
+                            />
+                        </div>
+                        <div className='space-y-1 text-sm'>
+                            <label htmlFor='colors' className='block text-gray-600'>
+                                Color-5
+                            </label>
+                            <input
+                                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                name='color5'
+                                id='color'
+                                type='text'
+                                placeholder='Color-5'
+
+                            />
+                        </div>
+                        <div className='space-y-1 text-sm'>
+                            <label htmlFor='colors' className='block text-gray-600'>
+                                Color-6
+                            </label>
+                            <input
+                                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                name='color6'
+                                id='color'
+                                type='text'
+                                placeholder='Color-6'
 
                             />
                         </div>

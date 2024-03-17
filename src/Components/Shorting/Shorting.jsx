@@ -37,7 +37,7 @@ const Shorting = ({allProduct, displayProduct, setDisplayProduct}) => {
 
     return (
         <>
-            <div className="w-20 bg-base-200 md:w-40 flex flex-col items-start justify-start font-catamaran text-xs md:text-base font-semibold pt-16 px-2 border-b-2">
+            <div className="w-20 bg-base-200 md:w-40 flex flex-col items-start justify-start font-catamaran text-xs md:text-base font-semibold  px-2 border-b-2">
                 {shortingName?.map(item =>
                     <div
                         onClick={() => handleClik(item.label)}
