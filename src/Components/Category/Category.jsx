@@ -35,7 +35,7 @@ const Category = ({showfixedSidebar}) => {
    
     // grid grid-cols-3 md:grid-cols-6 lg:grid-cols-11
     return (
-        <div className={` overflow-x-scroll flex items-center gap-4 md:gap-4 font-catamaran text-center text-xs md:text-base font-semibold py-4 px-4 lg:px-0 `}>
+        <div className={` overflow-x-scroll flex items-center gap-4  font-catamaran text-center text-xs md:text-base font-semibold py-4 px-4 lg:px-0 `}>
             {categories?.map(category =>
                 <div
                     onClick={() => handleClik(category.label)}

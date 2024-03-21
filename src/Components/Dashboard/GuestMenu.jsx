@@ -11,7 +11,7 @@ const GuestMenu = () => {
             <MenuItem
                 icon={IoMdCart}
                 label='My Cart'
-                address='/dashboard'
+                address='my-cart'
             />
             <MenuItem
                 icon={MdRealEstateAgent}

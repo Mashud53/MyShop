@@ -4,12 +4,14 @@ import { BiCartAlt, BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 import logo from '../../../assets/logo.png'
+import useCart from "../../../Hooks/useCart";
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
-    
+    const [cart]=useCart();
+        
     const navOptions =
         <>
             {user ? <><li><Link to={'/'} >Home</Link></li>
@@ -40,7 +42,7 @@ const Navbar = () => {
 
                 <button className=" flex justify-center items-center mx-4 border bg-white border-1 rounded-lg p-1">
                     <BiCartAlt />
-                    <div className="badge bg-gray-500 text-white ml-2">+99</div>
+                    <Link to={'dashboard/my-cart'}><div className="badge bg-gray-200 text-rose-600 font-semibold ml-2">+ {cart.length}</div></Link>
                 </button>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="">

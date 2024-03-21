@@ -1,6 +1,6 @@
 
 
-import {  Link, useLoaderData, useLocation } from "react-router-dom";
+import {  Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import DetailsPagePhoto from "../../Components/DetailsPagePhoto/DetailsPagePhoto";
 import ProductRating from "../../Components/Rating/ProductRating";
 import ProductStorage from "../../Components/ProductStorage/ProductStorage";
@@ -12,6 +12,7 @@ import BuyNowModal from "../../Components/Modal/BuyNowModal";
 import { FaPlus,  FaMinus } from "react-icons/fa6";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { GiDuration } from "react-icons/gi";
+import Swal from "sweetalert2";
 
 
 
@@ -20,15 +21,17 @@ import { GiDuration } from "react-icons/gi";
 const ProductDetails = () => {
     const product = useLoaderData();
     const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5 } = product;
+    const {user}= useAuth();
 
     const location = useLocation()
+    const navigate = useNavigate();
     
 
     const [price, setPrice] = useState(price1);
     const [color, setColor] = useState(color1);
     const [storage, setStorage] = useState(storage1);
     const [qt, setQt]= useState(1)
-    const { user } = useAuth()
+    
     const [orderInfo, setOrderInfo] = useState({})
 
     let [isOpen, setIsOpen] = useState(false)
@@ -43,8 +46,8 @@ const ProductDetails = () => {
     }
 
     const buyHandle = async () => {
-        
-        const quantity = qt;
+        if(user && user?.email){
+            const quantity = qt;
         const totalPrice = quantity * price;
         const selectedColor = color;
         const buyer = user?.displayName;
@@ -58,11 +61,35 @@ const ProductDetails = () => {
         setOrderInfo(productInfo)
         setIsOpen(true)
 
-    }
+        }
+        else{
+            Swal.fire({
+                title: "You are not Login",
+                text: "Please Login to Buy",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Login"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', {state:{from: location}})
+                //   Swal.fire({
+                //     title: "Deleted!",
+                //     text: "Your file has been deleted.",
+                //     icon: "success"
+                //   });
+                }
+              }); 
+        }
+        
+        
 
-      
-    const cartHandle = async () => {
-        const quantity = document.getElementById('quantity').value;
+    }
+    const handleAddtoCart = product => {
+        console.log(product, user?.email)
+        if(user && user?.email){
+            const quantity = document.getElementById('quantity').value;
         const totalPrice = quantity * price;
         const selectedColor = color;
         const email = user.email;
@@ -72,9 +99,44 @@ const ProductDetails = () => {
             quantity, totalPrice, selectedColor, email, productId, productName, image1
         }
         console.log(cartInfo)
-
-
+        }
+        else{
+            Swal.fire({
+                title: "You are not Login",
+                text: "Please Login to add to cart",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Login"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', {state:{from: location}})
+                //   Swal.fire({
+                //     title: "Deleted!",
+                //     text: "Your file has been deleted.",
+                //     icon: "success"
+                //   });
+                }
+              });
+        }
     }
+
+      
+    // const cartHandle = async () => {
+    //     const quantity = document.getElementById('quantity').value;
+    //     const totalPrice = quantity * price;
+    //     const selectedColor = color;
+    //     const email = user.email;
+    //     const productId = _id;
+    //     const productName = name;
+    //     const cartInfo = {
+    //         quantity, totalPrice, selectedColor, email, productId, productName, image1
+    //     }
+    //     console.log(cartInfo)
+
+
+    // }
 
 
     return (
@@ -148,12 +210,13 @@ const ProductDetails = () => {
                     
                         
                         <div className="flex justify-start items-center gap-4 mt-4 w-full">
+                        <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
                         
-                            {
+                            {/* {
                                 user ? <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
                                 : <Link to="/login" state={{from:location}}><button  className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button></Link>
-                            }
-                            <button onClick={cartHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Add to Cart</button>
+                            } */}
+                            <button onClick={handleAddtoCart} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Add to Cart</button>
                         </div>
                     
                 </div>
@@ -213,7 +276,11 @@ const ProductDetails = () => {
                 add you may like similar product
             </div>
            
-             <BuyNowModal isOpen={isOpen} closeModal={closeModal} orderInfo={orderInfo}></BuyNowModal>
+             <BuyNowModal 
+             isOpen={isOpen} 
+             closeModal={closeModal} 
+             orderInfo={orderInfo}
+             qt={qt}></BuyNowModal>
             
         </div>
     );

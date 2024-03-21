@@ -6,42 +6,42 @@ import Swal from "sweetalert2";
 
 
 
-const DeliveryAddress = ({ closeModal, orderInfo:productInfo }) => {
-    
+const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt }) => {
+
     const [loading, setLoading] = useState(false)
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const form = e.target;
-        const street =form.street.value;
+        const street = form.street.value;
         const appartment = form.apartment.value;
         const city = form.city.value;
         const phone = form.mobile.value;
         const date = new Date()
-        const contactInfo = {street, appartment, city, phone, date}        
-        
+        const contactInfo = { street, appartment, city, phone, date }
+
         const orderInfo = Object.assign({}, contactInfo, productInfo)
-        
+
 
         setLoading(true)
-       const data = await orderProduct(orderInfo)
-       if(data.insertedId){
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${productInfo.title} Place order successful`,
-            showConfirmButton: false,
-            timer: 1500
-          });
-       }
+        const data = await orderProduct(orderInfo)
+        if (data.insertedId) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${productInfo.title} Place order successful`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
         closeModal()
     }
     return (
-        <div className='w-full  text-gray-800 rounded-xl bg-gray-50 font-catamaran'>
+        <div className='w-full py-8  text-gray-800 rounded-xl bg-gray-50 font-catamaran'>
 
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row justify-around items-start gap-10">
                 <div className='w-full lg:w-1/2'>
-                    <h2 className="my-4 text-lg font-bold">Delivery Address</h2>
+                    <h2 className="mb-4 text-lg font-bold">Delivery Address</h2>
                     <div className="my-6">
                         <h2 className="font-semibold">Country / Region</h2>
                         <h2 className="">United Arab Emirates</h2>
@@ -101,12 +101,17 @@ const DeliveryAddress = ({ closeModal, orderInfo:productInfo }) => {
                 <div className="w-full lg:w-2/5">
                     <div className='mt-10 bg-white border-2 p-6 font-sans'>
                         <div className='mt-2 text-right'>
-                        <div className='flex justify-end items-center text-base text-gray-500'>
+                            <div className='flex justify-end items-center text-base text-gray-500'>
                                 Sub Total Price: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>{productInfo?.totalPrice}</p>
                             </div>
                         </div>
                         <div className='mt-2 text-right'>
-                        <div className='flex justify-end items-center text-base text-gray-500'>
+                            <div className='flex justify-end items-center text-base text-gray-500'>
+                                Quantity: <p>{qt}</p>
+                            </div>
+                        </div>
+                        <div className='mt-2 text-right'>
+                            <div className='flex justify-end items-center text-base text-gray-500'>
                                 Shiping Cost: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>0</p>
                             </div>
                         </div>
@@ -129,7 +134,7 @@ const DeliveryAddress = ({ closeModal, orderInfo:productInfo }) => {
                                 <TbFidgetSpinner className='animate-spin m-auto' />
                                 : 'Place Order'}
                         </button>
-                        <button onClick={()=>closeModal()}
+                        <button onClick={() => closeModal()}
                             type='button'
                             className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500'
                         >

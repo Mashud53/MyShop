@@ -13,6 +13,7 @@ import AddProperty from "../Pages/Dashboard/AddProperty/AddProperty";
 import AdminRoute from "./AdminRoute";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import Profile from "../Pages/Dashboard/Profile/Profile";
+import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
         {
             path:'profile',
             element:<Profile></Profile>
+        },
+        {
+            path:'my-cart',
+            element:<MyCart></MyCart>
         }
     ]
     }

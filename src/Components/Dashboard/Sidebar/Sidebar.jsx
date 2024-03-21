@@ -1,8 +1,8 @@
 import { useState } from 'react'
 // Components
-// import Logo from '../Logo'
+import Logo from '../../../assets/logo.png'
 import MenuItem from './MenuItem'
-import ToggleBtn from '../../ToggleButton/ToggleButton'
+
 // Icons
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
@@ -18,16 +18,18 @@ import { Link } from 'react-router-dom'
 
 
 const Sidebar = () => {
-  const [toggle, setToggle] = useState(false)
+  // const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
   const { logOut } = useAuth();
   const [role] = useRole();
 
 
   //   For guest/host menu item toggle button
-  const toggleHandler = event => {
-    setToggle(event.target.checked)
-  }
+  // ----------------------------------------
+  // const toggleHandler = event => {
+  //   setToggle(event.target.checked)
+  // }
+  // -----------------------------------------
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
@@ -39,7 +41,10 @@ const Sidebar = () => {
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             {/* logo  */}
-            <h2 className='font-catamaran'>My Shop</h2>
+            <Link to={'/'}>
+            <img className='w-[50px]' src={Logo} alt="" />
+            </Link>
+            {/* <h2 className='font-catamaran'>My Shop</h2> */}
           </div>
         </div>
 
@@ -57,9 +62,12 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-black text-white cursor-pointer mx-auto'>
+            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-cyan-500 text-white cursor-pointer mx-auto'>
               {/* <Logo /> */}
-              <Link to={'/'}><h2 className='font-catamaran'>My Shop</h2></Link>
+              <Link to={'/'}>
+                {/* <h2 className='font-catamaran'>My Shop</h2> */}
+                <img className='w-[70px]' src={Logo} alt="" />
+                </Link>
               
             </div>
           </div>
@@ -67,7 +75,7 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
             {/* If a user is host */}
-            <ToggleBtn toggleHandler={toggleHandler} />
+            {/* <ToggleBtn toggleHandler={toggleHandler} /> */}
             <nav>
               {/* Menu Items */}
               {role === 'admin' && <AdminMenu></AdminMenu>}
