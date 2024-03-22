@@ -41,8 +41,8 @@ const AdminMenu = () => {
             />
             <MenuItem
                 icon={FaListCheck}
-                label='Order'
-                address='add-property'
+                label='Manage Orders'
+                address='order'
             />
         </>
     );

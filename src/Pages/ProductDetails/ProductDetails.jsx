@@ -1,6 +1,6 @@
 
 
-import {  Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import {  useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import DetailsPagePhoto from "../../Components/DetailsPagePhoto/DetailsPagePhoto";
 import ProductRating from "../../Components/Rating/ProductRating";
 import ProductStorage from "../../Components/ProductStorage/ProductStorage";

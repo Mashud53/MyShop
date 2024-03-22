@@ -17,8 +17,9 @@ const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt }) => {
         const appartment = form.apartment.value;
         const city = form.city.value;
         const phone = form.mobile.value;
-        const date = new Date()
-        const contactInfo = { street, appartment, city, phone, date }
+        const date = new Date();
+        
+        const contactInfo = { street, appartment, city, phone, date, status:'pending' }
 
         const orderInfo = Object.assign({}, contactInfo, productInfo)
 

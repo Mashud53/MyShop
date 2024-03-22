@@ -14,6 +14,8 @@ import AdminRoute from "./AdminRoute";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
+import Order from "../Pages/Dashboard/Order/Order";
+import AdminHostRoute from "./AdminHostRoute";
 
 export const router = createBrowserRouter([
     {
@@ -46,11 +48,11 @@ export const router = createBrowserRouter([
         children:[
             {
             path:'add-product',
-            element:<AdminRoute><AddProduct></AddProduct></AdminRoute>
+            element:<AdminHostRoute><AddProduct></AddProduct></AdminHostRoute>
         },
         {
             path:'add-property',
-            element:<AdminRoute><AddProperty></AddProperty></AdminRoute>
+            element:<AdminHostRoute><AddProperty></AddProperty></AdminHostRoute>
         },
         {
             path:'manage-users',
@@ -63,6 +65,10 @@ export const router = createBrowserRouter([
         {
             path:'my-cart',
             element:<MyCart></MyCart>
+        },
+        {
+            path:'order',
+            element:<AdminHostRoute><Order></Order></AdminHostRoute>
         }
     ]
     }

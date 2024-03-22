@@ -5,7 +5,7 @@ import useAuth from "./useAuth";
 
 const useCart = () => {
     const {user}= useAuth()
-    console.log(user?.email)
+    
     const {data:cart =[], isLoading, refetch} = useQuery({
     queryKey:['cart', user?.email],
     queryFn: async()=>{
@@ -14,7 +14,7 @@ const useCart = () => {
     }
 
     })
-   axiosSecure.get()
+   
    return[cart, isLoading, refetch]
 };
 

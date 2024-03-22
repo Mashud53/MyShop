@@ -3,7 +3,7 @@ import MenuItem from "./Sidebar/MenuItem";
 import { MdAddHomeWork, MdOutlineAddBusiness } from "react-icons/md";
 import { PiListMagnifyingGlassDuotone } from "react-icons/pi";
 import { TbHomeCog } from "react-icons/tb";
-import { HiUserGroup } from "react-icons/hi2";
+
 import { FaListCheck } from "react-icons/fa6";
 
 
@@ -28,22 +28,18 @@ const HostMenu = () => {
             <MenuItem
                 icon={PiListMagnifyingGlassDuotone}
                 label='Manage Product'
-                address='add-property'
+                address='/dashboard'
             />
             <MenuItem
                 icon={TbHomeCog}
                 label='Manage Property'
                 address='add-property'
             />
-            <MenuItem
-                icon={HiUserGroup}
-                label='All User'
-                address='add-property'
-            />
+            
             <MenuItem
                 icon={FaListCheck}
-                label='Order'
-                address='add-property'
+                label='Manage Orders'
+                address='order'
             />
         </>
     );

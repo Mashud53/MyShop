@@ -153,8 +153,9 @@ const AddProduct = () => {
         setUploadButtonText5(image?.name)
     }
     return (
-        <div>
+        <div className="py-10">
             <Helmet><title>My Shop || Add Room</title></Helmet>
+            <h2 className="text-center text-xl font-bold pb-8">Add Product</h2>
             <AddProductForm handleSubmit={handleSubmit} 
             handleImageChange1={handleImageChange1}
             handleImageChange2={handleImageChange2}

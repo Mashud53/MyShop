@@ -49,7 +49,7 @@ const Home = () => {
         }else {
             setIssidebarFixed(false)
         }
-        console.log(issidebarFixed)
+        
     }, [isBannerVisible, isFooterVisible, issidebarFixed])
 
     return (
