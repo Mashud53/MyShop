@@ -16,6 +16,9 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import Order from "../Pages/Dashboard/Order/Order";
 import AdminHostRoute from "./AdminHostRoute";
+import Apple from "../Pages/Products/Apple";
+import Samsung from "../Pages/Products/Samsung";
+import GooglePixel from "../Pages/Products/GooglePixel";
 
 export const router = createBrowserRouter([
     {
@@ -31,7 +34,22 @@ export const router = createBrowserRouter([
                 path:"/product/:id",
                 element:<ProductDetails></ProductDetails>,
                 loader: ({params})=>fetch(`http://localhost:5000/product/${params.id}`)
-            }
+            },
+            {
+                path:'/Apple',
+                element:<Apple></Apple>
+                
+            },
+            {
+                path:'/Samsung',
+                element:<Samsung></Samsung>
+                
+            },
+            {
+                path:'/GooglePixel',
+                element:<GooglePixel></GooglePixel>
+                
+            },
         ]
     },
     {
@@ -42,6 +60,7 @@ export const router = createBrowserRouter([
         path:'/login',
         element:<Login></Login>
     },
+    
     {
         path:'/dashboard',
         element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,

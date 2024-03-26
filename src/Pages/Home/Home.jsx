@@ -10,6 +10,7 @@ import Shorting from "../../Components/Shorting/Shorting";
 import Footer from "../../Components/Shared/Footer/Footer"
 import { useEffect, useState } from "react";
 import useProducts from "../../Hooks/useProducts";
+import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
 
 
 const Home = () => {
@@ -45,26 +46,29 @@ const Home = () => {
     useEffect(() => {
         if (!isBannerVisible && !isFooterVisible) {
             setIssidebarFixed(true)
-            
-        }else {
+
+        } else {
             setIssidebarFixed(false)
         }
-        
+
     }, [isBannerVisible, isFooterVisible, issidebarFixed])
 
     return (
-        <div className="min-h-[100vh] max-w-screen-xl pt-10 ">
+        <div className="min-h-[100vh] pt-10 max-w-screen-xl">
             <Helmet><title>My Shop | Home</title></Helmet>
             {/* <Navbar></Navbar> */}
-            <div className="banner-section hidden md:block">
+            {/* <div className="mt-6 navbar navbar-center max-w-screen-xl bg-white fixed z-10 ">
+                <Category></Category>
+            </div> */}
+            <div className="banner-section hidden md:block mt-20">
                 <Banner></Banner>
             </div>
-            <div className="flex pt-6">
-                <div>
-                    {/* <div className={`hidden md:block side-bar w-40 mt-20 ${showfixedSidebar ? 'md:fixed md:top-5 lg:top-20' : 'pt-20'} `}>
-                        <Shorting allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Shorting>
-
-                    </div> */}
+            <ShopByBrand></ShopByBrand>
+            <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
+            <Trand></Trand>
+            {/* <div className="flex pt-6">
+                <div className="">
+                   
                     <div className={`hidden md:block w-40 ${issidebarFixed ? 'fixed top-5 md:top-20 z-10' : ''}  `}>
                         <Shorting allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Shorting>
 
@@ -73,36 +77,25 @@ const Home = () => {
                         <Shorting allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Shorting>
 
                     </div>
-                    {/* <div className={`md:hidden w-20 mt-20 fixed top-0`}>
-                        <Shorting allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Shorting>
-
-                    </div> */}
+                    
                 </div>
-                <div>
-                    {/* <div className={`hidden md:block ${showfixedSidebar ? ' md:ml-[192px]' : 'md:ml-8 ml-[5px]'}`}>
-                        <div className={`${showfixedSidebar ? 'fixed md:top-40' : ' pt-16 md:pt-10'}`}>
-                            <Category></Category>
-                        </div>
-                        <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
-                        <Trand></Trand>
-                    </div> */}
-                    <div className={`hidden md:block ${issidebarFixed ? 'ml-[192px]' : 'md:ml-8 ml-[5px]'} `}>
+                <div className=" w-full">
+                    
+                    <div className={` hidden md:block ${issidebarFixed ? 'ml-[192px]' : 'md:ml-8 ml-[5px]'} `}>
 
-                        <Category></Category>
-
-                        {/* <Category></Category> */}
+                        
                         <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
                         <Trand></Trand>
                     </div>
-                    <div className={`md:hidden ${issidebarFixed ? "ml-[85px]" : "ml-[5px]"}`}>
+                    <div className={`md:hidden flex flex-col items-center justify-center ${issidebarFixed ? "ml-[85px]" : "ml-[5px]"}`}>
 
-                        <Category></Category>
+                        
 
                         <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
                         <Trand></Trand>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="footer-section">
                 <Footer></Footer>
             </div>

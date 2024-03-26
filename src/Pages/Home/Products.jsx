@@ -32,11 +32,10 @@ const Products = ({allProducts,loading, setLoading, displayProducts, setDisplayP
     // if (loading) return <Loader></Loader>
 
     return (
-        <div className="w-full mt-10 md:mt-0">
+        <div className="w-full mt-6 mx-auto">
             {
-                loading ? <Loader></Loader> : displayProducts && displayProducts.length > 0 ? <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center font-catamaran text-base font-semibold pt-16 md:pt-10 ">
+                loading ? <Loader></Loader> : displayProducts && displayProducts.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center font-catamaran text-base font-semibold  md:pt-10 mx-auto">
                 {displayProducts?.map(products => <ProductCard key={products._id} products={products}></ProductCard>)}
-
             </div> :
                 <div className="flex justify-center items-center min-h-[500px]">
                     <Heading title={"No Products are available"} center={true} subTitle={"Choose other category"}></Heading>
