@@ -19,6 +19,15 @@ import AdminHostRoute from "./AdminHostRoute";
 import Apple from "../Pages/Products/Apple";
 import Samsung from "../Pages/Products/Samsung";
 import GooglePixel from "../Pages/Products/GooglePixel";
+import Xiaomi from "../Pages/Products/Xiaomi";
+import OnePlus from "../Pages/Products/OnePlus";
+import Oppo from "../Pages/Products/Oppo";
+import Sony from "../Pages/Products/Sony";
+import Huawei from "../Pages/Products/Huawei";
+import Realme from "../Pages/Products/Realme";
+import Hp from "../Pages/Products/Hp";
+import Dell from "../Pages/Products/Dell";
+import Vivo from "../Pages/Products/Vivo";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +57,56 @@ export const router = createBrowserRouter([
             {
                 path:'/GooglePixel',
                 element:<GooglePixel></GooglePixel>
+                
+            },
+            {
+                path:'/Xiaomi',
+                element:<Xiaomi></Xiaomi>
+                
+            },
+            {
+                path:'/OnePlus',
+                element:<OnePlus></OnePlus>
+                
+            },
+            {
+                path:'/Oppo',
+                element:<Oppo></Oppo>
+                
+            },
+            {
+                path:'/Sony',
+                element:<Sony></Sony>
+                
+            },
+            {
+                path:'/Huawei',
+                element:<Huawei></Huawei>
+                
+            },
+            {
+                path:'/Realme',
+                element:<Realme></Realme>
+                
+            },
+            {
+                path:'/Vivo',
+                element:<Vivo></Vivo>
+                
+            },
+            {
+                path:'/Honor',
+                element:<Vivo></Vivo>
+                
+            },
+            {
+                path:'/Hp',
+                element:<Hp></Hp>
+                
+            },
+            {
+                path:'/Dell',
+                element:<Dell></Dell>
                 
             },
         ]

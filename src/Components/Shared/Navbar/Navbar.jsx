@@ -4,9 +4,9 @@ import { BiCartAlt, BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 // import logo from '../../../assets/logo.png'
-import logo from '../../../assets/logo1.png'
+import logo from '../../../assets/logo1.png';
 import useCart from "../../../Hooks/useCart";
-import Category from "../../Category/Category";
+
 
 
 const Navbar = () => {

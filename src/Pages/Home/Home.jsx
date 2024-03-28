@@ -3,55 +3,55 @@ import Banner from "../../Components/Banner/Banner";
 
 import { Helmet } from 'react-helmet-async';
 import Trand from "../../Components/Trand/Trand";
-
-import Category from "../../Components/Category/Category";
 import Products from "./Products";
-import Shorting from "../../Components/Shorting/Shorting";
-import Footer from "../../Components/Shared/Footer/Footer"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useProducts from "../../Hooks/useProducts";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
+import PopularProduct from "../../Components/PopularProduct/PopularProduct";
+// import ReactWhatsapp from 'react-whatsapp';
+// import { IoLogoWhatsapp } from "react-icons/io";
+import Whatsapp from "../../Components/Shared/Whatsapp/Whatsapp";
 
 
 const Home = () => {
     const [allProducts, loading, setLoading] = useProducts()
     const [displayProducts, setDisplayProduct] = useState([])
-    const [isBannerVisible, setIsBannerVisible] = useState(true);
-    const [isFooterVisible, setIsFooterVisible] = useState(false);
-    const [issidebarFixed, setIssidebarFixed] = useState(false);
+    // const [isBannerVisible, setIsBannerVisible] = useState(true);
+    // const [isFooterVisible, setIsFooterVisible] = useState(false);
+    // const [issidebarFixed, setIssidebarFixed] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const bannerSection = document.querySelector('.banner-section');
-            const footerSection = document.querySelector('.footer-section');
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         const bannerSection = document.querySelector('.banner-section');
+    //         const footerSection = document.querySelector('.footer-section');
 
-            if (bannerSection) {
-                const bannerReact = bannerSection.getBoundingClientRect();
-                setIsBannerVisible(bannerReact.bottom > 0 && bannerReact.top < window.innerHeight);
-            }
+    //         if (bannerSection) {
+    //             const bannerReact = bannerSection.getBoundingClientRect();
+    //             setIsBannerVisible(bannerReact.bottom > 0 && bannerReact.top < window.innerHeight);
+    //         }
 
-            if (footerSection) {
-                const footerReact = footerSection.getBoundingClientRect();
-                setIsFooterVisible(footerReact.top < window.innerHeight);
-            }
-        };
+    //         if (footerSection) {
+    //             const footerReact = footerSection.getBoundingClientRect();
+    //             setIsFooterVisible(footerReact.top < window.innerHeight);
+    //         }
+    //     };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll)
-        };
-    }, [])
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll)
+    //     };
+    // }, [])
 
 
-    useEffect(() => {
-        if (!isBannerVisible && !isFooterVisible) {
-            setIssidebarFixed(true)
+    // useEffect(() => {
+    //     if (!isBannerVisible && !isFooterVisible) {
+    //         setIssidebarFixed(true)
 
-        } else {
-            setIssidebarFixed(false)
-        }
+    //     } else {
+    //         setIssidebarFixed(false)
+    //     }
 
-    }, [isBannerVisible, isFooterVisible, issidebarFixed])
+    // }, [isBannerVisible, isFooterVisible, issidebarFixed])
 
     return (
         <div className="min-h-[100vh] pt-10 max-w-screen-xl">
@@ -64,6 +64,7 @@ const Home = () => {
                 <Banner></Banner>
             </div>
             <ShopByBrand></ShopByBrand>
+            <PopularProduct></PopularProduct>
             <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
             <Trand></Trand>
             {/* <div className="flex pt-6">
@@ -96,9 +97,7 @@ const Home = () => {
                     </div>
                 </div>
             </div> */}
-            <div className="footer-section">
-                <Footer></Footer>
-            </div>
+            <Whatsapp></Whatsapp>
         </div>
     );
 };

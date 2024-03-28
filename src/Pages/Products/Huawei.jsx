@@ -1,16 +1,16 @@
 import Heading from "../../Components/Heading/Heading";
 import Loader from "../../Components/Loader/Loader";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-
 import Whatsapp from "../../Components/Shared/Whatsapp/Whatsapp";
+
 import useBrand from "../../Hooks/useBrand";
 
 
 
 
-const GooglePixel = () => {
+const Huawei = () => {
     // const brandName = Apple;
-    const [brandProduct, isLoading]= useBrand({brandName:'Google Pixel'});
+    const [brandProduct, isLoading]= useBrand({brandName:'Huawei'});
     console.log(brandProduct.length)
     // if(isLoading){
     //     return<Loader></Loader>
@@ -18,7 +18,7 @@ const GooglePixel = () => {
     return (
         <>
         <div className="mt-32 pb-10">
-            <h2>Google Pixel</h2>
+            <h2>One Plus</h2>
             <div >
                 {isLoading ? <Loader></Loader> : brandProduct && brandProduct.length <= 0?<div className="w-full flex justify-center items-center min-h-[500px]">
                     <Heading title={"No Products are available"} center={true} subTitle={"Choose other category"}></Heading>
@@ -31,9 +31,10 @@ const GooglePixel = () => {
             
         </div>
         <Whatsapp></Whatsapp>
+        
         </>
         
     );
 };
 
-export default GooglePixel;
+export default Huawei;

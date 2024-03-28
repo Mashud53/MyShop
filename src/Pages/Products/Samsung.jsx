@@ -1,7 +1,8 @@
 import Heading from "../../Components/Heading/Heading";
 import Loader from "../../Components/Loader/Loader";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import Footer from "../../Components/Shared/Footer/Footer";
+import Whatsapp from "../../Components/Shared/Whatsapp/Whatsapp";
+
 import useBrand from "../../Hooks/useBrand";
 
 
@@ -11,7 +12,9 @@ const Samsung = () => {
     // const brandName = Apple;
     const [brandProduct, isLoading]= useBrand({brandName:'Samsung'});
     console.log(brandProduct)
-    
+    if(isLoading){
+        return<Loader></Loader>
+    }
     return (
         <>
         <div className="mt-32 pb-10">
@@ -27,7 +30,8 @@ const Samsung = () => {
             
             
         </div>
-        <Footer></Footer>
+        <Whatsapp></Whatsapp>
+        
         </>
         
     );
