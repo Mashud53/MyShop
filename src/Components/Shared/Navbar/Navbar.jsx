@@ -6,6 +6,7 @@ import { useContext } from "react";
 // import logo from '../../../assets/logo.png'
 import logo from '../../../assets/logo1.png';
 import useCart from "../../../Hooks/useCart";
+import SubmenuDropdown from "../../SubmenuDropdown/SubmenuDropdown";
 
 
 
@@ -16,12 +17,21 @@ const Navbar = () => {
 
     const navOptions =
         <>
-            {user ? <><li><Link to={'/'} >Home</Link></li>
-                <li><Link to={'/dashboard'} >Dashboard</Link></li>
-                <div onClick={logOut} className="px-3 py-1 cursor-pointer hover:bg-neutral-200 rounded-lg">Logout</div></> : <>
-                <li><Link to={'/'} >Home</Link></li>
-                <li><Link to={'/signup'} >Signup</Link></li>
-                <li><Link to={'/login'} >Login</Link></li></>
+            {user ? <><li ><Link to={'/'} className="text-base font-semibold active:text-cyan-300" >Home</Link></li>
+                {/* <div className="dropdown group">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"> */}
+                <SubmenuDropdown></SubmenuDropdown>
+
+                {/* </ul>
+                </div> */}
+                <li><Link to={'/dashboard'} className="text-base font-semibold">Dashboard</Link></li>
+                <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
+                <>
+                    <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
+                    <SubmenuDropdown></SubmenuDropdown>
+                    <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
+                    <li><Link to={'/login'} className="text-base font-semibold">Login</Link></li>
+                </>
             }
 
 
@@ -65,7 +75,7 @@ const Navbar = () => {
 
                 </div>
             </div>
-            <div className="w-full bg-white py-2 px-2">
+            <div className="hidden md:block w-full bg-white py-2 px-2">
                 <div className="w-full flex justify-center items-center gap-4">
                     <div className="dropdown dropdown-hover group">
                         <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Mobile</div>
@@ -87,6 +97,7 @@ const Navbar = () => {
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Apple</a></li>
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Hp</a></li>
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Dell</a></li>
+                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Lenovo</a></li>
 
                         </ul>
                     </div>
@@ -122,13 +133,7 @@ const Navbar = () => {
                     </div>
                     <div className="dropdown dropdown-hover group">
                         <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Used Device</div>
-                        {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Phone Cover</a></li>
-                            <li><a>Phone Screen Protector</a></li>
-                            <li><a>Phone Camera Protector</a></li>
-                            <li><a>MacBook Cover</a></li>
-                            <li><a>MacBook Screen Protector</a></li>
-                        </ul> */}
+                        
                     </div>
                 </div>
 

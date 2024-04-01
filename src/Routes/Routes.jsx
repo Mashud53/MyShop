@@ -28,126 +28,137 @@ import Realme from "../Pages/Products/Realme";
 import Hp from "../Pages/Products/Hp";
 import Dell from "../Pages/Products/Dell";
 import Vivo from "../Pages/Products/Vivo";
+import ManageProduct from "../Pages/Dashboard/ManageProduct/ManageProduct";
+import UpdateProduct from "../Pages/Dashboard/ManageProduct/UpdateProduct";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLaout></MainLaout>,
-        children:[
+        children: [
             {
-                path:"/",
-                element:<Home></Home>
+                path: "/",
+                element: <Home></Home>
             },
-            
+
             {
-                path:"/product/:id",
-                element:<ProductDetails></ProductDetails>,
-                loader: ({params})=>fetch(`http://localhost:5000/product/${params.id}`)
-            },
-            {
-                path:'/Apple',
-                element:<Apple></Apple>
-                
+                path: "/product/:id",
+                element: <ProductDetails></ProductDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
             },
             {
-                path:'/Samsung',
-                element:<Samsung></Samsung>
-                
+                path: '/Apple',
+                element: <Apple></Apple>
+
             },
             {
-                path:'/GooglePixel',
-                element:<GooglePixel></GooglePixel>
-                
+                path: '/Samsung',
+                element: <Samsung></Samsung>
+
             },
             {
-                path:'/Xiaomi',
-                element:<Xiaomi></Xiaomi>
-                
+                path: '/GooglePixel',
+                element: <GooglePixel></GooglePixel>
+
             },
             {
-                path:'/OnePlus',
-                element:<OnePlus></OnePlus>
-                
+                path: '/Xiaomi',
+                element: <Xiaomi></Xiaomi>
+
             },
             {
-                path:'/Oppo',
-                element:<Oppo></Oppo>
-                
+                path: '/OnePlus',
+                element: <OnePlus></OnePlus>
+
             },
             {
-                path:'/Sony',
-                element:<Sony></Sony>
-                
+                path: '/Oppo',
+                element: <Oppo></Oppo>
+
             },
             {
-                path:'/Huawei',
-                element:<Huawei></Huawei>
-                
+                path: '/Sony',
+                element: <Sony></Sony>
+
             },
             {
-                path:'/Realme',
-                element:<Realme></Realme>
-                
+                path: '/Huawei',
+                element: <Huawei></Huawei>
+
             },
             {
-                path:'/Vivo',
-                element:<Vivo></Vivo>
-                
+                path: '/Realme',
+                element: <Realme></Realme>
+
             },
             {
-                path:'/Honor',
-                element:<Vivo></Vivo>
-                
+                path: '/Vivo',
+                element: <Vivo></Vivo>
+
             },
             {
-                path:'/Hp',
-                element:<Hp></Hp>
-                
+                path: '/Honor',
+                element: <Vivo></Vivo>
+
             },
             {
-                path:'/Dell',
-                element:<Dell></Dell>
-                
+                path: '/Hp',
+                element: <Hp></Hp>
+
+            },
+            {
+                path: '/Dell',
+                element: <Dell></Dell>
+
             },
         ]
     },
     {
-        path:'/signup',
-        element:<SignUp></SignUp>
+        path: '/signup',
+        element: <SignUp></SignUp>
     },
     {
-        path:'/login',
-        element:<Login></Login>
+        path: '/login',
+        element: <Login></Login>
     },
-    
+
     {
-        path:'/dashboard',
-        element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-        children:[
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
             {
-            path:'add-product',
-            element:<AdminHostRoute><AddProduct></AddProduct></AdminHostRoute>
-        },
-        {
-            path:'add-property',
-            element:<AdminHostRoute><AddProperty></AddProperty></AdminHostRoute>
-        },
-        {
-            path:'manage-users',
-            element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
-        },
-        {
-            path:'profile',
-            element:<Profile></Profile>
-        },
-        {
-            path:'my-cart',
-            element:<MyCart></MyCart>
-        },
-        {
-            path:'order',
-            element:<AdminHostRoute><Order></Order></AdminHostRoute>
-        }
-    ]
+                path: 'add-product',
+                element: <AdminHostRoute><AddProduct></AddProduct></AdminHostRoute>
+            },
+            {
+                path: 'manage-product',
+                element: <AdminHostRoute><ManageProduct></ManageProduct></AdminHostRoute>
+            },
+            {
+                path: 'updateProduct/:id',
+                element: <AdminHostRoute><UpdateProduct></UpdateProduct></AdminHostRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+            },
+            {
+                path: 'add-property',
+                element: <AdminHostRoute><AddProperty></AddProperty></AdminHostRoute>
+            },
+            {
+                path: 'manage-users',
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            {
+                path: 'profile',
+                element: <Profile></Profile>
+            },
+            {
+                path: 'my-cart',
+                element: <MyCart></MyCart>
+            },
+            {
+                path: 'order',
+                element: <AdminHostRoute><Order></Order></AdminHostRoute>
+            }
+        ]
     }
 ]);

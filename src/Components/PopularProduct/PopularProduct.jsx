@@ -98,7 +98,7 @@ const PopularProduct = () => {
 
     return (
         <div className='py-10'>
-            <h2 className='text-center font-catamaran font-bold text-3xl uppercase py-8'>---Popular Product---</h2>
+            <h2 className='text-center font-catamaran font-bold md:text-3xl uppercase py-8'>---Popular Product---</h2>
             
             <Swiper watchSlidesProgress={true} 
             navigation={true} 
@@ -107,7 +107,7 @@ const PopularProduct = () => {
              
             className="mySwiper">
             {
-                    allProducts.map(item => <SwiperSlide key={item._id}>
+                    allProducts.map(item => <SwiperSlide className='py-4' key={item._id}>
                         <div className="md:w-[250px] lg:w-[300px]  card card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
                             <Link to={`/product/${item._id}`}>
                                 <figure className="pt-2">

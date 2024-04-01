@@ -28,7 +28,7 @@ const HostMenu = () => {
             <MenuItem
                 icon={PiListMagnifyingGlassDuotone}
                 label='Manage Product'
-                address='/dashboard'
+                address='manage-product'
             />
             <MenuItem
                 icon={TbHomeCog}

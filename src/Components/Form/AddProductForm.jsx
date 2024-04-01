@@ -77,6 +77,8 @@ const AddProductForm = ({
                                 <option value={'Men'}>Men</option>
                                 <option value={'Router'}>Router</option>
                                 <option value={'Charger'}>Charger</option>
+                                <option value={'Smart_Watch'}>Smart Watch</option>
+                                <option value={'Classic_Watch'}>Classic Watch</option>
                                 <option value={'PowerBank'}>Power Bank</option>
                                 <option value={'Other'}>Other</option>
 
@@ -93,13 +95,18 @@ const AddProductForm = ({
                             >
                                 <option value={'Apple'}>Apple</option>
                                 <option value={'Samsung'}>Samsung</option>
-                                <option value={'Google Pixel'}>Cloth</option>
-                                <option value={'Xiaomi'}>Google Pixel</option>
-                                <option value={'One PlUs'}>One PlUs</option>
+                                <option value={'Google_Pixel'}>Google Pixel</option>
+                                <option value={'Xiaomi'}>Xiaomi</option>
+                                <option value={'One_PlUs'}>One Plus</option>
                                 <option value={'Oppo'}>Oppo</option>
-                                <option value={'Nokia'}>Nokia</option>
+                                <option value={'Vivo'}>Vivo</option>
                                 <option value={'Huwei'}>Huwei</option>
                                 <option value={'Realme'}>Realme</option>
+                                <option value={'Sony'}>Sony</option>
+                                <option value={'Honor'}>Honor</option>
+                                <option value={'Hp'}>Hp</option>
+                                <option value={'Dell'}>Dell</option>
+                                <option value={'Lenovo'}>Lenovo</option>
                                 <option value={'Unknown'}>Unknown</option>
 
                             </select>
@@ -118,6 +125,59 @@ const AddProductForm = ({
                             />
                         </div> */}
                     </div>
+                    {/* ---------------------sub Category and meta data-------------------------  */}
+                    {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                        <div className='space-y-1 text-sm'>
+                            <label htmlFor='subCategory' className='block text-gray-600'>
+                                Sub Category
+                            </label>
+                            <select
+                                required
+                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                name='category'
+                            >
+                                <option value={'Apple'}>Apple</option>
+                                <option value={'Samsung'}>Samsung</option>
+                                <option value={'Google_Pixel'}>Google Pixel</option>
+                                <option value={'Xiaomi'}>Xiaomi</option>
+                                <option value={'One_Plus'}>One Plus</option>
+                                <option value={'Oppo'}>Oppo</option>
+                                <option value={'Sony'}>Sony</option>
+                                <option value={'Huwei'}>Huwei</option>
+                                <option value={'Realme'}>Sony</option>
+                                <option value={'Vivo'}>Vivo</option>
+                                <option value={'Honor'}>Honor</option>
+                                <option value={'Lenovo'}>Lenovo</option>
+                                <option value={'Lenovo'}>Lenovo</option>
+                                <option value={'Lenovo'}>Lenovo</option>
+
+                                
+                            </select>
+                        </div>
+                        <div className='space-y-1 text-sm'>
+                            <label htmlFor='type' className='block text-gray-600'>
+                                Type
+                            </label>
+                            <select
+                                required
+                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                name='type'
+                            >
+                                <option value={'Smartphone'}>Smartphone</option>
+                                <option value={'Laptop'}>Laptop</option>
+                                <option value={'iPad'}>iPad</option>
+                                <option value={'Cloth'}>Cloth</option>
+                                <option value={'Headphone'}>Headphone</option>
+                                <option value={'Men'}>Men</option>
+                                <option value={'Router'}>Router</option>
+                                <option value={'Charger'}>Charger</option>
+                                <option value={'PowerBank'}>Power Bank</option>
+                                <option value={'Other'}>Other</option>
+
+                            </select>
+                        </div>                        
+                       
+                    </div> */}
 
 
                     {/* image uploade  */}
