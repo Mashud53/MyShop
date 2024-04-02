@@ -37,9 +37,9 @@ const AddProduct = () => {
         const imgUrl4=form.imgUrl4.value;
         const imgUrl5=form.imgUrl5.value;
 
-        const price1 = form.price1.value;
-        const price2 = form.price2.value;
-        const price3 = form.price3.value;
+        const price1 = parseFloat(form.price1.value);
+        const price2 = parseFloat(form.price2.value);
+        const price3 = parseFloat(form.price3.value);
         const storage1=form.storage1.value;
         const storage2=form.storage2.value;
         const storage3=form.storage3.value;
@@ -155,7 +155,8 @@ const AddProduct = () => {
     return (
         <div className="py-10">
             <Helmet><title>My Shop || Add Room</title></Helmet>
-            <h2 className="text-center text-xl font-bold pb-8">Add Product</h2>
+            <h2 className="text-xl text-center font-bold uppercase pt-8 pb-4 border-b-2">Add Product</h2>
+            <div className="mt-8">
             <AddProductForm handleSubmit={handleSubmit} 
             handleImageChange1={handleImageChange1}
             handleImageChange2={handleImageChange2}
@@ -168,6 +169,7 @@ const AddProduct = () => {
             uploadButtonText4={uploadButtonText4}
             uploadButtonText5={uploadButtonText5}
             loading={loading}></AddProductForm>
+            </div>
 
         </div>
     );

@@ -20,8 +20,8 @@ const ManageProduct = () => {
     return (
         <div>
             <Helmet><title>Dashboard | Manage Product</title></Helmet>
-            <div className="text-center py-8 border-b-2 font-bold text-xl"><h2>Manage Pruducts</h2></div>
-            <div className="overflow-x-auto">
+            <div className="text-xl text-center font-bold uppercase pt-8 pb-4 border-b-2"><h2>Manage Pruducts</h2></div>
+            <div className="mt-8 overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -48,7 +48,7 @@ const ManageProduct = () => {
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">
                                         <div className="mask mask-square w-12 h-12">
-                                            <img src={product.image1} alt="Avatar Tailwind CSS Component" />
+                                            <img src={product?.image1 ?  product.image1: product?.imageURL1} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
 
