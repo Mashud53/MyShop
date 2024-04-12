@@ -12,12 +12,10 @@ export const updateProduct = async (id, productData) =>{
     return data;
 }
 
-export const updateViews = async (id, views)=>{
-    console.log(views)
-    
-    const {data} = await axiosSecure.patch(`/updateViews/${id}`, views)
-    
+export const updateViews = async (id, views)=>{   
+    const {data} = await axiosSecure.patch(`/updateViews/${id}`, views)   
     return data;
 }
+
 
 

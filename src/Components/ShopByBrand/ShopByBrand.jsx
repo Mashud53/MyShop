@@ -9,6 +9,7 @@ import xiaomi from '../../assets/navIcons/Xiaomi.png';
 import lenovo from '../../assets/navIcons/lenovo.png';
 import vivo from '../../assets/navIcons/vivo.png';
 import honor from '../../assets/navIcons/honor.png';
+import SectionTitle from "../SectionTitle";
 
 
 
@@ -21,8 +22,9 @@ const ShopByBrand = () => {
     }
 
     return (
-        <div className="px-8 lg:px-0 mt-24 md:mt-0">
-            <h2 className="font-catamaran text-base md:text-2xl font-bold text-center uppercase py-8">----Shop by brand----</h2>
+        <div className="px-8 lg:px-0 md:mt-10 mt-4">
+            <SectionTitle title={'Shop by brand'}></SectionTitle>
+            {/* <h2 className="font-catamaran text-base md:text-2xl font-bold text-center uppercase py-8">----Shop by brand----</h2> */}
             <div className=" w-full grid grid-cols-3 md:grid-cols-4 gap-4">
                 <Link to={'/Apple'}><div onClick={() => handleProducts('Apple')} className="h-[30px] md:h-[55px] flex justify-center items-center border-2 border-gray-200 rounded-xl hover:border-cyan-300">
                     <FaApple className=" text-xl md:text-3xl " />

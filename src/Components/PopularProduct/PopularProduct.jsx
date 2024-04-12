@@ -24,6 +24,7 @@ import { addToCart } from '../../api/cart';
 import { FaCartArrowDown } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import { updateViews } from '../../api/product';
+import SectionTitle from '../SectionTitle';
 
 const PopularProduct = () => {
     const [allProducts, loading] = useProducts();
@@ -32,8 +33,8 @@ const PopularProduct = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [slidePreview, setSlidePreview] = useState(4);
-    const[view, setView]=useState(0)
-    
+    const [view, setView] = useState(0)
+
 
     useEffect(() => {
         const updateSlidePreview = () => {
@@ -52,14 +53,14 @@ const PopularProduct = () => {
         window.addEventListener('resize', updateSlidePreview);
     }, [])
 
-    const handleView = async(id)=>{
+    const handleView = async (id) => {
         const currentView = (view + 1)
         setView(currentView)
         console.log(id, currentView)
-        const data = await updateViews(id, {views:currentView})
-        
+        const data = await updateViews(id, { views: currentView })
+
         console.log(data)
-        
+
     }
 
     const handleAddtoCart = async item => {
@@ -110,8 +111,7 @@ const PopularProduct = () => {
 
     return (
         <div className='py-10'>
-            <h2 className='text-center font-catamaran font-bold md:text-3xl uppercase py-8'>---Popular Product---</h2>
-
+            <SectionTitle title={'Popular Product'}></SectionTitle>
             <Swiper watchSlidesProgress={true}
                 navigation={true}
                 modules={[Navigation]}
@@ -120,9 +120,9 @@ const PopularProduct = () => {
                 className="mySwiper">
                 {
                     allProducts.map(item => <SwiperSlide className='py-4' key={item._id}>
-                        <div 
-                        onClick={()=>handleView(item._id)} 
-                        className="md:w-[250px] lg:w-[300px]  card card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
+                        <div
+                            onClick={() => handleView(item._id)}
+                            className="md:w-[250px] lg:w-[300px]  card card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
                             <Link to={`/product/${item._id}`}>
                                 <figure className="pt-2">
                                     <img className="h-[120px] md:h-[200px]" src={item.image1 || item.imageURL1} alt={item.name} />
