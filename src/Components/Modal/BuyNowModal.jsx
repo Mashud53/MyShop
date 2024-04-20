@@ -2,7 +2,10 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import DeliveryAddress from '../Form/DeliveryAddress'
 
-const BuyNowModal = ({ closeModal, isOpen, orderInfo, qt }) => {
+
+const BuyNowModal = ({ closeModal, isOpen, orderInfo, qt, _id }) => {
+
+   
     
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -38,7 +41,7 @@ const BuyNowModal = ({ closeModal, isOpen, orderInfo, qt }) => {
                                     Check Out
                                 </Dialog.Title>
 
-                                <DeliveryAddress closeModal={closeModal} orderInfo={orderInfo} qt={qt}></DeliveryAddress>
+                                <DeliveryAddress closeModal={closeModal} orderInfo={orderInfo} qt={qt} _id={_id}></DeliveryAddress>
                                 
                             </Dialog.Panel>
                         </Transition.Child>

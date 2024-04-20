@@ -276,7 +276,8 @@ const ProductDetails = () => {
                 isOpen={isOpen}
                 closeModal={closeModal}
                 orderInfo={orderInfo}
-                qt={qt}></BuyNowModal>
+                qt={qt}
+                _id={_id}></BuyNowModal>
 
         </div>
     );

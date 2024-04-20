@@ -11,6 +11,7 @@ import PopularProduct from "../../Components/PopularProduct/PopularProduct";
 // import ReactWhatsapp from 'react-whatsapp';
 // import { IoLogoWhatsapp } from "react-icons/io";
 import Whatsapp from "../../Components/Shared/Whatsapp/Whatsapp";
+import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
 
 
 const Home = () => {
@@ -55,7 +56,7 @@ const Home = () => {
 
     return (
         <div className="min-h-[100vh] pt-10 max-w-screen-xl">
-            <Helmet><title>My Shop | Home</title></Helmet>
+            <Helmet><title>Delux Mart | Home</title></Helmet>
             {/* <Navbar></Navbar> */}
             {/* <div className="mt-6 navbar navbar-center max-w-screen-xl bg-white fixed z-10 ">
                 <Category></Category>
@@ -65,6 +66,7 @@ const Home = () => {
             </div>
             <ShopByBrand></ShopByBrand>
             <PopularProduct></PopularProduct>
+            <FeaturedProduct></FeaturedProduct>
             <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
             <Trand></Trand>
             {/* <div className="flex pt-6">

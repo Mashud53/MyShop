@@ -52,6 +52,7 @@ const AddProductForm = ({
                                 <option value={'Watch'}>Watch</option>
                                 <option value={'Shoe'}>Shoe</option>
                                 <option value={'Toy'}>Toy</option>
+                                <option value={'Perfume'}>Perfume</option>
 
                                 {/* {categories.map(category => (
                                     <option value={category.label} key={category.label}>

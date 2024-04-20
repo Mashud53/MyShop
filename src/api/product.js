@@ -17,5 +17,10 @@ export const updateViews = async (id, views)=>{
     return data;
 }
 
+export const updateSales = async (id, sales)=>{   
+    const {data} = await axiosSecure.patch(`/updateSales/${id}`, sales)   
+    return data;
+}
+
 
 

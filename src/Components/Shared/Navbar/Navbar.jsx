@@ -5,8 +5,10 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 // import logo from '../../../assets/logo.png'
 import logo from '../../../assets/logo1.png';
+
 import useCart from "../../../Hooks/useCart";
 import SubmenuDropdown from "../../SubmenuDropdown/SubmenuDropdown";
+import { IoSearchOutline } from "react-icons/io5";
 
 
 
@@ -24,11 +26,15 @@ const Navbar = () => {
 
                 {/* </ul>
                 </div> */}
+                <li><Link to={'/'} className="text-base font-semibold">Perfume</Link></li>
+                <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
                 <li><Link to={'/dashboard'} className="text-base font-semibold">Dashboard</Link></li>
                 <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
                 <>
                     <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
                     <SubmenuDropdown></SubmenuDropdown>
+                    <li><Link to={'/'} className="text-base font-semibold">Perfume</Link></li>
+                    <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
                     <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
                     <li><Link to={'/login'} className="text-base font-semibold">Login</Link></li>
                 </>
@@ -40,23 +46,28 @@ const Navbar = () => {
 
     return (
         <div className="max-w-screen-xl navbar fixed top-0 z-[20] flex flex-col font-catamaran px-0 py-0">
-            <div className="w-full navbar bg-cyan-300">
+            <div className="w-full navbar bg-black">
                 <div className="navbar-start">
                     {/* <a className=" font-bold uppercase">My Shop</a> */}
                     <Link><img className="w-[100px]" src={logo} alt="" /></Link>
                 </div>
-
-                {/* <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {navOptions}
-                </ul>
-            </div> */}
+         {/* search bar  */}
+                <div className="navbar-center">
+                    <label className="ml-2 h-8 md:ml-0 input input-bordered flex items-center gap-2">
+                        <input type="text" className="grow" placeholder="Search" />
+                        <IoSearchOutline className="w-4 h-4 opacity-70 text-cyan-500 cursor-pointer"/>
+                        
+                    </label>
+                </div>
                 <div className="navbar-end flex items-center justify-end">
 
-                    <button className=" flex justify-center items-center mx-4 border bg-white border-1 rounded-lg p-1">
-                        <BiCartAlt />
-                        <Link to={'dashboard/my-cart'}><div className="badge bg-gray-200 text-rose-600 font-semibold ml-2">+ {cart.length}</div></Link>
-                    </button>
+                    <Link to={'dashboard/my-cart'}>
+                        <button className=" relative mx-4 p-1">
+                            <BiCartAlt className="text-cyan-500 text-2xl" />
+                            <div className="absolute -top-3 -right-2 text-white font-semibold">+{cart.length}</div>
+                        </button>
+                    </Link>
+
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="">
                             <div className="flex items-center gap-2 border-2 bg-white border-neutral-100 rounded-lg">
@@ -132,8 +143,18 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="dropdown dropdown-hover group">
+                        <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Perfume</div>
+                        {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Cover</a></li>
+                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Screen Protector</a></li>
+                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Camera Protector</a></li>
+                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>MacBook Cover</a></li>
+                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>MacBook Screen Protector</a></li>
+                        </ul> */}
+                    </div>
+                    <div className="dropdown dropdown-hover group">
                         <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Used Device</div>
-                        
+
                     </div>
                 </div>
 

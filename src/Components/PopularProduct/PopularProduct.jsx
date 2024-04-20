@@ -10,11 +10,6 @@ import 'swiper/css/navigation';
 // import { Pagination } from 'swiper/modules';
 // import required modules
 import { Navigation } from 'swiper/modules';
-
-
-
-import useProducts from '../../Hooks/useProducts';
-
 import Loader from '../Loader/Loader';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
@@ -25,15 +20,18 @@ import { FaCartArrowDown } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import { updateViews } from '../../api/product';
 import SectionTitle from '../SectionTitle';
+import usePopularProduct from '../../Hooks/usePopularProduct';
 
 const PopularProduct = () => {
-    const [allProducts, loading] = useProducts();
+    
+    const [popularProducts, isLoading] = usePopularProduct();
     const { user } = useAuth();
     const [, , refetch] = useCart()
     const navigate = useNavigate();
     const location = useLocation();
     const [slidePreview, setSlidePreview] = useState(4);
     const [view, setView] = useState(0)
+    console.log(popularProducts)
 
 
     useEffect(() => {
@@ -105,7 +103,7 @@ const PopularProduct = () => {
             });
         }
     }
-    if (loading) {
+    if (isLoading) {
         return <Loader></Loader>
     }
 
@@ -119,7 +117,7 @@ const PopularProduct = () => {
 
                 className="mySwiper">
                 {
-                    allProducts.map(item => <SwiperSlide className='py-4' key={item._id}>
+                    popularProducts.map(item => <SwiperSlide className='py-4' key={item._id}>
                         <div
                             onClick={() => handleView(item._id)}
                             className="md:w-[250px] lg:w-[300px]  card card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
@@ -129,7 +127,7 @@ const PopularProduct = () => {
                                 </figure>
                                 <div className=" card-body relative text-center md:text-left ">
                                     <h2 className="hidden md:block card-title md:text-left text-sm md:text-base lg:text-lg">{item.name?.length > 20 ? <>{item.name?.slice(0, 20) + '...'}</> : <>{item.name}</>}</h2>
-                                    <h2 className="md:hidden card-title text-center text-sm md:text-base lg:text-lg">{item.name.length > 15 ? <p className="text-center">{item.name.slice(0, 15) + '...'}</p> : <>{name}</>}</h2>
+                                    <h2 className="md:hidden card-title text-center text-sm md:text-base lg:text-lg">{item.name?.length > 15 ? <p className="text-center">{item.name?.slice(0, 15) + '...'}</p> : <p className='text-center'>{item.name}</p>}</h2>
                                     <div className="hidden md:block rating rating-xs">
                                         <input type="radio" name="rating-1" className="mask mask-star-2 bg-orange-400" />
                                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />

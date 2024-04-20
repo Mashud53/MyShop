@@ -2,14 +2,17 @@ import { useState } from "react";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { orderProduct } from "../../api/order";
 import Swal from "sweetalert2";
+import { updateSales } from "../../api/product";
 
 
 
 
-const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt }) => {
+const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt, _id }) => {
 
     const [loading, setLoading] = useState(false)
+   
 
+   
     const handleSubmit = async (e) => {
         e.preventDefault()
         const form = e.target;
@@ -18,8 +21,8 @@ const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt }) => {
         const city = form.city.value;
         const phone = form.mobile.value;
         const date = new Date();
-        
-        const contactInfo = { street, appartment, city, phone, date, status:'pending' }
+
+        const contactInfo = { street, appartment, city, phone, date, status: 'pending' }
 
         const orderInfo = Object.assign({}, contactInfo, productInfo)
 
@@ -35,6 +38,10 @@ const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt }) => {
                 timer: 1500
             });
         }
+        // sales update 
+        await updateSales(_id, { sales: qt })
+
+
         closeModal()
     }
     return (
