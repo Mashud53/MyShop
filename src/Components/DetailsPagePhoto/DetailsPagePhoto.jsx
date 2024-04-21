@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const DetailsPagePhoto = ({ image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5 }) => {
     const [image, setImage] = useState(image1 ? image1 : imageURL1)
-    console.log(image1.length)
+    // console.log(image1.length)
     return (
         <div className="flex flex-col-reverse md:flex-row items-center justify-around gap-3 w-full">
             <div className="flex flex-row justify-around md:gap-4 md:flex-col ">

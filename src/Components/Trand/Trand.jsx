@@ -5,7 +5,7 @@ import TrandsCard from "./TrandsCard";
 
 
 const Trand = () => {
-    const [trand, isLoading, refetch] = useProductBySell()
+    const [trand, isLoading, ] = useProductBySell()
     const filter = trand.slice(1, 13)
     console.log(filter)
     if(isLoading){
