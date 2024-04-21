@@ -3,9 +3,9 @@ import Banner from "../../Components/Banner/Banner";
 
 import { Helmet } from 'react-helmet-async';
 import Trand from "../../Components/Trand/Trand";
-import Products from "./Products";
-import { useState } from "react";
-import useProducts from "../../Hooks/useProducts";
+// import Products from "./Products";
+// import { useState } from "react";
+// import useProducts from "../../Hooks/useProducts";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
 import PopularProduct from "../../Components/PopularProduct/PopularProduct";
 // import ReactWhatsapp from 'react-whatsapp';
@@ -15,8 +15,8 @@ import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
 
 
 const Home = () => {
-    const [allProducts, loading, setLoading] = useProducts()
-    const [displayProducts, setDisplayProduct] = useState([])
+    // const [allProducts, loading, setLoading] = useProducts()
+    // const [displayProducts, setDisplayProduct] = useState([])
     // const [isBannerVisible, setIsBannerVisible] = useState(true);
     // const [isFooterVisible, setIsFooterVisible] = useState(false);
     // const [issidebarFixed, setIssidebarFixed] = useState(false);
@@ -55,7 +55,7 @@ const Home = () => {
     // }, [isBannerVisible, isFooterVisible, issidebarFixed])
 
     return (
-        <div className="min-h-[100vh] pt-10 max-w-screen-xl">
+        <div className="min-h-[100vh] pt-10 max-w-screen-xl pb-10">
             <Helmet><title>Delux Mart | Home</title></Helmet>
             {/* <Navbar></Navbar> */}
             {/* <div className="mt-6 navbar navbar-center max-w-screen-xl bg-white fixed z-10 ">
@@ -67,7 +67,7 @@ const Home = () => {
             <ShopByBrand></ShopByBrand>
             <PopularProduct></PopularProduct>
             <FeaturedProduct></FeaturedProduct>
-            <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products>
+            {/* <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products> */}
             <Trand></Trand>
             {/* <div className="flex pt-6">
                 <div className="">

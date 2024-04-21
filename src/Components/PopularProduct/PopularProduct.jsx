@@ -31,7 +31,7 @@ const PopularProduct = () => {
     const location = useLocation();
     const [slidePreview, setSlidePreview] = useState(4);
     const [view, setView] = useState(0)
-    console.log(popularProducts)
+    // console.log(popularProducts)
 
 
     useEffect(() => {
