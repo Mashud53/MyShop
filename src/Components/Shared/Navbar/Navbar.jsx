@@ -4,7 +4,7 @@ import { BiCartAlt, BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 // import logo from '../../../assets/logo.png'
-import logo from '../../../assets/logo1.png';
+import logo from '../../../assets/logo.png';
 
 import useCart from "../../../Hooks/useCart";
 import SubmenuDropdown from "../../SubmenuDropdown/SubmenuDropdown";
@@ -51,12 +51,13 @@ const Navbar = () => {
                     {/* <a className=" font-bold uppercase">My Shop</a> */}
                     <Link><img className="w-[100px]" src={logo} alt="" /></Link>
                 </div>
-         {/* search bar  */}
-                <div className="navbar-center">
-                    <label className="ml-2 h-8 md:ml-0 input input-bordered flex items-center gap-2">
-                        <input type="text" className="grow" placeholder="Search" />
-                        <IoSearchOutline className="w-4 h-4 opacity-70 text-cyan-500 cursor-pointer"/>
-                        
+                {/* search bar  */}
+                <div className="navbar-center hidden md:block">
+                    <label className="relative h-8 input input-bordered flex items-center gap-2">
+                        <input type="text" className="" placeholder="Search" />
+                        <div className="absolute -right-1 w-8 h-8 flex justify-center items-center bg-cyan-500 rounded-r-lg">
+                            <IoSearchOutline className="  w-4 h-4 opacity-70  text-white cursor-pointer" />
+                        </div>
                     </label>
                 </div>
                 <div className="navbar-end flex items-center justify-end">
@@ -72,7 +73,8 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="">
                             <div className="flex items-center gap-2 border-2 bg-white border-neutral-100 rounded-lg">
                                 <div className="w-[30px] h-[30px] flex justify-center items-center rounded-full">
-                                    {user ? <><img className="h-full w-full rounded-full" src={user?.photoURL} alt="" /></> : <BiUser></BiUser>}
+                                    {/* {user ? <><img className="h-full w-full rounded-full" src={user?.photoURL} alt="" /></> : <BiUser></BiUser>} */}
+                                    {user ? <p className="font-serif text-sm uppercase">{user?.displayName.slice(0, 2)}</p> : <BiUser></BiUser>}
                                 </div>
                                 <div>
                                     <FiAlignJustify className="text-2xl"></FiAlignJustify>
@@ -85,6 +87,15 @@ const Navbar = () => {
                     </div>
 
                 </div>
+            </div>
+            {/* search bar  */}
+            <div className="md:hidden w-full flex justify-center items-center py-2 bg-white border-0">
+                <label className="relative h-8 input input-bordered flex items-center gap-2">
+                    <input type="text" className="" placeholder="Search" />
+                    <div className="absolute -right-1 w-8 h-8 flex justify-center items-center bg-cyan-500 rounded-r-lg">
+                        <IoSearchOutline className="  w-4 h-4 opacity-70  text-white cursor-pointer" />
+                    </div>
+                </label>
             </div>
             <div className="hidden md:block w-full bg-white py-2 px-2">
                 <div className="w-full flex justify-center items-center gap-4">

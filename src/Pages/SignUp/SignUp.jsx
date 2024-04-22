@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { imageUpload } from "../../api/utils";
+// import { imageUpload } from "../../api/utils";
 import useAuth from "../../Hooks/useAuth";
 import { getToken, saveUser } from "../../api/auth";
 import Swal from "sweetalert2";
@@ -17,18 +17,18 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const image = form.image.files[0];
+    
     
     try{
       // upload image
-      const imageData = await imageUpload(image)
+      
 
       // user regtistration
       const result = await createUser(email, password)
       
 
       // save username & profile photo
-      await updateUserProfile(name, imageData?.data?.display_url)
+      await updateUserProfile(name)
       
       // save user data in database
       const dbResponse = await saveUser(result?.user)
@@ -105,7 +105,7 @@ const SignUp = () => {
                 data-temp-mail-org='0'
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor='image' className='block mb-2 text-sm'>
                 Select Image:
               </label>
@@ -116,7 +116,7 @@ const SignUp = () => {
                 name='image'
                 accept='image/*'
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
                 Email address

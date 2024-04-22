@@ -55,12 +55,9 @@ const Home = () => {
     // }, [isBannerVisible, isFooterVisible, issidebarFixed])
 
     return (
-        <div className="min-h-[100vh] pt-10 max-w-screen-xl pb-10">
+        <div className="min-h-[100vh] pt-20 md:pt-10 max-w-screen-xl pb-10">
             <Helmet><title>Delux Mart | Home</title></Helmet>
-            {/* <Navbar></Navbar> */}
-            {/* <div className="mt-6 navbar navbar-center max-w-screen-xl bg-white fixed z-10 ">
-                <Category></Category>
-            </div> */}
+           
             <div className="banner-section hidden md:block mt-20">
                 <Banner></Banner>
             </div>

@@ -13,6 +13,8 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { GiDuration } from "react-icons/gi";
 import Swal from "sweetalert2";
+import { addToCart } from "../../api/cart";
+import useCart from "../../Hooks/useCart";
 
 
 
@@ -23,6 +25,7 @@ const ProductDetails = () => {
     const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5 } = product;
     console.log(product)
     const { user } = useAuth();
+    const [, , refetch] = useCart()
 
     const location = useLocation()
     const navigate = useNavigate();
@@ -32,6 +35,7 @@ const ProductDetails = () => {
     const [color, setColor] = useState(color1);
     const [storage, setStorage] = useState(storage1);
     const [qt, setQt] = useState(1)
+
 
     const [orderInfo, setOrderInfo] = useState({})
 
@@ -87,19 +91,32 @@ const ProductDetails = () => {
 
 
     }
-    const handleAddtoCart = product => {
-        console.log(product, user?.email)
+    const handleAddtoCart =async()  => {
+        console.log(user?.email)
         if (user && user?.email) {
-            const quantity = document.getElementById('quantity').value;
-            const totalPrice = quantity * price;
+            
+            const totalPrice = qt * price;
             const selectedColor = color;
             const email = user.email;
             const productId = _id;
             const productName = name;
-            const cartInfo = {
-                quantity, totalPrice, selectedColor, email, productId, productName, image1
+            const cartItem = {
+                qt, totalPrice, selectedColor, email, productId, productName, image1
             }
-            console.log(cartInfo)
+            console.log(cartItem)
+            const data = await addToCart(cartItem)
+            console.log(data)
+
+            if (data.insertedId) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${product.name} added to cart`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                refetch();
+            }
         }
         else {
             Swal.fire({
