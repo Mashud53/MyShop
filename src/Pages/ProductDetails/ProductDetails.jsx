@@ -93,15 +93,15 @@ const ProductDetails = () => {
     }
     const handleAddtoCart =async()  => {
         console.log(user?.email)
-        if (user && user?.email) {
-            
-            const totalPrice = qt * price;
-            const selectedColor = color;
-            const email = user.email;
-            const productId = _id;
-            const productName = name;
+        if (user && user?.email) {  
+             
             const cartItem = {
-                qt, totalPrice, selectedColor, email, productId, productName, image1
+                
+                productId:_id,
+                name,
+                image: image1 ? image1 : imageURL1,
+                price: price1,
+                userEmail: user.email,
             }
             console.log(cartItem)
             const data = await addToCart(cartItem)

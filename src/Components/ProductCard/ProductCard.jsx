@@ -9,12 +9,16 @@ import { updateViews } from "../../api/product";
 
 
 const ProductCard = ({ products }) => {
-    const { _id, image1, name, price1, imageURL1 } = products;
+    const { _id, image1, name, price1, currentPrice1, imageURL1 } = products;
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [, , refetch] = useCart()
     const [view, setView] = useState(0)
+
+    const priceless = parseFloat(price1)-parseFloat(currentPrice1)
+    const discount = priceless / parseFloat(price1) * 100
+    
 
     const handleView = async (id) => {
         const currentView = (view + 1)
@@ -34,7 +38,7 @@ const ProductCard = ({ products }) => {
                 productId: product._id,
                 name: product.name,
                 image: product.image1 ? product?.image1 : product?.imageURL1,
-                price: price1,
+                price: product?.currentPrice1 && product?.currentPrice1 > 0 ? product.currentPrice1 : product.price1,
                 userEmail: user.email,
 
             }
@@ -75,8 +79,11 @@ const ProductCard = ({ products }) => {
 
         <div onClick={() => handleView(_id)} className="md:w-[280px] lg:w-[300px]  card card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
             <Link to={`/product/${_id}`}>
-                <figure className="pt-2">
+                <figure className="relative pt-2">
                     <img className="h-[120px] md:h-[200px]" src={image1 || imageURL1} alt={name} />
+                    {
+                        currentPrice1 && currentPrice1 >0 && <p className="absolute top-0 right-0 bg-rose-500 px-2 rounded-tr-lg rounded-bl-lg text-white">{discount.toFixed(2)}%</p>
+                    }
                 </figure>
                 <div className=" card-body relative text-center md:text-left ">
                     <h2 className="hidden md:block card-title md:text-left text-sm md:text-base lg:text-lg">{name.length > 20 ? <>{name.slice(0, 20) + '...'}</> : <>{name}</>}</h2>
@@ -90,7 +97,18 @@ const ProductCard = ({ products }) => {
                             <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
                         </div>
                     </div>
-                    <p className="md:text-left lg:text-lg text-sm">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
+                    {/* <p className="md:text-left lg:text-lg text-sm">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
+                    <p className="md:text-left lg:text-lg text-sm">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {currentPrice1}</p> */}
+                    {
+                        currentPrice1 && currentPrice1 > 0 ?
+                            <div className="flex justify-around items-center">
+                                <p className="md:text-left lg:text-lg text-sm text-cyan-500"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {currentPrice1}</p>
+                                <p className="md:text-left lg:text-xs text-xs"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
+                                
+                            </div> :
+                            <p className="md:text-left lg:text-lg text-sm"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
+                            
+                    }
 
                 </div>
             </Link>

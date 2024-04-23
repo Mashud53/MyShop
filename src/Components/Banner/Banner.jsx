@@ -56,9 +56,9 @@ const Banner = () => {
                         </div>
                     </div>
                 </div>
-                {/* <div className="keen-slider__slide number-slide2">
+                <div className="keen-slider__slide number-slide2">
                     <div className="flex flex-col md:relative font-catamaran">
-                        <div>
+                        <div className="h-[400px]">
                             <img src={image2} alt="" />
                         </div>
                         <div className="absolute md:top-32 lg:top-40 left-0 md:ml-4 lg:ml-0">
@@ -67,7 +67,7 @@ const Banner = () => {
                             <p className="md:w-1/2 mt-8 text-[#999999]">Discover a world of innovation at our electronics emporium! With an array of gadgets and accessories, we cater to every tech enthusiast. Find quality products, unbeatable prices, and expert customer service—all in one convenient place.</p>
                         </div>
                     </div>
-                </div> */}
+                </div>
                 {/* <div className="keen-slider__slide number-slide3">3</div>
                 <div className="keen-slider__slide number-slide4">4</div>
                 <div className="keen-slider__slide number-slide5">5</div>
