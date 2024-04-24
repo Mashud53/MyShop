@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const UpdateProduct = () => {
 
     const product = useLoaderData()
-    const { _id, name, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, category, type, brand, price1, price2, price3, storage1, storage2, storage3, color1, color2, color3, color4, color5, color6, storageType, operatingSystem, operating_system, network, wirelessNetwork, wireless_network, screen, connector, screenSize, productType, desc, desc1, desc2, desc3, desc4, desc5 } = product;
+    const { _id, name, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, category, type, brand, price1, price2, price3,currentPrice1, currentPrice2, currentPrice3, storage1, storage2, storage3, color1, color2, color3, color4, color5, color6, storageType, operatingSystem, operating_system, network, wirelessNetwork, wireless_network, screen, connector, screenSize, productType, desc, desc1, desc2, desc3, desc4, desc5 } = product;
     const [loading, setLoading] = useState(false)
     // console.log(product)
     
@@ -52,9 +52,12 @@ const UpdateProduct = () => {
         const imgUrl4 = form.imgUrl4.value;
         const imgUrl5 = form.imgUrl5.value;
 
-        const price1 = parseFloat(form.price1.value);
-        const price2 = parseFloat(form.price2.value);
-        const price3 = parseFloat(form.price3.value);
+        const price1 = form.price1.value;
+        const price2 = form.price2.value;
+        const price3 = form.price3.value;
+        const currentPrice1 = form.discountPrice1.value;
+        const currentPrice2 = form.discountPrice2.value;
+        const currentPrice3 = form.discountPrice3.value;
         const storage1 = form.storage1.value;
         const storage2 = form.storage2.value;
         const storage3 = form.storage3.value;
@@ -77,7 +80,7 @@ const UpdateProduct = () => {
         const desc3 = form.description3.value;
         const desc4 = form.description4.value;
         const desc5 = form.description5.value;
-
+console.log(currentPrice1, currentPrice2, currentPrice3)
         // const image1Url = image1 && await  imageUpload(image1)
         // const image2Url = image2 &&  await imageUpload(image2)
         // const image3Url = image3 && await imageUpload(image3)
@@ -87,7 +90,7 @@ const UpdateProduct = () => {
         
 
         const productData = {
-            name: title, brand, category, type, price1, price2, price3,
+            name: title, brand, category, type, price1, price2, price3, currentPrice1, currentPrice2, currentPrice3,
             storage1, storage2, storage3, color1, color2, color3, color4, color5, color6, operatingSystem,
             network, wirelessNetwork, screen, screenSize, connector, desc, desc1, desc2, desc3, desc4, desc5, productType,
             image1, image2, image3, image4, image5,
@@ -526,6 +529,56 @@ const UpdateProduct = () => {
                                         <option value={'Used'}>Used</option>
                                     </select>
                                 </div>
+
+                            </div>
+                            <div>
+                                <div className='space-y-1 text-sm'>
+                                    <label htmlFor='price' className='block text-gray-600'>
+                                       Discount Price-1
+                                    </label>
+                                    <input
+                                        className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                        name='discountPrice1'
+                                        id='discountPrice'
+                                        type='number'
+                                        defaultValue={currentPrice1 ? parseFloat(currentPrice1) : ''}
+                                        placeholder={currentPrice1 ? currentPrice1 : ''}
+                                        min="0"
+                                        step="0.01"
+                                        pattern="^\d+(?:\.\d{1,2})?$"
+
+                                        
+                                    />
+                                </div>
+                                <div className='space-y-1 text-sm'>
+                                    <label htmlFor='price' className='block text-gray-600'>
+                                        Discount Price-2
+                                    </label>
+                                    <input
+                                        className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                        name='discountPrice2'
+                                        id='discountPrice'
+                                        type='number'
+                                        defaultValue={currentPrice2 ? currentPrice2 : ''}
+                                        placeholder={currentPrice2 ? currentPrice2 : ''}
+
+                                    />
+                                </div>
+                                <div className='space-y-1 text-sm'>
+                                    <label htmlFor='price' className='block text-gray-600'>
+                                       Discount Price-3
+                                    </label>
+                                    <input
+                                        className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                                        name='discountPrice3'
+                                        id='discountPrice'
+                                        type='number'
+                                        defaultValue={currentPrice3 ? currentPrice3 : ''}
+                                        placeholder={currentPrice3 ? currentPrice3 : ''}
+
+                                    />
+                                </div>
+                                
 
                             </div>
 

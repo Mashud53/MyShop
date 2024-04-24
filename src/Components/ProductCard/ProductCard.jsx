@@ -103,7 +103,7 @@ const ProductCard = ({ products }) => {
                         currentPrice1 && currentPrice1 > 0 ?
                             <div className="flex justify-around items-center">
                                 <p className="md:text-left lg:text-lg text-sm text-cyan-500"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {currentPrice1}</p>
-                                <p className="md:text-left lg:text-xs text-xs"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
+                                <p className="md:text-left lg:text-xs text-xs "><span className="ml-1">&#x62f;&#x2e;&#x625;</span> <span className="line-through">{price1}</span> </p>
                                 
                             </div> :
                             <p className="md:text-left lg:text-lg text-sm"><span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
