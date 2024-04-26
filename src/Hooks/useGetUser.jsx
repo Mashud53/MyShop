@@ -11,7 +11,7 @@ const useGetUser = () => {
         }
     
         })
-       axiosSecure.get()
+       
        return[getuser, isLoading, refetch]
 };
 

@@ -26,7 +26,7 @@ const useProducts = () => {
         }
     
         })
-       axiosSecure.get()
+       
        return[allProducts, isLoading, refetch]
     
 };

@@ -11,7 +11,7 @@ const useFeaturedProduct = () => {
         }
     
         })
-       axiosSecure.get()
+       
        return[featuredProduct, isLoading, refetch]
     
 };

@@ -11,7 +11,7 @@ const usePopularProduct = () => {
         }
     
         })
-       axiosSecure.get()
+       
        return[popularProducts, isLoading, refetch]
 };
 

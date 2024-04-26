@@ -1,4 +1,3 @@
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -10,30 +9,29 @@ import 'swiper/css/navigation';
 // import { Pagination } from 'swiper/modules';
 // import required modules
 import { Navigation } from 'swiper/modules';
-import Loader from '../Loader/Loader';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import useAuth from '../../Hooks/useAuth';
-import useCart from '../../Hooks/useCart';
-import Swal from 'sweetalert2';
-import { addToCart } from '../../api/cart';
-import { FaCartArrowDown } from 'react-icons/fa6';
-import { useEffect, useState } from 'react';
-import { updateViews } from '../../api/product';
+
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
+import useDiscountProduct from "../../Hooks/useDiscountProduct";
+import { addToCart } from "../../api/cart";
+import Loader from "../Loader/Loader";
+import useCart from "../../Hooks/useCart";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { updateViews } from "../../api/product";
 import SectionTitle from '../SectionTitle';
-import usePopularProduct from '../../Hooks/usePopularProduct';
+import { FaCartArrowDown } from 'react-icons/fa';
 
-const PopularProduct = () => {
 
-    const [popularProducts, isLoading] = usePopularProduct();
-    const { user } = useAuth();
-    const [, , refetch] = useCart()
+const JustForYou = () => {
+    const [discountProduct, isLoading, ] = useDiscountProduct()
+    const {user}= useAuth();
+    const [, , refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
     const [slidePreview, setSlidePreview] = useState(4);
     const [view, setView] = useState(0)
     const percent = 100;
-    // console.log(popularProducts)
-
 
     useEffect(() => {
         const updateSlidePreview = () => {
@@ -61,6 +59,7 @@ const PopularProduct = () => {
         console.log(data)
 
     }
+
 
     const handleAddtoCart = async item => {
 
@@ -104,13 +103,10 @@ const PopularProduct = () => {
             });
         }
     }
-    if (isLoading) {
-        return <Loader></Loader>
-    }
-
+    if(isLoading) return<Loader></Loader>
     return (
-        <div className='py-10'>
-            <SectionTitle title={'Popular Product'}></SectionTitle>
+        <div>
+            <SectionTitle title={'Just for you'}></SectionTitle>
             <Swiper watchSlidesProgress={true}
                 navigation={true}
                 modules={[Navigation]}
@@ -118,7 +114,7 @@ const PopularProduct = () => {
 
                 className="mySwiper">
                 {
-                    popularProducts.map(item => <SwiperSlide className='py-4' key={item._id}>
+                    discountProduct.map(item => <SwiperSlide className='py-4' key={item._id}>
                         <div
                             onClick={() => handleView(item._id)}
                             className="md:w-[250px] lg:w-[300px]  card card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
@@ -165,8 +161,9 @@ const PopularProduct = () => {
                 }
 
             </Swiper>
+            
         </div>
     );
 };
 
-export default PopularProduct;
+export default JustForYou;

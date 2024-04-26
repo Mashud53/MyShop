@@ -11,7 +11,7 @@ const useProductBySell = () => {
         }
     
         })
-       axiosSecure.get()
+       
        return[trand, isLoading, refetch]
 };
 

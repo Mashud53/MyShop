@@ -11,7 +11,7 @@ const useOrder = () => {
         }
     
         })
-       axiosSecure.get()
+       
        return[getOrder, isLoading, refetch]
 };
 

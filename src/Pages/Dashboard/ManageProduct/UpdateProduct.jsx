@@ -52,12 +52,12 @@ const UpdateProduct = () => {
         const imgUrl4 = form.imgUrl4.value;
         const imgUrl5 = form.imgUrl5.value;
 
-        const price1 = form.price1.value;
-        const price2 = form.price2.value;
-        const price3 = form.price3.value;
-        const currentPrice1 = form.discountPrice1.value;
-        const currentPrice2 = form.discountPrice2.value;
-        const currentPrice3 = form.discountPrice3.value;
+        const price1 = parseFloat(form.price1.value);
+        const price2 = parseFloat(form.price2.value);
+        const price3 = parseFloat(form.price3.value);
+        const currentPrice1 = parseFloat(form.discountPrice1.value);
+        const currentPrice2 = parseFloat(form.discountPrice2.value);
+        const currentPrice3 = parseFloat(form.discountPrice3.value);
         const storage1 = form.storage1.value;
         const storage2 = form.storage2.value;
         const storage3 = form.storage3.value;
@@ -209,7 +209,7 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
                                     <option value={'Samsung'}>Samsung</option>
                                     <option value={'Google_Pixel'}>Google Pixel</option>
                                     <option value={'Xiaomi'}>Xiaomi</option>
-                                    <option value={'One_PlUs'}>One Plus</option>
+                                    <option value={'One Plus'}>One Plus</option>
                                     <option value={'Oppo'}>Oppo</option>
                                     <option value={'Vivo'}>Vivo</option>
                                     <option value={'Huwei'}>Huwei</option>

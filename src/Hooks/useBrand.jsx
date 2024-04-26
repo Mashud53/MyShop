@@ -11,7 +11,7 @@ const useBrand = ({brandName}) => {
         }
     
         })
-       axiosSecure.get()
+       
        return[brandProduct, isLoading, refetch]
 };
 

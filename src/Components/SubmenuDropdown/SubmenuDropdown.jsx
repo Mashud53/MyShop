@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 
 const SubmenuDropdown = () => {
@@ -41,15 +42,15 @@ const SubmenuDropdown = () => {
 
             </ul>
             {mobileOpen == true && <ul className="mx-2 font-semibold">
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Apple</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Samsung</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Google Pixel</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Xiaomi</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>One Plus</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Oppo</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Sony</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Huwei</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Realme</a></li>
+                <Link to={"mobile-apple"}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Apple</li></Link>
+                <Link to={'mobile-samsung'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Samsung</li></Link>
+                <Link to={'mobile-googlepixel'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Google Pixel</li></Link>
+                <Link to={'mobile-xiaomi'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Xiaomi</li></Link>
+                <Link to={'mobile-oneplus'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">One Plus</li></Link>
+                <Link to={'mobile-oppo'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Oppo</li></Link>
+                <Link to={'mobile-sony'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Sony</li></Link>
+                <Link to={'mobile-huawei'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Huwei</li></Link>
+                <Link to={'mobile-realme'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Realme</li></Link>
             </ul>}
 
             <ul onClick={handleLaptop} className="w-full cursor-pointer flex justify-between items-center text-base font-semibold hover:bg-neutral-200 active:text-cyan-300 p-1 rounded-lg px-3">

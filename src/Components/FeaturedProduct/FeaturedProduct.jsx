@@ -11,7 +11,7 @@ const FeaturedProduct = () => {
     return (
         <div>
             <SectionTitle title={"Featured Product"}></SectionTitle>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center font-catamaran text-base font-semibold  md:pt-10 mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center font-catamaran text-base font-semibold  md:pt-10 mx-auto">
                 {featuredProduct?.map(products => <ProductCard key={products._id} products={products}></ProductCard>)}
             </div>
 

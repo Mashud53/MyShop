@@ -31,6 +31,18 @@ import Vivo from "../Pages/Products/Vivo";
 import ManageProduct from "../Pages/Dashboard/ManageProduct/ManageProduct";
 import UpdateProduct from "../Pages/Dashboard/ManageProduct/UpdateProduct";
 
+import MobileApple from "../Pages/MenuItem/Mobile/MobileApple";
+import MobileGooglePixel from "../Pages/MenuItem/Mobile/MobileGooglePixel";
+import MobileHuwei from "../Pages/MenuItem/Mobile/MobileHuwei";
+import MobileOnePlus from "../Pages/MenuItem/Mobile/MobileOnePlus";
+import MobileOppo from "../Pages/MenuItem/Mobile/MobileOppo";
+import MobileRealme from "../Pages/MenuItem/Mobile/MobileRealme";
+import MobileSamsung from "../Pages/MenuItem/Mobile/MobileSamsung";
+import MobileSony from "../Pages/MenuItem/Mobile/MobileSony";
+import MobileVivo from "../Pages/MenuItem/Mobile/MobileVivo";
+import MobileXiaomi from "../Pages/MenuItem/Mobile/MobileXiaomi";
+
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -46,6 +58,7 @@ export const router = createBrowserRouter([
                 element: <ProductDetails></ProductDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
             },
+            // brand product 
             {
                 path: '/Apple',
                 element: <Apple></Apple>
@@ -110,6 +123,50 @@ export const router = createBrowserRouter([
                 path: '/Dell',
                 element: <Dell></Dell>
 
+            },
+
+            // menu routs 
+            {
+                path:'mobile-apple',
+                element:<MobileApple></MobileApple>
+            },
+            {
+                path:'mobile-samsung',
+                element:<MobileSamsung></MobileSamsung>
+            },
+            
+            {
+                path:'mobile-googlePixel',
+                element:<MobileGooglePixel></MobileGooglePixel>
+            },
+            
+            {
+                path:'mobile-huawei',
+                element:<MobileHuwei></MobileHuwei>
+            },
+            {
+                path:'mobile-oneplus',
+                element:<MobileOnePlus></MobileOnePlus>
+            },
+            {
+                path:'mobile-oppo',
+                element:<MobileOppo></MobileOppo>
+            },
+            {
+                path:'mobile-realme',
+                element:<MobileRealme></MobileRealme>
+            },
+            {
+                path:'mobile-sony',
+                element:<MobileSony></MobileSony>
+            },
+            {
+                path:'mobile-vivo',
+                element:<MobileVivo></MobileVivo>
+            },
+            {
+                path:'mobile-xiaomi',
+                element:<MobileXiaomi></MobileXiaomi>
             },
         ]
     },

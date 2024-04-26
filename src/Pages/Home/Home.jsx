@@ -12,6 +12,7 @@ import PopularProduct from "../../Components/PopularProduct/PopularProduct";
 // import { IoLogoWhatsapp } from "react-icons/io";
 import Whatsapp from "../../Components/Shared/Whatsapp/Whatsapp";
 import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
+import JustForYou from "../../Components/JustForYou/JustForYou";
 
 
 const Home = () => {
@@ -64,6 +65,8 @@ const Home = () => {
             <ShopByBrand></ShopByBrand>
             <PopularProduct></PopularProduct>
             <FeaturedProduct></FeaturedProduct>
+            <JustForYou></JustForYou>
+            
             {/* <Products allProducts={allProducts} loading={loading} setLoading={setLoading} displayProducts={displayProducts} setDisplayProduct={setDisplayProduct}></Products> */}
             <Trand></Trand>
             {/* <div className="flex pt-6">
