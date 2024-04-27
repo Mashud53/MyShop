@@ -59,21 +59,21 @@ const SubmenuDropdown = () => {
 
             </ul>
             {laptopOpen == true && <ul className="mx-2 font-semibold">
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Apple</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Hp</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Dell</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Lenovo</a></li>
+                <Link to={'macbook'}> <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Apple</li></Link>
+                <Link to={'laptop-hp'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Hp</li></Link>
+                <Link to={'laptop-dell'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Dell</li></Link>
+                <Link to={'laptop-lenovo'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Lenovo</li></Link>
 
             </ul>}
 
             <ul onClick={handleWatch} className="w-full cursor-pointer flex justify-between items-center text-base font-semibold hover:bg-neutral-200 active:text-cyan-300 p-1 rounded-lg px-3">
-                Watch
+                <Link to={'watch'}> Watch</Link>
                 {watchOpen == true ? <IoIosArrowUp></IoIosArrowUp> : <IoIosArrowDown></IoIosArrowDown>}
 
             </ul>
             {watchOpen == true && <ul className="mx-2 font-semibold">
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Classic Watch</a></li>
-                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Smart Watch</a></li>
+                <Link to={'classic-watch'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Classic Watch</li></Link>
+                <Link to={'smart-watch'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Smart Watch</li></Link>
 
 
             </ul>}
@@ -84,12 +84,12 @@ const SubmenuDropdown = () => {
             </ul>
             {accessoriesOpen == true &&
                 <ul className="mx-2 font-semibold">
-                    <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Power Adapter</a></li>
-                    <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Power Bank</a></li>
-                    <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Wireless Charger</a></li>
-                    <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Airpods</a></li>
-                    <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Headphone</a></li>
-                    <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Speaker</a></li>
+                    <Link to={'accessory-powerAdapter'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Adapter</li></Link>
+                    <Link to={'accessory-powerbank'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Bank</li></Link>
+                    <Link to={'accessory-WirelessCharger'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wireless Charger</li></Link>
+                    <Link to={'accessory-airpods'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Airpods</li></Link>
+                    <Link to={'accessory-Wirelessheadphone'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wirelesss Headphones</li></Link>
+                    <Link to={'accessory-speaker'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Speaker</li></Link>
 
 
                 </ul>}

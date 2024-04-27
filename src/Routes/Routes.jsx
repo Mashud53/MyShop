@@ -41,6 +41,20 @@ import MobileSamsung from "../Pages/MenuItem/Mobile/MobileSamsung";
 import MobileSony from "../Pages/MenuItem/Mobile/MobileSony";
 import MobileVivo from "../Pages/MenuItem/Mobile/MobileVivo";
 import MobileXiaomi from "../Pages/MenuItem/Mobile/MobileXiaomi";
+import Lenovo from "../Pages/Products/Lenovo";
+import LaptopApple from "../Pages/MenuItem/Laptop/LaptopApple";
+import LaptopDell from "../Pages/MenuItem/Laptop/LaptopDell";
+import LaptopHp from "../Pages/MenuItem/Laptop/LaptopHp";
+import LaptopLenovo from "../Pages/MenuItem/Laptop/LaptopLenovo";
+import Watch from "../Pages/MenuItem/Watch/Watch";
+import ClassicWatch from "../Pages/MenuItem/Watch/ClassicWatch";
+import SmartWatch from "../Pages/MenuItem/Watch/SmartWatch";
+import PowerAdapter from "../Pages/MenuItem/Accessories/PowerAdapter";
+import PowerBank from "../Pages/MenuItem/Accessories/PowerBank";
+import WirelessCharger from "../Pages/MenuItem/Accessories/WirelessCharger";
+import Airpods from "../Pages/MenuItem/Accessories/Airpods";
+import WirelessHeadphone from "../Pages/MenuItem/Accessories/WirelessHeadphone";
+import Speaker from "../Pages/MenuItem/Accessories/Speaker";
 
 
 export const router = createBrowserRouter([
@@ -124,8 +138,13 @@ export const router = createBrowserRouter([
                 element: <Dell></Dell>
 
             },
+            {
+                path: '/Lenovo',
+                element: <Lenovo></Lenovo>
 
-            // menu routs 
+            },
+
+            // menu routs mobile
             {
                 path:'mobile-apple',
                 element:<MobileApple></MobileApple>
@@ -167,6 +186,60 @@ export const router = createBrowserRouter([
             {
                 path:'mobile-xiaomi',
                 element:<MobileXiaomi></MobileXiaomi>
+            },
+            // menu routs laptop 
+            {
+                path:'macbook',
+                element:<LaptopApple></LaptopApple>
+            },
+            {
+                path:'laptop-dell',
+                element:<LaptopDell></LaptopDell>
+            },
+            {
+                path:'laptop-hp',
+                element:<LaptopHp></LaptopHp>
+            },
+            {
+                path:'laptop-lenovo',
+                element:<LaptopLenovo></LaptopLenovo>
+            },
+            {
+                path:'watch',
+                element:<Watch></Watch>
+            },
+            {
+                path:'classic-watch',
+                element:<ClassicWatch></ClassicWatch>
+            },
+            {
+                path:'smart-watch',
+                element:<SmartWatch></SmartWatch>
+            },
+            // Accessories routes 
+            {
+                path:'accessory-powerAdapter',
+                element:<PowerAdapter></PowerAdapter>
+            },
+            {
+                path:'accessory-powerbank',
+                element:<PowerBank></PowerBank>
+            },
+            {
+                path:'accessory-WirelessCharger',
+                element:<WirelessCharger></WirelessCharger>
+            },
+            {
+                path:'accessory-airpods',
+                element:<Airpods></Airpods>
+            },
+            {
+                path:'accessory-Wirelessheadphone',
+                element:<WirelessHeadphone></WirelessHeadphone>
+            },
+            {
+                path:'accessory-speaker',
+                element:<Speaker></Speaker>
             },
         ]
     },

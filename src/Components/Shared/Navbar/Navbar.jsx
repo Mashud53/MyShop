@@ -118,47 +118,49 @@ const Navbar = () => {
                         <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Laptop</div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Apple</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Hp</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Dell</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Lenovo</a></li>
+                                <Link to={'macbook'}> <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Apple</li></Link>
+                                <Link to={'laptop-hp'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Hp</li></Link>
+                                <Link to={'laptop-dell'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Dell</li></Link>
+                                <Link to={'laptop-lenovo'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Lenovo</li></Link>
 
                             </ul>
                         </div>
                         <div className="dropdown dropdown-hover group">
-                            <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Watch</div>
+                            <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">
+                               <Link to={'watch'}> Watch</Link>
+                            </div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Classic Watch</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Smart Watch</a></li>
+                                <Link to={'classic-watch'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Classic Watch</li></Link>
+                                <Link to={'smart-watch'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Smart Watch</li></Link>
 
                             </ul>
                         </div>
                         <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Accessories</div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Power Adapter</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Power Bank</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Wireless Charger</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Airpods</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Wirelesss Headphones</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Speaker</a></li>
+                                <Link to={'accessory-powerAdapter'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Adapter</li></Link>                                
+                                <Link to={'accessory-powerbank'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Bank</li></Link>
+                                <Link to={'accessory-WirelessCharger'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wireless Charger</li></Link>
+                                <Link to={'accessory-airpods'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Airpods</li></Link>
+                                <Link to={'accessory-Wirelessheadphone'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wirelesss Headphones</li></Link>
+                                <Link to={'accessory-speaker'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Speaker</li></Link>
 
                             </ul>
                         </div>
                         <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Cover & Glass</div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Cover</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Screen Protector</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Camera Protector</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>MacBook Cover</a></li>
-                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>MacBook Screen Protector</a></li>
+                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Phone Cover</li>
+                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Phone Screen Protector</li>
+                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Phone Camera Protector</li>
+                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">MacBook Cover</li>
+                                <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">MacBook Screen Protector</li>
                             </ul>
                         </div>
                         <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Perfume</div>
                             {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Cover</a></li>
+                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Phone Cover</li>
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Screen Protector</a></li>
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Camera Protector</a></li>
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>MacBook Cover</a></li>

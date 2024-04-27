@@ -2,22 +2,18 @@ import Heading from "../../Components/Heading/Heading";
 import Loader from "../../Components/Loader/Loader";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import Whatsapp from "../../Components/Shared/Whatsapp/Whatsapp";
-
 import useBrand from "../../Hooks/useBrand";
 
 
-
-
-const Dell = () => {
-    // const brandName = Apple;
-    const [brandProduct, isLoading, ] = useBrand({ brandName: 'Dell' });
+const Lenovo = () => {
+    const [brandProduct, isLoading, ] = useBrand({ brandName: 'Lenovo' });
     console.log(brandProduct.length)
     
     if (isLoading) return <Loader></Loader>
     return (
         <>
             <div className="mt-32 pb-10">
-                <h2>Dell</h2>
+                <h2>Lenovo</h2>
                 <div >
                     {
                         brandProduct?.length > 0 ?
@@ -40,4 +36,4 @@ const Dell = () => {
     );
 };
 
-export default Dell;
+export default Lenovo;

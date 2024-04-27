@@ -75,7 +75,7 @@ const ShopByBrand = () => {
                 <Link to={"Dell"}><div className="h-[30px] md:h-[55px] flex justify-center items-center border-2 border-gray-200 rounded-xl hover:border-cyan-300">
                     <img className="w-[24px] md:w-[40px]" src={dell} alt="" />
                 </div></Link>
-                <Link to={"Lenevo"}><div className="h-[30px] md:h-[55px] flex justify-center items-center border-2 border-gray-200 rounded-xl hover:border-cyan-300">
+                <Link to={"Lenovo"}><div className="h-[30px] md:h-[55px] flex justify-center items-center border-2 border-gray-200 rounded-xl hover:border-cyan-300">
                     <img className="w-[50px] md:w-[70px]" src={lenovo} alt="" />
                 </div></Link>
 
