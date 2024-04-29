@@ -55,6 +55,8 @@ import WirelessCharger from "../Pages/MenuItem/Accessories/WirelessCharger";
 import Airpods from "../Pages/MenuItem/Accessories/Airpods";
 import WirelessHeadphone from "../Pages/MenuItem/Accessories/WirelessHeadphone";
 import Speaker from "../Pages/MenuItem/Accessories/Speaker";
+import Headphone from "../Pages/MenuItem/Accessories/Headphone";
+import Perfume from "../Pages/MenuItem/Perfume/Perfume";
 
 
 export const router = createBrowserRouter([
@@ -240,6 +242,14 @@ export const router = createBrowserRouter([
             {
                 path:'accessory-speaker',
                 element:<Speaker></Speaker>
+            },
+            {
+                path:'accessory-headphone',
+                element:<Headphone></Headphone>
+            },
+            {
+                path:'/perfume',
+                element:<Perfume></Perfume>
             },
         ]
     },

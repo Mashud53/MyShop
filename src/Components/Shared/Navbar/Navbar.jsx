@@ -27,14 +27,14 @@ const Navbar = () => {
 
                 {/* </ul>
                 </div> */}
-                <li><Link to={'/'} className="text-base font-semibold">Perfume</Link></li>
+                <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
                 <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
                 <li><Link to={'/dashboard'} className="text-base font-semibold">Dashboard</Link></li>
                 <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
                 <>
                     <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
                     <SubmenuDropdown></SubmenuDropdown>
-                    <li><Link to={'/'} className="text-base font-semibold">Perfume</Link></li>
+                    <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
                     <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
                     <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
                     <li><Link to={'/login'} className="text-base font-semibold">Login</Link></li>
@@ -142,6 +142,7 @@ const Navbar = () => {
                                 <Link to={'accessory-powerbank'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Bank</li></Link>
                                 <Link to={'accessory-WirelessCharger'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wireless Charger</li></Link>
                                 <Link to={'accessory-airpods'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Airpods</li></Link>
+                                <Link to={'accessory-headphone'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Headphone</li></Link>
                                 <Link to={'accessory-Wirelessheadphone'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wirelesss Headphones</li></Link>
                                 <Link to={'accessory-speaker'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Speaker</li></Link>
 
@@ -158,7 +159,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="dropdown dropdown-hover group">
-                            <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Perfume</div>
+                            <Link to={'/perfume'}><div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Perfume</div></Link>
                             {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Phone Cover</li>
                             <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Screen Protector</a></li>

@@ -88,6 +88,7 @@ const SubmenuDropdown = () => {
                     <Link to={'accessory-powerbank'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Bank</li></Link>
                     <Link to={'accessory-WirelessCharger'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wireless Charger</li></Link>
                     <Link to={'accessory-airpods'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Airpods</li></Link>
+                    <Link to={'accessory-headphone'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Headphone</li></Link>
                     <Link to={'accessory-Wirelessheadphone'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wirelesss Headphones</li></Link>
                     <Link to={'accessory-speaker'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Speaker</li></Link>
 

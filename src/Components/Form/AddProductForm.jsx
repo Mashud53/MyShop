@@ -50,9 +50,9 @@ const AddProductForm = ({
                                 <option value={'Women'}>Women</option>
                                 <option value={'Accessories'}>Accessories</option>
                                 <option value={'Watch'}>Watch</option>
-                                <option value={'Shoe'}>Shoe</option>
+                                {/* <option value={'Shoe'}>Shoe</option> */}
                                 <option value={'Toy'}>Toy</option>
-                                <option value={'Perfume'}>Perfume</option>
+                                <option value={'Perfume'}>Toy</option>
 
                                 {/* {categories.map(category => (
                                     <option value={category.label} key={category.label}>
@@ -85,7 +85,6 @@ const AddProductForm = ({
                                 <option value={'Speaker'}>Speaker</option>
                                 <option value={'Smart_Watch'}>Smart Watch</option>
                                 <option value={'Classic_Watch'}>Classic Watch</option>
-                                <option value={'PowerBank'}>Power Bank</option>
                                 <option value={'Other'}>Other</option>
 
                             </select>
@@ -291,7 +290,7 @@ const AddProductForm = ({
                                     id='imgUrl1'
                                     type='text'
                                     placeholder='Image URL -1'
-                                    
+
                                 />
                             </div>
                             <div className='space-y-1 text-sm'>
@@ -304,7 +303,7 @@ const AddProductForm = ({
                                     id='imgUrl2'
                                     type='text'
                                     placeholder='Image URL -2'
-                                    
+
                                 />
                             </div>
                             <div className='space-y-1 text-sm'>
@@ -317,7 +316,7 @@ const AddProductForm = ({
                                     id='imgUrl3'
                                     type='text'
                                     placeholder='Image URL -3'
-                                    
+
                                 />
                             </div>
                             <div className='space-y-1 text-sm'>
@@ -330,7 +329,7 @@ const AddProductForm = ({
                                     id='imgUrl4'
                                     type='text'
                                     placeholder='Image URL -4'
-                                   
+
                                 />
                             </div>
                             <div className='space-y-1 text-sm'>
@@ -343,7 +342,7 @@ const AddProductForm = ({
                                     id='imgUrl5'
                                     type='text'
                                     placeholder='Image URL -5'
-                                   
+
                                 />
                             </div>
 

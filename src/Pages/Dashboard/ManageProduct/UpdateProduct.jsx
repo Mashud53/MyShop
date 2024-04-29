@@ -9,10 +9,10 @@ import Swal from "sweetalert2";
 const UpdateProduct = () => {
 
     const product = useLoaderData()
-    const { _id, name, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, category, type, brand, price1, price2, price3,currentPrice1, currentPrice2, currentPrice3, storage1, storage2, storage3, color1, color2, color3, color4, color5, color6, storageType, operatingSystem, operating_system, network, wirelessNetwork, wireless_network, screen, connector, screenSize, productType, desc, desc1, desc2, desc3, desc4, desc5 } = product;
+    const { _id, name, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, category, type, brand, price1, price2, price3, currentPrice1, currentPrice2, currentPrice3, storage1, storage2, storage3, color1, color2, color3, color4, color5, color6, storageType, operatingSystem, operating_system, network, wirelessNetwork, wireless_network, screen, connector, screenSize, productType, desc, desc1, desc2, desc3, desc4, desc5 } = product;
     const [loading, setLoading] = useState(false)
     // console.log(product)
-    
+
     // const [uploadButtonText1, setUploadButtonText1] = useState(image1)
     // const [uploadButtonText2, setUploadButtonText2] = useState(image2)
     // const [uploadButtonText3, setUploadButtonText3] = useState(image3)
@@ -34,7 +34,7 @@ const UpdateProduct = () => {
     // const handleImageChange5 = image=>{
     //     setUploadButtonText5(image?.name)
     // }
-    const handleSubmit =async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const form = e.target;
         const title = form.title.value;
@@ -80,14 +80,14 @@ const UpdateProduct = () => {
         const desc3 = form.description3.value;
         const desc4 = form.description4.value;
         const desc5 = form.description5.value;
-console.log(currentPrice1, currentPrice2, currentPrice3)
+        console.log(currentPrice1, currentPrice2, currentPrice3)
         // const image1Url = image1 && await  imageUpload(image1)
         // const image2Url = image2 &&  await imageUpload(image2)
         // const image3Url = image3 && await imageUpload(image3)
         // const image4Url = image4 && await imageUpload(image4)
         // const image5Url = image5 && await  imageUpload(image5)
         // const images = [image1Url, image2Url, image3Url, image4Url, image5Url]
-        
+
 
         const productData = {
             name: title, brand, category, type, price1, price2, price3, currentPrice1, currentPrice2, currentPrice3,
@@ -104,11 +104,11 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
         try {
             setLoading(true)
             const data = await updateProduct(_id, productData)
-            
+
             setLoading(false)
             console.log(data)
-            if (data.modifiedCount>0) {
-                
+            if (data.modifiedCount > 0) {
+
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -164,8 +164,9 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
                                     <option value={'Women'}>Women</option>
                                     <option value={'Accessories'}>Accessories</option>
                                     <option value={'Watch'}>Watch</option>
-                                    <option value={'Shoe'}>Shoe</option>
+                                    {/* <option value={'Shoe'}>Shoe</option> */}
                                     <option value={'Toy'}>Toy</option>
+                                    <option value={'Perfume'}>Toy</option>
 
 
                                 </select>
@@ -188,9 +189,13 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
                                     <option value={'Men'}>Men</option>
                                     <option value={'Router'}>Router</option>
                                     <option value={'Charger'}>Charger</option>
+                                    <option value={'Power_Bank'}>Power Bank</option>
+                                    <option value={'Wireless_Charger'}>Wireless Charger</option>
+                                    <option value={'Airpod'}>Airpod</option>
+                                    <option value={'Wirelesss_Headphone'}>Wirelesss Headphone</option>
+                                    <option value={'Speaker'}>Speaker</option>
                                     <option value={'Smart_Watch'}>Smart Watch</option>
                                     <option value={'Classic_Watch'}>Classic Watch</option>
-                                    <option value={'PowerBank'}>Power Bank</option>
                                     <option value={'Other'}>Other</option>
 
                                 </select>
@@ -209,7 +214,7 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
                                     <option value={'Samsung'}>Samsung</option>
                                     <option value={'Google_Pixel'}>Google Pixel</option>
                                     <option value={'Xiaomi'}>Xiaomi</option>
-                                    <option value={'One Plus'}>One Plus</option>
+                                    <option value={'One_PlUs'}>One Plus</option>
                                     <option value={'Oppo'}>Oppo</option>
                                     <option value={'Vivo'}>Vivo</option>
                                     <option value={'Huwei'}>Huwei</option>
@@ -534,7 +539,7 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
                             <div>
                                 <div className='space-y-1 text-sm'>
                                     <label htmlFor='price' className='block text-gray-600'>
-                                       Discount Price-1
+                                        Discount Price-1
                                     </label>
                                     <input
                                         className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
@@ -547,7 +552,7 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
                                         step="0.01"
                                         pattern="^\d+(?:\.\d{1,2})?$"
 
-                                        
+
                                     />
                                 </div>
                                 <div className='space-y-1 text-sm'>
@@ -566,7 +571,7 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
                                 </div>
                                 <div className='space-y-1 text-sm'>
                                     <label htmlFor='price' className='block text-gray-600'>
-                                       Discount Price-3
+                                        Discount Price-3
                                     </label>
                                     <input
                                         className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
@@ -578,7 +583,7 @@ console.log(currentPrice1, currentPrice2, currentPrice3)
 
                                     />
                                 </div>
-                                
+
 
                             </div>
 

@@ -5,14 +5,14 @@ import ProductCard from "../../../Components/ProductCard/ProductCard";
 import Heading from "../../../Components/Heading/Heading";
 
 
-const PowerBank = () => {
+const Headphone = () => {
     const [allProducts, isLoading,] = useProducts();
 
     const [accessoriesProduct, setAccessoriesProduct] = useState([]);
 
     useEffect(() => {
         if(allProducts.length>0){
-            const accessories = allProducts.filter(item =>  item.category == "Accessories" && item.type =="Power_Bank")
+            const accessories = allProducts.filter(item =>  item.category == "Accessories" && item.type =='Headphone')
         setAccessoriesProduct(accessories)
         }
     }, [allProducts])
@@ -20,7 +20,7 @@ const PowerBank = () => {
     if(isLoading)return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            Power Bank
+            Headphone
             
             {
                 accessoriesProduct?.length > 0 ?
@@ -39,4 +39,4 @@ const PowerBank = () => {
     );
 };
 
-export default PowerBank;
+export default Headphone;
