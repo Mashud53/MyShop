@@ -3,8 +3,8 @@ import { FiAlignJustify } from "react-icons/fi";
 import { BiCartAlt, BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
-// import logo from '../../../assets/logo.png'
-import logo from '../../../assets/logo3.jpeg';
+import logo from '../../../assets/logo.png'
+// import logo from '../../../assets/logo3.jpeg';
 
 import useCart from "../../../Hooks/useCart";
 import SubmenuDropdown from "../../SubmenuDropdown/SubmenuDropdown";
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <div className="w-full navbar bg-cyan-400">
                     <div className="navbar-start">
                         {/* <a className=" font-bold uppercase">My Shop</a> */}
-                        <Link><img className="w-[100px]" src={logo} alt="" /></Link>
+                        <Link><img className="w-[150px]" src={logo} alt="" /></Link>
                     </div>
                     {/* search bar  */}
                     <div className="navbar-center hidden md:block">

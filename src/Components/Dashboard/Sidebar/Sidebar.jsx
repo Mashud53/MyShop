@@ -1,7 +1,7 @@
 import { useState } from 'react'
 // Components
-// import Logo from '../../../assets/logo.png'
-import Logo from '../../../assets/logo1.png'
+import Logo from '../../../assets/logo.png'
+// import Logo from '../../../assets/logo1.png'
 import MenuItem from './MenuItem'
 
 // Icons
@@ -43,7 +43,7 @@ const Sidebar = () => {
           <div className='block cursor-pointer p-4 font-bold'>
             {/* logo  */}
             <Link to={'/'}>
-            <img className='w-[100px]' src={Logo} alt="" />
+            <img className='w-[150px]' src={Logo} alt="" />
             </Link>
             {/* <h2 className='font-catamaran'>My Shop</h2> */}
           </div>
@@ -67,7 +67,7 @@ const Sidebar = () => {
               {/* <Logo /> */}
               <Link to={'/'}>
                 {/* <h2 className='font-catamaran'>My Shop</h2> */}
-                <img className='w-[100px]' src={Logo} alt="" />
+                <img className='w-[200px]' src={Logo} alt="" />
                 </Link>
               
             </div>
