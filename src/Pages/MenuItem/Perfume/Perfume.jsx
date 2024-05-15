@@ -20,7 +20,7 @@ const Perfume = () => {
     if(isLoading)return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            Perfume
+            
             
             {
                 perfumeProduct?.length > 0 ?

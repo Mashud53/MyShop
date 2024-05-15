@@ -20,7 +20,7 @@ const Airpods = () => {
     if(isLoading)return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            Airpods
+            
             
             {
                 accessoriesProduct?.length > 0 ?

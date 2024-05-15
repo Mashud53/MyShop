@@ -4,7 +4,7 @@ import { BiCartAlt, BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 // import logo from '../../../assets/logo.png'
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/logo3.jpeg';
 
 import useCart from "../../../Hooks/useCart";
 import SubmenuDropdown from "../../SubmenuDropdown/SubmenuDropdown";
@@ -48,7 +48,7 @@ const Navbar = () => {
     return (
         <>
             <div className="max-w-screen-xl navbar fixed top-0 z-[20] flex flex-col font-catamaran px-0 py-0">
-                <div className="w-full navbar bg-black">
+                <div className="w-full navbar bg-cyan-400">
                     <div className="navbar-start">
                         {/* <a className=" font-bold uppercase">My Shop</a> */}
                         <Link><img className="w-[100px]" src={logo} alt="" /></Link>

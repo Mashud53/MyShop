@@ -91,13 +91,13 @@ const ProductDetails = () => {
 
 
     }
-    const handleAddtoCart =async()  => {
+    const handleAddtoCart = async () => {
         console.log(user?.email)
-        if (user && user?.email) {  
-             
+        if (user && user?.email) {
+
             const cartItem = {
-                
-                productId:_id,
+
+                productId: _id,
                 name,
                 image: image1 ? image1 : imageURL1,
                 price: price1,
@@ -294,7 +294,9 @@ const ProductDetails = () => {
                 closeModal={closeModal}
                 orderInfo={orderInfo}
                 qt={qt}
-                _id={_id}></BuyNowModal>
+                _id={_id}>
+
+            </BuyNowModal>
 
         </div>
     );
