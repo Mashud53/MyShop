@@ -35,7 +35,7 @@ const TrandsCard = ({products}) => {
                 productId: product._id,
                 name: product.name,
                 image: product.image1 ? product?.image1 : product?.imageURL1,
-                price: price1,
+                price:  product?.currentPrice1 > 0 ? product.currentPrice1 : product.price1,
                 userEmail: user.email,
 
             }

@@ -7,18 +7,35 @@ import axiosSecure from "../../../api";
 import Heading from "../../../Components/Heading/Heading";
 import BuyNowModal from "../../../Components/Modal/BuyNowModal";
 import { useState } from "react";
+import { FaMinus, FaPlus } from "react-icons/fa6";
+
+import { quantityMinus, quantityPlus} from "../../../api/cartQuantity";
+import Loader from "../../../Components/Loader/Loader";
 
 
 
 const MyCart = () => {
-    const [cart, , refetch] = useCart();
+    const [cart,isLoading , refetch] = useCart();
+    
     let [isOpen, setIsOpen] = useState(false)
     const closeModal = () => {
         setIsOpen(false)
     }
 
     const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2)
-    console.log(totalPrice)
+    
+    
+    const handleMinus = async(id) => {
+        console.log(id)
+        const qty= 1;
+        await quantityMinus(id, {quantity:qty})
+        refetch()
+    }
+    const handlePlus = async(id) => {
+        const qty= 1
+        await quantityPlus(id, {quantity:qty})
+        refetch()
+    }
 
     const handleDelete = async (id) => {
 
@@ -34,7 +51,7 @@ const MyCart = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/carts/${id}`)
                     .then(res => {
-                        console.log(res.data)
+                        
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -49,12 +66,12 @@ const MyCart = () => {
             }
         });
     }
-    const handlebuy = async()=>{
+    const handlebuy = async () => {
         setIsOpen(true);
     }
 
 
-    console.log(cart)
+    if(isLoading){ return <Loader></Loader>}
     return (
         <div className="font-catamaran">
             <Helmet><title>Delux mart | Cart</title></Helmet>
@@ -73,6 +90,7 @@ const MyCart = () => {
                                         <th>
 
                                         </th>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -102,6 +120,17 @@ const MyCart = () => {
                                             <Link to={`/product/${item.productId}`}>{item.name}</Link>
                                         </td>
                                         <td>{item.price} <span className="ml-1">&#x62f;&#x2e;&#x625;</span></td>
+                                        <td>
+                                            <div className="flex flex-col justify-center items-start">
+                                                
+                                                <div className="flex justify-center items-center">
+                                                    <div onClick={()=>handleMinus(item._id)} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[30px] w-[40px] rounded-l-lg flex justify-center items-center"><FaMinus className=" text-white" /></div>
+                                                    <div className="border-2 w-[40px] h-[30px] flex justify-center items-center">{item?.quantity ? item?.quantity : <p>1</p>}</div>
+                                                    <div onClick={()=>handlePlus(item._id)} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[30px] w-[40px] rounded-r-lg flex justify-center items-center"><FaPlus className="text-white" /></div>
+                                                </div>
+
+                                            </div>
+                                        </td>
 
                                         <th>
                                             <button onClick={() => handleDelete(item._id)} className="btn text-rose-500 hover:text-white bg-cyan-400 hover:bg-rose-500 btn-xs"><MdOutlineDelete className=""></MdOutlineDelete></button>
@@ -147,10 +176,10 @@ const MyCart = () => {
             <BuyNowModal
                 isOpen={isOpen}
                 closeModal={closeModal}
-                // orderInfo={orderInfo}
-                // qt={qt}
-                // _id={_id}
-                >
+            // orderInfo={orderInfo}
+            // qt={qt}
+            // _id={_id}
+            >
 
             </BuyNowModal>
 

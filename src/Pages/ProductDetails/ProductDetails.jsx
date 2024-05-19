@@ -22,7 +22,7 @@ import useCart from "../../Hooks/useCart";
 
 const ProductDetails = () => {
     const product = useLoaderData();
-    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5 } = product;
+    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, currentPrice1, currentPrice2, currentPrice3, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5 } = product;
     console.log(product)
     const { user } = useAuth();
     const [, , refetch] = useCart()
@@ -31,10 +31,17 @@ const ProductDetails = () => {
     const navigate = useNavigate();
 
 
-    const [price, setPrice] = useState(price1);
+    const [price, setPrice] = useState(currentPrice1>0 ? currentPrice1: price1);
     const [color, setColor] = useState(color1);
     const [storage, setStorage] = useState(storage1);
     const [qt, setQt] = useState(1)
+    const [previousPrice, setPreviousPrice] = useState(price1)
+    const previousPrice1 = price1;
+    const previousPrice2 = price2;
+    const previousPrice3 = price3;
+
+
+
 
 
     const [orderInfo, setOrderInfo] = useState({})
@@ -100,7 +107,7 @@ const ProductDetails = () => {
                 productId: _id,
                 name,
                 image: image1 ? image1 : imageURL1,
-                price: price1,
+                price,
                 userEmail: user.email,
             }
             console.log(cartItem)
@@ -141,20 +148,6 @@ const ProductDetails = () => {
     }
 
 
-    // const cartHandle = async () => {
-    //     const quantity = document.getElementById('quantity').value;
-    //     const totalPrice = quantity * price;
-    //     const selectedColor = color;
-    //     const email = user.email;
-    //     const productId = _id;
-    //     const productName = name;
-    //     const cartInfo = {
-    //         quantity, totalPrice, selectedColor, email, productId, productName, image1
-    //     }
-    //     console.log(cartInfo)
-
-
-    // }
 
 
     return (
@@ -170,23 +163,33 @@ const ProductDetails = () => {
                         <ProductRating />
                     </div>
                     {/* price  */}
-                    <div className="flex justify-start gap-2 items-center mt-4">
-                        {
-                            price1 > 0 && <h2 className="font-semibold text-xl">price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price}</h2>
-                        }
-                        {/* {
-                        price2 > 0 && <h2 className="font-semibold text-xl">$ {price}</h2>
-                    }
-                    {
-                        price3 > 0 && <h2 className="font-semibold text-xl">$ {price}</h2>
-                    } */}
+                    <div className="flex justify-start gap-6 items-center mt-4">
+                        <h2 className="font-semibold text-xl">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price}</h2>
+                        {currentPrice1 > 0 && <p>Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> <span className="line-through">{previousPrice}</span></p>}
+                        
 
                     </div>
                     {/* Color  */}
                     <ProductColor color1={color1} color2={color2} color3={color3} color={color} setColor={setColor} />
 
                     {/* storage  */}
-                    <ProductStorage storage1={storage1} storage2={storage2} storage3={storage3} price1={price1} price2={price2} price3={price3} setPrice={setPrice} storage={storage} setStorage={setStorage}></ProductStorage>
+                    <ProductStorage storage1={storage1}
+                        storage2={storage2}
+                        storage3={storage3}
+                        price1={price1}
+                        price2={price2}
+                        price3={price3}
+                        currentPrice1={currentPrice1}
+                        currentPrice2={currentPrice2}
+                        currentPrice3={currentPrice3}
+                        setPrice={setPrice}
+                        previousPrice1={previousPrice1}
+                        previousPrice2={previousPrice2}
+                        previousPrice3={previousPrice3}
+                        setPreviousPrice={setPreviousPrice}
+
+                        storage={storage}
+                        setStorage={setStorage}></ProductStorage>
                     {
                         storage_Type?.length > 0 && <h2 className="mt-2 w-36 border-2 border-neutral-300 font-semibold p-1 rounded-lg">Storage Type: {storage_Type}</h2>
                     }
@@ -218,17 +221,14 @@ const ProductDetails = () => {
                             <div className="border-2 w-[40px] h-[30px] flex justify-center items-center">{qt}</div>
                             <div onClick={handlePlus} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[30px] w-[40px] rounded-r-lg flex justify-center items-center"><FaPlus className="text-white" /></div>
                         </div>
-                        {/* <input type="number" id="quantity" className="px-2 py-1 w-[70px] border-2 border-neutral-300" /> */}
+                       
                     </div>
 
 
                     <div className="flex justify-start items-center gap-4 mt-4 w-full">
                         <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
 
-                        {/* {
-                                user ? <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
-                                : <Link to="/login" state={{from:location}}><button  className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button></Link>
-                            } */}
+                       
                         <button onClick={handleAddtoCart} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Add to Cart</button>
                     </div>
 

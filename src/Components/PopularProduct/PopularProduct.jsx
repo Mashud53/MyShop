@@ -70,7 +70,7 @@ const PopularProduct = () => {
                 productId: item._id,
                 name: item.name,
                 image: item.image1 ? item?.image1 : item?.imageURL1,
-                price: item.price1,
+                price:  item?.currentPrice1 > 0 ? item.currentPrice1 : item.price1,
                 userEmail: user.email,
 
             }
