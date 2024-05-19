@@ -107,6 +107,7 @@ const ProductDetails = () => {
                 productId: _id,
                 name,
                 image: image1 ? image1 : imageURL1,
+                quantity:1,
                 price,
                 userEmail: user.email,
             }

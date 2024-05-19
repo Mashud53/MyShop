@@ -22,7 +22,7 @@ const MyCart = () => {
         setIsOpen(false)
     }
 
-    const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2)
+    const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price * item?.quantity), 0).toFixed(2)
     
     
     const handleMinus = async(id) => {
@@ -119,7 +119,7 @@ const MyCart = () => {
                                         <td>
                                             <Link to={`/product/${item.productId}`}>{item.name}</Link>
                                         </td>
-                                        <td>{item.price} <span className="ml-1">&#x62f;&#x2e;&#x625;</span></td>
+                                        <td>{item.price * item.quantity} <span className="ml-1">&#x62f;&#x2e;&#x625;</span></td>
                                         <td>
                                             <div className="flex flex-col justify-center items-start">
                                                 
