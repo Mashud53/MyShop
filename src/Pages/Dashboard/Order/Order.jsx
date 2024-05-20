@@ -5,10 +5,12 @@ import Swal from "sweetalert2";
 import axiosSecure from "../../../api";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import useMyOrder from "../../../Hooks/useMyOrder";
 
 
 const Order = () => {
     const [getOrder, isLoading, refetch] = useOrder()
+    const [, , orderRefetch]=useMyOrder()
     const [displayOrders, setDisplayOrders]= useState([])
     // console.log(getOrder)
 
@@ -53,6 +55,7 @@ const Order = () => {
                               });
                     }
                     refetch()
+                    orderRefetch();
                 })
             
             }

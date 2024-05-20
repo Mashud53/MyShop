@@ -57,6 +57,7 @@ import WirelessHeadphone from "../Pages/MenuItem/Accessories/WirelessHeadphone";
 import Speaker from "../Pages/MenuItem/Accessories/Speaker";
 import Headphone from "../Pages/MenuItem/Accessories/Headphone";
 import Perfume from "../Pages/MenuItem/Perfume/Perfume";
+import MyOrder from "../Pages/Dashboard/MyOrder/MyOrder";
 
 
 export const router = createBrowserRouter([
@@ -298,6 +299,10 @@ export const router = createBrowserRouter([
             {
                 path: 'order',
                 element: <AdminHostRoute><Order></Order></AdminHostRoute>
+            },
+            {
+                path: 'my-order',
+                element: <MyOrder></MyOrder>
             }
         ]
     }

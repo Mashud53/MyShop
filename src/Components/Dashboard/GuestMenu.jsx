@@ -22,7 +22,7 @@ const GuestMenu = () => {
             <MenuItem
                 icon={FaListCheck}
                 label='Order'
-                address='/dashboard'
+                address='my-order'
             />
             <MenuItem
                 icon={MdQueryStats}

@@ -2,7 +2,7 @@ import { Rating, Star } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 
-const ProductRating = () => {
+const ProductRating = ({ratting}) => {
     const myStyles = {
         itemShapes: Star,
         boxBorderWidth: 0,
@@ -19,7 +19,7 @@ const ProductRating = () => {
         <div>
             <Rating
                 style={{ maxWidth: 80 }}
-                value={"5"}
+                value={ratting}
                 readOnly
                 itemStyles={myStyles}
             />
