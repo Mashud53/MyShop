@@ -24,3 +24,5 @@ export const updateSales = async (id, sales)=>{
 
 
 
+
+

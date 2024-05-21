@@ -2,7 +2,8 @@ import { Rating, Star } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 
-const ProductRating = () => {
+const StarRating = ({starRating}) => {
+    console.log('rating is',starRating)
     const myStyles = {
         itemShapes: Star,
         boxBorderWidth: 0,
@@ -19,7 +20,7 @@ const ProductRating = () => {
         <div>
             <Rating
                 style={{ maxWidth: 80 }}
-                value='5'
+                value={starRating}
                 readOnly
                 itemStyles={myStyles}
             />
@@ -27,4 +28,4 @@ const ProductRating = () => {
     );
 };
 
-export default ProductRating;
+export default StarRating;

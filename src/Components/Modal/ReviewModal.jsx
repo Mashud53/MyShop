@@ -17,10 +17,19 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
     const [color4, setColor4] = useState('bg-orange-300 group-hover:bg-orange-400')
     const [color3, setColor3] = useState('bg-orange-300 group-hover:bg-orange-400')
     const [color2, setColor2] = useState('bg-orange-300 group-hover:bg-orange-400')
+    const [icon5, setIcon5] = useState('text-orange-300 group-hover:text-orange-400')
+    const [icon4, setIcon4] = useState('text-orange-300 group-hover:text-orange-400')
+    const [icon3, setIcon3] = useState('text-orange-300 group-hover:text-orange-400')
+    const [icon2, setIcon2] = useState('text-orange-300 group-hover:text-orange-400')
 
     const handleRating5 = (e) => {
         e.preventDefault()
         setColor5('bg-orange-400')
+        setIcon5('text-orange-400')
+        setIcon4('text-orange-300 group-hover:text-orange-400')
+        setIcon3('text-orange-300 group-hover:text-orange-400')
+        setIcon2('text-orange-300 group-hover:text-orange-400')
+        
         setColor2('bg-orange-300 group-hover:bg-orange-400')
         setColor3('bg-orange-300 group-hover:bg-orange-400')
         setColor4('bg-orange-300 group-hover:bg-orange-400')
@@ -29,6 +38,11 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
     const handleRating4 = (e) => {
         e.preventDefault()
         setColor4('bg-orange-400')
+        setIcon4('text-orange-400')
+        setIcon5('text-orange-300 group-hover:text-orange-400')
+        setIcon3('text-orange-300 group-hover:text-orange-400')
+        setIcon2('text-orange-300 group-hover:text-orange-400')
+        
         setColor5('bg-orange-300 group-hover:bg-orange-400')
         setColor2('bg-orange-300 group-hover:bg-orange-400')
         setColor3('bg-orange-300 group-hover:bg-orange-400')
@@ -37,6 +51,10 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
     const handleRating3 = (e) => {
         e.preventDefault()
         setColor3('bg-orange-400')
+        setIcon3('text-orange-400')
+        setIcon4('text-orange-300 group-hover:text-orange-400')
+        setIcon5('text-orange-300 group-hover:text-orange-400')
+        setIcon2('text-orange-300 group-hover:text-orange-400')
         setColor4('bg-orange-300 group-hover:bg-orange-400')
         setColor5('bg-orange-300 group-hover:bg-orange-400')
         setColor2('bg-orange-300 group-hover:bg-orange-400')
@@ -45,6 +63,10 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
     const handleRating2 = (e) => {
         e.preventDefault()
         setColor2('bg-orange-400')
+        setIcon2('text-orange-400')
+        setIcon4('text-orange-300 group-hover:text-orange-400')
+        setIcon3('text-orange-300 group-hover:text-orange-400')
+        setIcon5('text-orange-300 group-hover:text-orange-400')
         setColor3('bg-orange-300 group-hover:bg-orange-400')
         setColor4('bg-orange-300 group-hover:bg-orange-400')
         setColor5('bg-orange-300 group-hover:bg-orange-400')
@@ -127,7 +149,7 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
                                                                 <input type="radio" className={`mask mask-star-2 ${color5}`} />
                                                             </div>
                                                             <div>
-                                                                <BiHappyHeartEyes className={`text-lg group-hover:text-orange-400`} />
+                                                                <BiHappyHeartEyes className={`text-lg ${icon5}`} />
                                                             </div>
                                                         </div>
                                                         <div className='mt-2 border-2 border-gray-100 flex items-center justify-center gap-4 px-4 py-2 rounded-lg group' onClick={handleRating4}>
@@ -139,7 +161,7 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
                                                                 <input type="radio" className="mask mask-star-2 bg-orange-100 " />
                                                             </div>
                                                             <div>
-                                                                <BiHappy className='group-hover:text-cyan-400' />
+                                                                <BiHappy className={`text-lg ${icon4}`} />
                                                             </div>
                                                         </div>
                                                         <div className='mt-2 border-2 border-gray-100 flex items-center justify-center gap-4 px-4 py-2 rounded-lg group' onClick={handleRating3}>
@@ -151,7 +173,7 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
                                                                 <input type="radio" className="mask mask-star-2 bg-orange-100 " />
                                                             </div>
                                                             <div>
-                                                                <CgSmileNeutral className='group-hover:text-cyan-400' />
+                                                                <CgSmileNeutral className={`text-lg ${icon3}`} />
                                                             </div>
                                                         </div>
                                                         <div className='mt-2 border-2 border-gray-100 flex items-center justify-center gap-4 px-4 py-2 rounded-lg group' onClick={handleRating2}>
@@ -163,7 +185,7 @@ const ReviewModal = ({ closeModal, isOpen, setIsOpen, product }) => {
                                                                 <input type="radio" className="mask mask-star-2 bg-orange-100 " />
                                                             </div>
                                                             <div>
-                                                                <TbMoodSad2 className='group-hover:text-cyan-400' />
+                                                                <TbMoodSad2 className={`text-lg ${icon2}`} />
                                                             </div>
                                                         </div>
                                                     </div>

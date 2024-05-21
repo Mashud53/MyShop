@@ -15,15 +15,15 @@ import { GiDuration } from "react-icons/gi";
 import Swal from "sweetalert2";
 import { addToCart } from "../../api/cart";
 import useCart from "../../Hooks/useCart";
-
-
+import Rating from "./Rating/Rating";
+import YouMayLike from "./YouMayLike";
 
 
 
 const ProductDetails = () => {
     const product = useLoaderData();
-    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, currentPrice1, currentPrice2, currentPrice3, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5 } = product;
-    console.log(product)
+    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, currentPrice1, currentPrice2, currentPrice3, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5, category, type } = product;
+
     const { user } = useAuth();
     const [, , refetch] = useCart()
 
@@ -31,7 +31,7 @@ const ProductDetails = () => {
     const navigate = useNavigate();
 
 
-    const [price, setPrice] = useState(currentPrice1>0 ? currentPrice1: price1);
+    const [price, setPrice] = useState(currentPrice1 > 0 ? currentPrice1 : price1);
     const [color, setColor] = useState(color1);
     const [storage, setStorage] = useState(storage1);
     const [qt, setQt] = useState(1)
@@ -107,7 +107,7 @@ const ProductDetails = () => {
                 productId: _id,
                 name,
                 image: image1 ? image1 : imageURL1,
-                quantity:1,
+                quantity: 1,
                 price,
                 userEmail: user.email,
             }
@@ -167,7 +167,7 @@ const ProductDetails = () => {
                     <div className="flex justify-start gap-6 items-center mt-4">
                         <h2 className="font-semibold text-xl">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price}</h2>
                         {currentPrice1 > 0 && <p>Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> <span className="line-through">{previousPrice}</span></p>}
-                        
+
 
                     </div>
                     {/* Color  */}
@@ -222,14 +222,14 @@ const ProductDetails = () => {
                             <div className="border-2 w-[40px] h-[30px] flex justify-center items-center">{qt}</div>
                             <div onClick={handlePlus} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[30px] w-[40px] rounded-r-lg flex justify-center items-center"><FaPlus className="text-white" /></div>
                         </div>
-                       
+
                     </div>
 
 
                     <div className="flex justify-start items-center gap-4 mt-4 w-full">
                         <button onClick={buyHandle} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Buy Now</button>
 
-                       
+
                         <button onClick={handleAddtoCart} className="border-2 px-3 py-2 font-semibold rounded-lg hover:text-white hover:bg-cyan-500 hover:border-cyan-500">Add to Cart</button>
                     </div>
 
@@ -280,15 +280,21 @@ const ProductDetails = () => {
                 }
 
             </div>
-            {/* display rating  */}
-            <div className="font-bold text-3xl">
-                add dispaly Ratting
+            <div className="flex flex-col md:flex-row mt-8 items-start justify-between gap-4 pb-10">
+                {/* display rating  */}
+                <div className="font-bold text-3xl border-t-2 py-4 w-full md:w-3/12 ">
+                    <h2 className="text-stone-500 text-base">Rating & Reviews</h2>
+                    <Rating id={_id}></Rating>
+                </div>
+                {/* add you may like product */}
+                <div className="w-full md:w-[70%]">
+                    <h2 className="text-base font-bold font-catamaran pb-4">You May Like</h2>
+                    <YouMayLike type={type} category={category}></YouMayLike>
+                </div>
+
             </div>
 
-            {/* add you may like product */}
-            <div className="text-3xl font-bold">
-                add you may like similar product
-            </div>
+
 
             <BuyNowModal
                 isOpen={isOpen}
