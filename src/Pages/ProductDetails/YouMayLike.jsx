@@ -7,7 +7,7 @@ import DetailsCard from "./DetailsCard";
 const YouMayLike = ({ type, category }) => {
     const [allProducts, isLoading,] = useProducts()
     const [productsType, setProductsType] = useState({})
-    console.log(productsType)
+    
 
     useEffect(() => {
         if (allProducts.length && type && category) {
@@ -15,7 +15,7 @@ const YouMayLike = ({ type, category }) => {
             setProductsType(filterProduct)
         }
     }, [allProducts, type, category])
-    console.log(allProducts)
+    
 
     if (isLoading) {
         return <Loader></Loader>

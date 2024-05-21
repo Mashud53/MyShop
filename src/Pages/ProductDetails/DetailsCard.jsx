@@ -30,10 +30,10 @@ const DetailsCard = ({products}) => {
 
     return (
 
-        <div onClick={() => handleView(_id)} className="card w-[150px] card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
+        <div onClick={() => handleView(_id)} className="card w-[140px] md:w-[150px] card-compact bg-base-100 shadow-xl font-catamaran rounded-lg mx-2 md:mx-auto group">
             <Link to={`/product/${_id}`}>
                 <figure className="relative pt-2">
-                    <img className="h-[80px] md:h-[80px]" src={image1 || imageURL1} alt={name} />
+                    <img className="h-[80px] " src={image1 || imageURL1} alt={name} />
                     {
                         currentPrice1 && currentPrice1 >0 && <p className="absolute top-0 right-0 bg-rose-500 px-2 rounded-tr-lg rounded-bl-lg text-white">{discount.toFixed(2)}%</p>
                     }

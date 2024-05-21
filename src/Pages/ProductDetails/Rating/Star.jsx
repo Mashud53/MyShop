@@ -3,7 +3,7 @@ import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 
 const StarRating = ({starRating}) => {
-    console.log('rating is',starRating)
+    
     const myStyles = {
         itemShapes: Star,
         boxBorderWidth: 0,

@@ -15,7 +15,7 @@ const Rating = ({ id }) => {
 
 
     useEffect(() => {
-        if (getRating.length) {
+        if (getRating && getRating.length) {
             const fiveStar = getRating.filter(item => item.rating == '5')
             setStar5(fiveStar)
             const fourStar = getRating.filter(item => item.rating == '4')
@@ -28,7 +28,7 @@ const Rating = ({ id }) => {
 
     }, [getRating])
 
-    console.log(getRating)
+    
     if (isLoading) {
         return <Loader></Loader>
     }

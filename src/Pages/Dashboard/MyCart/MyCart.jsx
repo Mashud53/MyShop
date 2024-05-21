@@ -26,7 +26,7 @@ const MyCart = () => {
 
 
     const handleMinus = async (id) => {
-        console.log(id)
+        
         const qty = 1;
 
         await quantityMinus(id, { quantity: qty })
@@ -68,6 +68,7 @@ const MyCart = () => {
         });
     }
     const handlebuy = async () => {
+        
         setIsOpen(true);
     }
 
@@ -168,7 +169,7 @@ const MyCart = () => {
 
 
 
-                        <button onClick={handlebuy} className="btn w-full hover:text-white bg-cyan-400 hover:bg-cyan-500 btn-md uppercase">proceed to checkout</button>
+                        <button onClick={()=>handlebuy(cart)} className="btn w-full hover:text-white bg-cyan-400 hover:bg-cyan-500 btn-md uppercase">proceed to checkout</button>
                     </div>
                 </div> :
                 <div className="w-full flex flex-col justify-center items-center min-h-[500px]">
@@ -179,6 +180,8 @@ const MyCart = () => {
             <BuyNowModal
                 isOpen={isOpen}
                 closeModal={closeModal}
+                cart={cart}
+                totalPrice={totalPrice}
             // orderInfo={orderInfo}
             // qt={qt}
             // _id={_id}

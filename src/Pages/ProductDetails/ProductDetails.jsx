@@ -152,7 +152,7 @@ const ProductDetails = () => {
 
 
     return (
-        <div className="pt-24 md:pt-32 px-10 lg:px-0">
+        <div className="pt-28 md:pt-32 px-10 lg:px-0">
             <div className=" grid grid-rows grid-cols-1 md:grid-rows-1 md:grid-cols-2 md:gap-4 lg:gap-6 font-catamaran  lg:pb-10 pb-10 border-b-2 ">
                 <div className=" md:col-span-1 mb-8">
                     <DetailsPagePhoto image1={image1} image2={image2} image3={image3} image4={image4} image5={image5} imageURL1={imageURL1} imageURL2={imageURL2} imageURL3={imageURL3} imageURL4={imageURL4} imageURL5={imageURL5}></DetailsPagePhoto>

@@ -3,8 +3,7 @@ import StarRating from "./Star";
 
 
 const Coments = ({ coments }) => {
-    console.log(coments)
-
+    
 
     return (
         <div className="mt-2">
@@ -14,7 +13,7 @@ const Coments = ({ coments }) => {
                     className="border-t-2 py-3">
                     <div className="flex items-center gap-2">
                         <StarRating starRating={item.rating}></StarRating>
-                        <p className="text-sm ">{item?.userName || item?.email}</p>
+                        <p className="text-xs text-gray-400 ">{item?.userName || item?.email}</p>
                     </div>
                     <p className="text-sm mt-2 text-gray-500">{item.comment}</p>
 
