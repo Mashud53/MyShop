@@ -5,17 +5,19 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axiosSecure from "../../../api";
 import Heading from "../../../Components/Heading/Heading";
-import BuyNowModal from "../../../Components/Modal/BuyNowModal";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
 import { quantityMinus, quantityPlus } from "../../../api/cartQuantity";
 import Loader from "../../../Components/Loader/Loader";
+import CartBuyModal from "../../../Components/Modal/CartBuyModal";
 
 
 
 const MyCart = () => {
     const [cart, isLoading, refetch] = useCart();
+
+    console.log(cart)
 
     let [isOpen, setIsOpen] = useState(false)
     const closeModal = () => {
@@ -26,7 +28,7 @@ const MyCart = () => {
 
 
     const handleMinus = async (id) => {
-        
+
         const qty = 1;
 
         await quantityMinus(id, { quantity: qty })
@@ -68,7 +70,7 @@ const MyCart = () => {
         });
     }
     const handlebuy = async () => {
-        
+
         setIsOpen(true);
     }
 
@@ -124,13 +126,30 @@ const MyCart = () => {
                                             </td>
                                             <td>{item.price * item.quantity} <span className="ml-1">&#x62f;&#x2e;&#x625;</span></td>
                                             <td>
-                                                <div className="flex flex-col justify-center items-start">
+                                                <div className="flex flex-col gap-2">
+                                                    <div className="flex flex-col justify-center items-start">
 
-                                                    <div className="flex justify-center items-center">
-                                                        <div onClick={() => handleMinus(item._id)} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[20px] w-[30px] rounded-l-lg flex justify-center items-center"><FaMinus className=" text-xs text-white" /></div>
-                                                        <div className="border-2 w-[30px] h-[20px] flex justify-center items-center">{item?.quantity ? item?.quantity : <p>1</p>}</div>
-                                                        <div onClick={() => handlePlus(item._id)} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[20px] w-[30px] rounded-r-lg flex justify-center items-center"><FaPlus className="text-white text-xs" /></div>
+                                                        <div className="flex justify-center items-center">
+                                                            <div onClick={() => handleMinus(item._id)} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[20px] w-[30px] rounded-l-lg flex justify-center items-center"><FaMinus className=" text-xs text-white" /></div>
+                                                            <div className="border-2 w-[30px] h-[20px] flex justify-center items-center">{item?.quantity ? item?.quantity : <p>1</p>}</div>
+                                                            <div onClick={() => handlePlus(item._id)} className="bg-cyan-300 hover:bg-cyan-500 text-base h-[20px] w-[30px] rounded-r-lg flex justify-center items-center"><FaPlus className="text-white text-xs" /></div>
+                                                        </div>
+
                                                     </div>
+
+                                                    {
+                                                        item.storage &&
+                                                        <div>
+                                                            <p className="text-xs">{item.storage}</p>
+                                                        </div>
+                                                    }
+
+                                                    {
+                                                        item.selectedColor &&
+                                                        <div>
+                                                            <p>{item.selectedColor}</p>
+                                                        </div>
+                                                    }
 
                                                 </div>
                                             </td>
@@ -169,7 +188,7 @@ const MyCart = () => {
 
 
 
-                        <button onClick={()=>handlebuy(cart)} className="btn w-full hover:text-white bg-cyan-400 hover:bg-cyan-500 btn-md uppercase">proceed to checkout</button>
+                        <button onClick={() => handlebuy(cart)} className="btn w-full hover:text-white bg-cyan-400 hover:bg-cyan-500 btn-md uppercase">proceed to checkout</button>
                     </div>
                 </div> :
                 <div className="w-full flex flex-col justify-center items-center min-h-[500px]">
@@ -177,17 +196,13 @@ const MyCart = () => {
                     <Link to={'/'}><button className="hover:text-white bg-cyan-400 hover:bg-cyan-500 py-2 px-3 rounded-lg font-semibold">Continue Shopping</button></Link>
                 </div>
             }
-            <BuyNowModal
+            <CartBuyModal
                 isOpen={isOpen}
                 closeModal={closeModal}
                 cart={cart}
                 totalPrice={totalPrice}
-            // orderInfo={orderInfo}
-            // qt={qt}
-            // _id={_id}
-            >
-
-            </BuyNowModal>
+                refetch={refetch}
+            ></CartBuyModal>
 
         </div>
     );

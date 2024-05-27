@@ -40,10 +40,6 @@ const ProductDetails = () => {
     const previousPrice2 = price2;
     const previousPrice3 = price3;
 
-
-
-
-
     const [orderInfo, setOrderInfo] = useState({})
 
     let [isOpen, setIsOpen] = useState(false)
@@ -67,7 +63,7 @@ const ProductDetails = () => {
             const productId = _id;
             const productName = name;
             const productInfo = {
-                quantity, totalPrice, selectedColor, buyer, email, productId, title: productName
+                quantity, totalPrice, selectedColor, buyer, email, productId, storage, title: productName
             }
             console.log(productInfo)
             setOrderInfo(productInfo)
@@ -86,11 +82,7 @@ const ProductDetails = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     navigate('/login', { state: { from: location } })
-                    //   Swal.fire({
-                    //     title: "Deleted!",
-                    //     text: "Your file has been deleted.",
-                    //     icon: "success"
-                    //   });
+                    
                 }
             });
         }
@@ -108,6 +100,8 @@ const ProductDetails = () => {
                 name,
                 image: image1 ? image1 : imageURL1,
                 quantity: 1,
+                selectedColor:color,
+                storage,
                 price,
                 userEmail: user.email,
             }
@@ -138,11 +132,7 @@ const ProductDetails = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     navigate('/login', { state: { from: location } })
-                    //   Swal.fire({
-                    //     title: "Deleted!",
-                    //     text: "Your file has been deleted.",
-                    //     icon: "success"
-                    //   });
+                   
                 }
             });
         }

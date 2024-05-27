@@ -9,7 +9,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 
 const TrandsCard = ({products}) => {
-    const { _id, image1, name, price1,currentPrice1, imageURL1, totalSales } = products;
+    const { _id, image1, name, price1, storage1, currentPrice1, imageURL1, totalSales } = products;
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -37,6 +37,8 @@ const TrandsCard = ({products}) => {
                 image: product.image1 ? product?.image1 : product?.imageURL1,
                 price:  product?.currentPrice1 > 0 ? product.currentPrice1 : product.price1,
                 quantity:1,
+                storage: storage1,
+                selectedColor:product?.color1,
                 userEmail: user.email,
 
             }
