@@ -54,9 +54,9 @@ const Order = () => {
                                 timer: 1500
                             });
                         }
-                          orderRefetch();
+                        orderRefetch();
                         refetch()
-                      
+
                     })
 
             }
@@ -89,7 +89,7 @@ const Order = () => {
                         }
                         orderRefetch();
                         refetch()
-                        
+
                     })
 
             }
@@ -125,23 +125,43 @@ const Order = () => {
                                             {
                                                 Array.isArray(order?.title) ?
                                                     <>
+                                                        <div className="overflow-x-auto">
+                                                            <table className="table">
+                                                                {/* head */}
+                                                                <thead>
+                                                                    <tr>
 
-                                                        <div className="flex items-center gap-2">
+                                                                        <th>Name</th>
+                                                                        <th>Storage</th>
+                                                                        <th>Qty</th>
+                                                                        <th>Color</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {/* row 1 */}
+                                                                    <tr>
 
-                                                            <p>
-                                                                {order?.title?.map((item, i) => <tr key={i}><Link to={`/product/${order.productId[i]}`} className="hover:text-cyan-400"> {item}</Link></tr>)}
+                                                                        <td>
+                                                                            {order?.title?.map((item, i) => <Link to={`/product/${order.productId[i]}`} className="hover:text-cyan-400 flex flex-row" key={i}>
+                                                                                <p className="border-b-2"> {item}</p>
+                                                                            </Link>)}
+                                                                        </td>
+                                                                        <td>
+                                                                            {order?.storage?.map((item, i) => <div key={i} className="text-sm text-cyan-500 border-b-2"> {item ? item : "..."}</div>)}
+                                                                        </td>
+                                                                        <td>
+                                                                            {order?.quantity?.map((item, i) => <div key={i} className="border-b-2">{item}</div>)}
+                                                                        </td>
+                                                                        <td>
+                                                                            {order?.selectedColor &&
+                                                                                order?.selectedColor?.map((item, i) => <div key={i} className="text-cyan-400 border-b-2">{item ? item : <p>...</p>}</div>)
+                                                                            }
+                                                                        </td>
+                                                                    </tr>
 
-                                                            </p>
-                                                            <p>
-                                                                {order?.storage?.map((item, i) => <tr key={i} className="text-xs"> {item}</tr>)}
-                                                            </p>
-
-                                                            <p className="font-bold text-red-500">{order?.quantity?.map((item, i) => <tr key={i}>Qty: {item}</tr>)}</p>
-                                                            <p >{order?.selectedColor &&
-                                                                order?.selectedColor?.map((item, i) => <tr key={i}>Color: {item}</tr>)
-                                                            }</p>
+                                                                </tbody>
+                                                            </table>
                                                         </div>
-
                                                     </> :
                                                     <p>{order?.title}</p>
 
@@ -181,11 +201,11 @@ const Order = () => {
                                     <div>Order Date: {new Date(order?.date).toLocaleString()}</div>
                                     <div className="text-red-500 font-semibold">Delivery Date: {new Date(new Date(order?.date).setDate(new Date(order?.date).getDate() + 3)).toLocaleString()}</div>
                                 </td>
-                                <td>{order?.status === "pending" ? 
-                                <button onClick={() => { handleReceived(order._id) }} className="btn text-rose-500 hover:text-white bg-cyan-400 hover:bg-rose-500 btn-sm">Pending</button> :
-                                order?.status === "received" ? <button onClick={() => { handleDelivery(order._id) }} className="btn text-rose-500 hover:text-white bg-cyan-400 hover:bg-rose-500 btn-sm">Received</button>:"Delivered"
-                                 
-                                 }
+                                <td>{order?.status === "pending" ?
+                                    <button onClick={() => { handleReceived(order._id) }} className="btn text-rose-500 hover:text-white bg-cyan-400 hover:bg-rose-500 btn-xs">Pending</button> :
+                                    order?.status === "received" ? <button onClick={() => { handleDelivery(order._id) }} className="btn text-rose-500 hover:text-white bg-cyan-400 hover:bg-rose-500 btn-xs">Received</button> : <p className="text-xs">Delivered</p>
+
+                                }
 
                                 </td>
                             </tr>)}

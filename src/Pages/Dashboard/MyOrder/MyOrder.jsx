@@ -1,16 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 import useMyOrder from "../../../Hooks/useMyOrder";
 import Loader from "../../../Components/Loader/Loader";
 import ReviewModal from "../../../Components/Modal/ReviewModal";
+import { deleteOrder } from "../../../api/order";
+import Swal from "sweetalert2";
 
 
 const MyOrder = () => {
-    const [getOrder, isLoading,] = useMyOrder();
+    const [getOrder, isLoading, orderRefetch] = useMyOrder();
     const [product, setProduct] = useState({})
-    console.log(typeof getOrder)
+    const [displayOrders, setDisplayOrders] = useState([])
+   
+
+    useEffect(() => {
+
+        const sortData = async (data) => {
+            const orders = await data.sort((a, b) => new Date(b.date) - new Date(a.date))
+            setDisplayOrders([...orders])
+
+        }
+        if (getOrder.length > 0) {
+            sortData(getOrder)
+        }
+
+    }, [getOrder])
+
+    console.log(displayOrders)
+
     let [isOpen, setIsOpen] = useState(false)
     const closeModal = () => {
         setIsOpen(false)
@@ -19,6 +38,38 @@ const MyOrder = () => {
     const hanndleReview = (title, productId) => {
         setProduct({ productId, title })
         setIsOpen(true)
+    }
+
+    const handleDelete =(id)=>{
+        console.log(id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to delete it!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async(result) => {
+            if (result.isConfirmed) {
+                const data = await deleteOrder(id)
+                if(data.deletedCount > 0){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    orderRefetch();
+                }
+                
+                
+
+            }
+        });
+        
+        
+
     }
 
 
@@ -42,40 +93,47 @@ const MyOrder = () => {
                     </thead>
                     <tbody>
 
-                        {getOrder.map((order, index) =>
+                        {displayOrders.map((order, index) =>
                             <tr key={order._id} className="hover">
                                 <th>{index + 1}</th>
                                 <td>
                                     {
                                         Array.isArray(order?.productId) ? <>
-                                            <div>
-                                                {
-                                                    Array.isArray(order?.title) ?
-                                                        <>
-                                                            
-                                                                <div className="flex items-center gap-2">
-                                                                    
-                                                                    <p>{order?.title?.map((item, i) => <tr key={i}><Link to={`/product/${order.productId[i]}`} className="hover:text-cyan-400"> {item}</Link></tr>)}</p>
-                                                                    
-                                                                    <p className="font-bold text-red-500">{order?.quantity?.map((item, i) => <tr key={i}>Qty: {item}</tr>)}</p>
-                                                                    <p >{order?.selectedColor?.map((item, i) => <tr key={i}>Color: {item}</tr>)}</p>
-                                                                </div>
-                                                            
-                                                        </> :
-                                                        <p>{order?.title}</p>
+                                            <div className="overflow-x-auto">
+                                                <table className="table">
+                                                    {/* head */}
+                                                    <thead>
+                                                        <tr>
 
-                                                }
-                                                {
-                                                    Array.isArray(order?.quantity) ? <></> :
-                                                        <p>Qty: {order?.quantity}</p>
-                                                }
-                                                <p>Price: {order?.totalPrice}</p>
-                                                {
-                                                    Array.isArray(order?.selectedColor) ?
-                                                        <>
-                                                        </> :
-                                                        <p>Color: {order?.selectedColor}</p>
-                                                }
+                                                            <th>Name</th>
+                                                            <th>Qty</th>
+                                                            <th>Storage</th>
+                                                            <th>Color</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                        <tr>
+
+                                                            <td>
+                                                                {order?.title?.map((item, i) =>
+                                                                    <Link to={`/product/${order.productId[i]}`} className="hover:text-cyan-400 flex flex-row" key={i}>
+                                                                        <p className="border-b-2"> {item}</p>
+                                                                    </Link>)}
+                                                            </td>
+                                                            <td>
+                                                                {order?.quantity?.map((item, i) => <div key={i} className="border-b-2">{item}</div>)}
+                                                            </td>
+                                                            <td>
+                                                                {order?.storage?.map((item, i) => <div key={i} className="text-sm text-cyan-500 border-b-2"> {item ? item : <p>...</p>}</div>)}
+                                                            </td>
+                                                            <td>
+                                                                {order?.selectedColor?.map((item, i) => <div key={i} className="border-b-2">{item ? item : <p>...</p>}</div>)}
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </> :
                                             <>
@@ -115,6 +173,10 @@ const MyOrder = () => {
                                     {
                                         !Array.isArray(order?.productId) && order?.status == "delevered" &&
                                         <p onClick={() => hanndleReview(order.title, order.productId)} className="cursor-pointer text-cyan-400  hover:text-white hover:bg-cyan-400 px-2 py-1 rounded-md text-center">Review</p>
+                                    }
+                                    {
+                                        order?.status == "pending" &&
+                                        <p onClick={() => handleDelete(order._id)} className="cursor-pointer text-cyan-400  hover:text-white hover:bg-cyan-400 px-2 py-1 rounded-md text-center">cencel</p>
                                     }
                                 </td>
                             </tr>)}
