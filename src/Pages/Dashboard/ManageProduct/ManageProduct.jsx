@@ -3,12 +3,13 @@ import Loader from "../../../Components/Loader/Loader";
 import useProducts from "../../../Hooks/useProducts";
 import { MdOutlineDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import Swal from "sweetalert2";
 import axiosSecure from "../../../api";
 
 const ManageProduct = () => {
     const [allProducts, isLoading, refetch] = useProducts();
+    const { setActive } = useOutletContext();
 
 
 
@@ -48,7 +49,7 @@ const ManageProduct = () => {
 
     if (isLoading) return <Loader></Loader>
     return (
-        <div>
+        <div onClick={()=>setActive(true)}>
             <Helmet><title>Dashboard | Manage Product</title></Helmet>
             <div className="text-xl text-center font-bold uppercase pt-8 pb-4 border-b-2"><h2>Manage Products</h2></div>
             <div className="mt-8 overflow-x-auto">

@@ -4,12 +4,11 @@ import useRole from "../Hooks/useRole";
 
 
 const HostRoute = ({children}) => {
-    const [role, isLoading] =useRole()
-    console.log(role)
-    
+    const [userRole, isLoading] =useRole()
+        
 
     if (isLoading) return <Loader></Loader>
-    if (role === 'admin' || role ==='host') return children
+    if (userRole === 'admin' || userRole ==='host') return children
     return <Navigate to='/dashboard' />
 };
 

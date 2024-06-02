@@ -6,10 +6,12 @@ import { FaIoxhost } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axiosSecure from "../../../api";
 import Loader from "../../../Components/Loader/Loader";
+import { useOutletContext } from "react-router-dom";
 
 
 const ManageUsers = () => {
     const [getuser, isLoading, refetch] = useGetUser();
+    const { setActive } = useOutletContext();
     
     
     const handleAdmin = id => {
@@ -104,7 +106,7 @@ const ManageUsers = () => {
         return <Loader></Loader>
     }
     return (
-        <div className="pt-10">
+        <div onClick={()=>setActive(true)} className="md:pt-10">
             <Helmet><title>Dashboard | Manage User</title></Helmet>
             <div className="text-center py-8 border-b-2 font-bold text-xl"><h2>Manage Users</h2></div>
             <div className="overflow-x-auto">

@@ -4,16 +4,19 @@ import { imageUpload } from "../../../api/utils";
 import { useState } from "react";
 import { addProduct } from "../../../api/product";
 import Swal from "sweetalert2";
+import { useOutletContext } from "react-router-dom";
 
 
 
 const AddProduct = () => {
     const [loading, setLoading] = useState(false)
+    const { setActive } = useOutletContext();
     const [uploadButtonText1, setUploadButtonText1] = useState('Upload Image')
     const [uploadButtonText2, setUploadButtonText2] = useState('Upload Image')
     const [uploadButtonText3, setUploadButtonText3] = useState('Upload Image')
     const [uploadButtonText4, setUploadButtonText4] = useState('Upload Image')
     const [uploadButtonText5, setUploadButtonText5] = useState('Upload Image')
+
     // const [uploadeimg1, setUploadimg1]= useState('');
     // const [uploadeimg2, setUploadimg2]= useState('');
     // const [uploadeimg3, setUploadimg3]= useState('');
@@ -153,7 +156,7 @@ const AddProduct = () => {
         setUploadButtonText5(image?.name)
     }
     return (
-        <div className="py-10">
+        <div onClick={()=>setActive(true)} className="md:py-10">
             <Helmet><title>My Shop || Add Room</title></Helmet>
             <h2 className="text-xl text-center font-bold uppercase pt-8 pb-4 border-b-2">Add Product</h2>
             <div className="mt-8">

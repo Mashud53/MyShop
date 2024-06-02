@@ -6,12 +6,12 @@ import { useQuery } from "@tanstack/react-query";
 const useRole = () => {
     const {user, loading}= useAuth();
         
-    const {data:role, isLoading}= useQuery({
+    const {data:userRole, isLoading}= useQuery({
         enabled: !loading && !!user?.email,
-        queryKey:['role'],
+        queryKey:['userRole'],
         queryFn: async ()=> await getRole(user?.email),
     })
-    return [role, isLoading]
+    return [userRole, isLoading]
 };
 
 export default useRole;

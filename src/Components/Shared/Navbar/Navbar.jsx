@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import { FiAlignJustify } from "react-icons/fi";
-import { BiCartAlt, BiUser } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 import logo from '../../../assets/logo.png'
 // import logo from '../../../assets/logo3.jpeg';
 
-import useCart from "../../../Hooks/useCart";
+
 import SubmenuDropdown from "../../SubmenuDropdown/SubmenuDropdown";
 import { IoSearchOutline } from "react-icons/io5";
+import NavCrtOrd from "../../NavCrtOrd/NavCrtOrd";
+import useCart from "../../../Hooks/useCart";
+import useRole from "../../../Hooks/useRole";
+import useOrder from "../../../Hooks/useOrder";
+
 
 
 
@@ -16,7 +21,11 @@ import { IoSearchOutline } from "react-icons/io5";
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
+    const [userRole, isLoading] = useRole();
     const [cart] = useCart();
+    const [getOrder]= useOrder();
+    
+    
 
     const navOptions =
         <>
@@ -33,7 +42,7 @@ const Navbar = () => {
                 <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
                 <>
                     <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
-                    <SubmenuDropdown></SubmenuDropdown>
+                    <SubmenuDropdown userRole={userRole} isLoading={isLoading} cart={cart}></SubmenuDropdown>
                     <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
                     <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
                     <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
@@ -63,13 +72,14 @@ const Navbar = () => {
                         </label>
                     </div>
                     <div className="navbar-end flex items-center justify-end">
+                        <NavCrtOrd userRole={userRole} isLoading={isLoading} getOrder={getOrder} cart={cart}></NavCrtOrd>
 
-                        <Link to={'dashboard/my-cart'}>
+                        {/* <Link to={'dashboard/my-cart'}>
                             <button className=" relative mx-4 p-1">
                                 <BiCartAlt className="text-cyan-500 text-2xl" />
                                 <div className="absolute -top-3 -right-2 text-white font-semibold">+{cart.length}</div>
                             </button>
-                        </Link>
+                        </Link> */}
 
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="">

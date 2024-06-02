@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useCart from "../../../Hooks/useCart";
 import { MdOutlineDelete } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import Swal from "sweetalert2";
 import axiosSecure from "../../../api";
 import Heading from "../../../Components/Heading/Heading";
@@ -16,8 +16,8 @@ import CartBuyModal from "../../../Components/Modal/CartBuyModal";
 
 const MyCart = () => {
     const [cart, isLoading, refetch] = useCart();
-
-    console.log(cart)
+    const { setActive } = useOutletContext();
+    
 
     let [isOpen, setIsOpen] = useState(false)
     const closeModal = () => {
@@ -77,13 +77,13 @@ const MyCart = () => {
 
     if (isLoading) { return <Loader></Loader> }
     return (
-        <div className="font-catamaran">
+        <div onClick={()=>setActive(true)} className="font-catamaran">
             <Helmet><title>Delux mart | Cart</title></Helmet>
-            <h2 className="text-3xl font-bold text-center">My Cart</h2>
+            <h2 className="text-3xl py-8 font-bold text-center">My Cart</h2>
             {cart?.length > 0 ?
                 <div className="flex flex-col md:flex-row justify-between items-start">
 
-                    <div className="overflow-x-auto w-full md:w-[63%] pt-10 shadow-md">
+                    <div className="overflow-x-auto w-full md:w-[63%] md:pt-10 shadow-md">
 
                         <div className="overflow-x-auto">
 

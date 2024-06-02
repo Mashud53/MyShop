@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 // Components
 import Logo from '../../../assets/logo.png'
 // import Logo from '../../../assets/logo1.png'
@@ -18,11 +18,11 @@ import { Link } from 'react-router-dom'
 
 
 
-const Sidebar = () => {
+const Sidebar = ({ isActive, setActive }) => {
   // const [toggle, setToggle] = useState(false)
-  const [isActive, setActive] = useState(false)
+
   const { logOut } = useAuth();
-  const [role] = useRole();
+  const [userRole] = useRole();
 
 
   //   For guest/host menu item toggle button
@@ -43,7 +43,7 @@ const Sidebar = () => {
           <div className='block cursor-pointer p-4 font-bold'>
             {/* logo  */}
             <Link to={'/'}>
-            <img className='w-[150px]' src={Logo} alt="" />
+              <img className='w-[150px]' src={Logo} alt="" />
             </Link>
             {/* <h2 className='font-catamaran'>My Shop</h2> */}
           </div>
@@ -68,20 +68,19 @@ const Sidebar = () => {
               <Link to={'/'}>
                 {/* <h2 className='font-catamaran'>My Shop</h2> */}
                 <img className='w-[200px]' src={Logo} alt="" />
-                </Link>
-              
+              </Link>
+
             </div>
           </div>
 
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/* If a user is host */}
-            {/* <ToggleBtn toggleHandler={toggleHandler} /> */}
+
             <nav>
               {/* Menu Items */}
-              {role === 'admin' && <AdminMenu></AdminMenu>}
-              {role === 'host' && <HostMenu></HostMenu>}
-              {role === 'guest' && <GuestMenu></GuestMenu>}
+              {userRole === 'admin' && <AdminMenu></AdminMenu>}
+              {userRole === 'host' && <HostMenu></HostMenu>}
+              {userRole === 'guest' && <GuestMenu></GuestMenu>}
 
             </nav>
           </div>

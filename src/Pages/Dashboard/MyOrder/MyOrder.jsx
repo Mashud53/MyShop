@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 import useMyOrder from "../../../Hooks/useMyOrder";
 import Loader from "../../../Components/Loader/Loader";
@@ -11,8 +11,9 @@ import Swal from "sweetalert2";
 
 const MyOrder = () => {
     const [getOrder, isLoading, orderRefetch] = useMyOrder();
-    const [product, setProduct] = useState({})
-    const [displayOrders, setDisplayOrders] = useState([])
+    const [product, setProduct] = useState({});
+    const [displayOrders, setDisplayOrders] = useState([]);
+    const { setActive } = useOutletContext();
    
 
     useEffect(() => {
@@ -77,7 +78,7 @@ const MyOrder = () => {
         return <Loader></Loader>
     }
     return (
-        <div className="font-catamaran py-10">
+        <div onClick={()=>setActive(true)} className="font-catamaran md:py-10">
             <Helmet><title>Dashboard | My Orders</title></Helmet>
             <h2 className="text-xl text-center font-bold uppercase py-8">My Orders</h2>
             <div className="overflow-x-auto">

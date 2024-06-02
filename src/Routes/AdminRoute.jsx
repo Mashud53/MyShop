@@ -5,12 +5,11 @@ import Loader from '../Components/Loader/Loader';
 import useRole from '../Hooks/useRole';
 
 const AdminRoute = ({children}) => {
-    const [role, isLoading] =useRole()
-    console.log(role)
-    
+    const [userRole, isLoading] =useRole()
+        
 
     if (isLoading) return <Loader></Loader>
-    if (role === 'admin') return children
+    if (userRole === 'admin') return children
     return <Navigate to='/dashboard' />
 };
 

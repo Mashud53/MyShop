@@ -9,7 +9,7 @@ const useProducts = () => {
     // const [loading, setLoading]=useState(false)
     // useEffect(()=>{
     //     setLoading(true)
-    //     fetch('http://localhost:5000/product')
+    //     fetch('https://api.deluxmart.com/product')
     //     .then (res => res.json())
     //     .then (data => {
     //         setAllProducts(data)

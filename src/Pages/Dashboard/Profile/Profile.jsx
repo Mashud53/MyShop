@@ -2,13 +2,15 @@
 import { Helmet } from 'react-helmet-async'
 import useAuth from '../../../Hooks/useAuth'
 import useRole from '../../../Hooks/useRole'
+import { useOutletContext } from 'react-router-dom'
 
 const Profile = () => {
     const { user } = useAuth()
-    const [role] = useRole()
-    console.log(user)
+    const [userRole] = useRole()
+    const { setActive } = useOutletContext();
+    
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div onClick={()=>setActive(true)} className='flex justify-center items-center h-screen'>
             <Helmet>
                 <title>Profile</title>
             </Helmet>
@@ -28,7 +30,7 @@ const Profile = () => {
                     </a>
 
                     <p className='p-2 px-4 text-xs text-white bg-pink-500 rounded-full'>
-                        {role && role.toUpperCase()}
+                        {userRole && userRole.toUpperCase()}
                     </p>
                     <p className='mt-2 text-xs md:text-base font-medium text-gray-800 '>
                         User Id: {user.uid}

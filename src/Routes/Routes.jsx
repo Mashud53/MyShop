@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <ProductDetails></ProductDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
+                loader: ({ params }) => fetch(`https://api.deluxmart.com/product/${params.id}`),
                 
             },
             // brand product 
@@ -279,7 +279,7 @@ export const router = createBrowserRouter([
             {
                 path: 'updateProduct/:id',
                 element: <AdminHostRoute><UpdateProduct></UpdateProduct></AdminHostRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
+                loader: ({ params }) => fetch(`https://api.deluxmart.com/product/${params.id}`),
                 
             },
             {
