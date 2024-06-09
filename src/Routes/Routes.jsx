@@ -58,6 +58,9 @@ import Speaker from "../Pages/MenuItem/Accessories/Speaker";
 import Headphone from "../Pages/MenuItem/Accessories/Headphone";
 import Perfume from "../Pages/MenuItem/Perfume/Perfume";
 import MyOrder from "../Pages/Dashboard/MyOrder/MyOrder";
+import SearchResults from "../Pages/SearchResults/SearchResults";
+import PopularPodcut from "../Pages/PopularProduct/PopularPodcut";
+import JustForYou from "../Pages/JustForYou/JustForYou";
 
 
 export const router = createBrowserRouter([
@@ -252,6 +255,19 @@ export const router = createBrowserRouter([
             {
                 path:'/perfume',
                 element:<Perfume></Perfume>
+            },
+            {
+                path:'/popularProducts',
+                element:<PopularPodcut></PopularPodcut>
+            },
+            {
+                path:'/justForYou',
+                element:<JustForYou></JustForYou>
+            },
+            // Search routs 
+            {
+                path:'/search',
+                element:<SearchResults></SearchResults>
             },
         ]
     },

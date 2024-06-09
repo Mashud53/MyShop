@@ -43,7 +43,7 @@ const Banner = () => {
 
     return (
         <>
-            <div ref={sliderRef} className="keen-slider md:h-[400px] ]">
+            <div ref={sliderRef} className="keen-slider md:h-[400px] bg-white">
                 <div className="keen-slider__slide number-slide1 via-gray-400">
                     <div className="relative font-catamaran">
                         <div className="h-[400px] ">

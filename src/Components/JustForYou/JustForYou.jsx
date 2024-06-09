@@ -21,11 +21,12 @@ import { useEffect, useState } from "react";
 import { updateViews } from "../../api/product";
 import SectionTitle from '../SectionTitle';
 import { FaCartArrowDown } from 'react-icons/fa';
+import { MdKeyboardArrowRight, MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
 
 
 const JustForYou = () => {
-    const [discountProduct, isLoading, ] = useDiscountProduct()
-    const {user}= useAuth();
+    const [discountProduct, isLoading,] = useDiscountProduct()
+    const { user } = useAuth();
     const [, , refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
@@ -53,10 +54,10 @@ const JustForYou = () => {
     const handleView = async (id) => {
         const currentView = (view + 1)
         setView(currentView)
-        console.log(id, currentView)
+
         const data = await updateViews(id, { views: currentView })
 
-        console.log(data)
+
 
     }
 
@@ -69,10 +70,10 @@ const JustForYou = () => {
                 productId: item._id,
                 name: item.name,
                 image: item.image1 ? item?.image1 : item?.imageURL1,
-                price:  item?.currentPrice1 > 0 ? parseFloat(item.currentPrice1) : parseFloat(item.price1),
-                quantity:1,
-                selectedColor:item?.color1,
-                storage:item.storage1,
+                price: item?.currentPrice1 > 0 ? parseFloat(item.currentPrice1) : parseFloat(item.price1),
+                quantity: 1,
+                selectedColor: item?.color1,
+                storage: item.storage1,
                 userEmail: user.email,
 
             }
@@ -106,12 +107,15 @@ const JustForYou = () => {
             });
         }
     }
-    if(isLoading) return<Loader></Loader>
+    if (isLoading) return <Loader></Loader>
     return (
-        <div>
+        <div className='bg-[#f8f9fa] pb-20'>
             <SectionTitle title={'Just for you'}></SectionTitle>
             <Swiper watchSlidesProgress={true}
-                navigation={true}
+                navigation={{
+                    nextEl: ".button-next-slide",
+                    prevEl: ".button-prev-slide",
+                }}
                 modules={[Navigation]}
                 slidesPerView={slidePreview}
 
@@ -125,8 +129,8 @@ const JustForYou = () => {
                                 <figure className=" relative pt-2">
                                     <img className="h-[120px] md:h-[200px]" src={item.image1 || item.imageURL1} alt={item.name} />
                                     {
-                        item.currentPrice1 && item.currentPrice1 >0 && <p className="absolute top-0 right-0 bg-rose-500 px-2 rounded-tr-lg rounded-bl-lg text-white">{(((parseFloat(item.price1)-parseFloat(item.currentPrice1))/parseFloat(item.price1))*percent).toFixed(2)}%</p>
-                    }
+                                        item.currentPrice1 && item.currentPrice1 > 0 && <p className="absolute top-0 right-0 bg-rose-500 px-2 rounded-tr-lg rounded-bl-lg text-white">{(((parseFloat(item.price1) - parseFloat(item.currentPrice1)) / parseFloat(item.price1)) * percent).toFixed(2)}%</p>
+                                    }
                                 </figure>
                                 <div className=" card-body relative text-center md:text-left ">
                                     <h2 className="hidden md:block card-title md:text-left text-sm md:text-base lg:text-lg">{item.name?.length > 20 ? <>{item.name?.slice(0, 20) + '...'}</> : <>{item.name}</>}</h2>
@@ -162,9 +166,19 @@ const JustForYou = () => {
 
                     </SwiperSlide>)
                 }
+                <div className='flex justify-between items-center px-2 '>
+                    <div className='flex items-center justify-start gap-2'>
+                        <button className='button-prev-slide p-2 shadow-lg rounded-md bg-cyan-400'><MdKeyboardDoubleArrowLeft className='text-white text-lg' /></button>
+                        <button className='button-next-slide p-2 shadow-lg rounded-md bg-cyan-400'><MdKeyboardDoubleArrowRight className='text-white text-lg' /></button>
+                    </div>
+                    <Link to={'/justForYou'}>
+                        <button className='flex items-center border-cyan-400 border-2 px-2 py-1 uppercase text-sm bg-white text-cyan-400'>Show all< MdKeyboardArrowRight className='text-lg' /></button>
+                    </Link>
+
+                </div>
 
             </Swiper>
-            
+
         </div>
     );
 };

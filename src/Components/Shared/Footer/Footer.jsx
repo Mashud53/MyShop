@@ -6,6 +6,7 @@ import facebook36 from '../../../assets/icon/facebook36.png'
 import instagram from '../../../assets/icon/instagram.png'
 import tiktok from '../../../assets/icon/tiktokround.png'
 import youtube from '../../../assets/icon/youtube.png'
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
@@ -15,10 +16,11 @@ const Footer = () => {
                 <nav>
                     <h6 className=" text-white text-lg font-bold">Follow Us</h6>
                     <div className="flex justify-start items-center gap-4">
-                        <img className="cursor-pointer" src={facebook36} alt="" />
-                        <img className="cursor-pointer" src={instagram} alt="" />
-                        <img className="cursor-pointer" src={tiktok} alt="" />
-                        <img className="cursor-pointer" src={youtube} alt="" />
+                        <Link to={'https://web.facebook.com/deluxmart'}><img className="cursor-pointer" src={facebook36} alt="" /></Link>
+                        <Link to={'https://www.instagram.com/deluxmart1/'}><img className="cursor-pointer" src={instagram} alt="" /></Link>
+                        <Link to={'/'}><img className="cursor-pointer" src={tiktok} alt="" /></Link> 
+                        <Link to={'https://www.youtube.com/@deluxmart1'}><img className="cursor-pointer" src={youtube} alt="" /></Link>
+                        
 
                     </div>
 
@@ -26,7 +28,7 @@ const Footer = () => {
                         <h6 className=" text-white text-lg font-bold">Any Query</h6>
                         <div className=" flex justify-start items-center gap-2 font-semibold mt-3">
                             <FaRegEnvelope className="text-lg text-white"></FaRegEnvelope>
-                            <p className="">myshop@gmail.com</p>
+                            <p className="">info@deluxmart.com</p>
                         </div>
                         <div className=" flex justify-start items-center gap-2 py-2 font-semibold">
                             <IoCall className="text-lg text-white"></IoCall>

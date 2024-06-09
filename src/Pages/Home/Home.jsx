@@ -6,22 +6,26 @@ import PopularProduct from "../../Components/PopularProduct/PopularProduct";
 import Whatsapp from "../../Components/Shared/Whatsapp/Whatsapp";
 import FeaturedProduct from "../../Components/FeaturedProduct/FeaturedProduct";
 import JustForYou from "../../Components/JustForYou/JustForYou";
+import ProductBanner from "../../Components/ProductBanner/ProductBanner";
+import Perfume from "../../Components/Perfume/Perfume";
 
 
 const Home = () => {
 
 
     return (
-        <div className="min-h-[100vh] pt-20 md:pt-10 max-w-screen-xl pb-10">
+        <div className="min-h-[100vh] bg-[#f8f9fa] pt-20 md:pt-10 max-w-screen-xl pb-10">
             <Helmet><title>Delux Mart | Home</title></Helmet>
 
             <div className="banner-section hidden md:block mt-20">
                 <Banner></Banner>
             </div>
-            <ShopByBrand></ShopByBrand>
-            <PopularProduct></PopularProduct>
             <FeaturedProduct></FeaturedProduct>
+            <ShopByBrand></ShopByBrand>            
+            <PopularProduct></PopularProduct>
+            <ProductBanner/>            
             <JustForYou></JustForYou>
+            <Perfume/>
             <Trand></Trand>
 
             <Whatsapp></Whatsapp>

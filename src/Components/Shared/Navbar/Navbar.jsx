@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiAlignJustify } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import logo from '../../../assets/logo.png'
-// import logo from '../../../assets/logo3.jpeg';
-
 
 import SubmenuDropdown from "../../SubmenuDropdown/SubmenuDropdown";
 import { IoSearchOutline } from "react-icons/io5";
@@ -16,16 +14,15 @@ import useOrder from "../../../Hooks/useOrder";
 
 
 
-
-
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
-    const [userRole, isLoading] = useRole();
+    const [userRole] = useRole();
     const [cart] = useCart();
-    const [getOrder]= useOrder();
-    
-    
+    const [getOrder] = useOrder();
+    const [searchValue, setSearchValue] = useState('');
+    const navigate = useNavigate();
+
 
     const navOptions =
         <>
@@ -42,7 +39,7 @@ const Navbar = () => {
                 <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
                 <>
                     <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
-                    <SubmenuDropdown userRole={userRole} isLoading={isLoading} cart={cart}></SubmenuDropdown>
+                    <SubmenuDropdown userRole={userRole} cart={cart}></SubmenuDropdown>
                     <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
                     <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
                     <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
@@ -52,6 +49,16 @@ const Navbar = () => {
 
 
         </>
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        const search = e.target.search.value;
+        setSearchValue(search)
+
+        if (searchValue.trim()) {
+            navigate(`/search?query=${encodeURIComponent(searchValue)}`)
+        }
+    }
 
 
     return (
@@ -64,22 +71,18 @@ const Navbar = () => {
                     </div>
                     {/* search bar  */}
                     <div className="navbar-center hidden md:block">
-                        <label className="relative h-8 input input-bordered flex items-center gap-2">
-                            <input type="text" className="" placeholder="Search" />
-                            <div className="absolute -right-1 w-8 h-8 flex justify-center items-center bg-cyan-500 rounded-r-lg">
-                                <IoSearchOutline className="  w-4 h-4 opacity-70  text-white cursor-pointer" />
-                            </div>
-                        </label>
+                        <form onSubmit={handleSearch} action="">
+                            <label className="relative h-8 input input-bordered flex items-center gap-2">
+                                <input type="text" className="" name="search" placeholder="Search" />
+                                <button type="submit" className="absolute -right-1 w-8 h-8 flex justify-center items-center bg-cyan-500 rounded-r-lg">
+                                    <IoSearchOutline className="  w-4 h-4 opacity-70  text-white " />
+                                </button>
+                            </label>
+                        </form>
                     </div>
                     <div className="navbar-end flex items-center justify-end">
-                        <NavCrtOrd userRole={userRole} isLoading={isLoading} getOrder={getOrder} cart={cart}></NavCrtOrd>
+                        <NavCrtOrd userRole={userRole} getOrder={getOrder} cart={cart}></NavCrtOrd>
 
-                        {/* <Link to={'dashboard/my-cart'}>
-                            <button className=" relative mx-4 p-1">
-                                <BiCartAlt className="text-cyan-500 text-2xl" />
-                                <div className="absolute -top-3 -right-2 text-white font-semibold">+{cart.length}</div>
-                            </button>
-                        </Link> */}
 
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="">
@@ -102,12 +105,14 @@ const Navbar = () => {
                 </div>
                 {/* search bar  */}
                 <div className="md:hidden w-full flex justify-center items-center py-2 bg-white border-0">
-                    <label className="relative h-8 input input-bordered flex items-center gap-2">
-                        <input type="text" className="" placeholder="Search" />
-                        <div className="absolute -right-1 w-8 h-8 flex justify-center items-center bg-cyan-500 rounded-r-lg">
-                            <IoSearchOutline className="  w-4 h-4 opacity-70  text-white cursor-pointer" />
-                        </div>
-                    </label>
+                    <form onSubmit={handleSearch} action="">
+                        <label className="relative h-8 input input-bordered flex items-center gap-2">
+                            <input type="text" className="" name="search" placeholder="Search" />
+                            <button type="submit" className="absolute -right-1 w-8 h-8 flex justify-center items-center bg-cyan-500 rounded-r-lg">
+                                <IoSearchOutline className="  w-4 h-4 opacity-70  text-white " />
+                            </button>
+                        </label>
+                    </form>
                 </div>
                 <div className="hidden md:block w-full bg-white py-2 px-2">
                     <div className="w-full flex justify-center items-center gap-4">
@@ -137,7 +142,7 @@ const Navbar = () => {
                         </div>
                         <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">
-                               <Link to={'watch'}> Watch</Link>
+                                <Link to={'watch'}> Watch</Link>
                             </div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <Link to={'classic-watch'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Classic Watch</li></Link>
@@ -148,7 +153,7 @@ const Navbar = () => {
                         <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Accessories</div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <Link to={'accessory-powerAdapter'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Adapter</li></Link>                                
+                                <Link to={'accessory-powerAdapter'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Adapter</li></Link>
                                 <Link to={'accessory-powerbank'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Power Bank</li></Link>
                                 <Link to={'accessory-WirelessCharger'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Wireless Charger</li></Link>
                                 <Link to={'accessory-airpods'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Airpods</li></Link>
@@ -158,7 +163,8 @@ const Navbar = () => {
 
                             </ul>
                         </div>
-                        <div className="dropdown dropdown-hover group">
+                        {/* cover and galss ------------- */}
+                        {/* <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Cover & Glass</div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Phone Cover</li>
@@ -167,7 +173,7 @@ const Navbar = () => {
                                 <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">MacBook Cover</li>
                                 <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">MacBook Screen Protector</li>
                             </ul>
-                        </div>
+                        </div> */}
                         <div className="dropdown dropdown-hover group">
                             <Link to={'/perfume'}><div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Perfume</div></Link>
                             {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">

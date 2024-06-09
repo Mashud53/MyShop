@@ -1,13 +1,12 @@
 import { BiCartAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-import Loader from "../Loader/Loader";
 import { FaBell } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 
 
-const NavCrtOrd = ({ userRole, isLoading, getOrder, cart }) => {
-    // console.log(getOrder)
+const NavCrtOrd = ({ userRole, getOrder, cart }) => {
+
 
     const [order, setOrder] = useState({});
 
@@ -17,10 +16,7 @@ const NavCrtOrd = ({ userRole, isLoading, getOrder, cart }) => {
             setOrder(filterOrder)
         }
     }, [getOrder])
-    console.log(order)
 
-
-    if (isLoading) return <Loader></Loader>
 
     return (
         <>

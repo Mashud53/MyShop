@@ -51,8 +51,8 @@ const AddProductForm = ({
                                 <option value={'Accessories'}>Accessories</option>
                                 <option value={'Watch'}>Watch</option>
                                 {/* <option value={'Shoe'}>Shoe</option> */}
+                                <option value={'Perfume'}>Perfume</option>
                                 <option value={'Toy'}>Toy</option>
-                                <option value={'Perfume'}>Toy</option>
 
                                 {/* {categories.map(category => (
                                     <option value={category.label} key={category.label}>
@@ -85,6 +85,7 @@ const AddProductForm = ({
                                 <option value={'Speaker'}>Speaker</option>
                                 <option value={'Smart_Watch'}>Smart Watch</option>
                                 <option value={'Classic_Watch'}>Classic Watch</option>
+                                <option value={'Other'}>Fashion</option>
                                 <option value={'Other'}>Other</option>
 
                             </select>
@@ -112,6 +113,7 @@ const AddProductForm = ({
                                 <option value={'Hp'}>Hp</option>
                                 <option value={'Dell'}>Dell</option>
                                 <option value={'Lenovo'}>Lenovo</option>
+                                <option value={'Unknown'}>Rolex</option>
                                 <option value={'Unknown'}>Unknown</option>
 
                             </select>
