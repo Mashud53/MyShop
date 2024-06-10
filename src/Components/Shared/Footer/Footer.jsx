@@ -47,12 +47,14 @@ const Footer = () => {
                     <a className="link link-hover">Cash On Delivery</a>
                     <a className="link link-hover">Delivery Option</a>
                     <a className="link link-hover">Product Protection</a>
+                    <Link to={'/returnPolicy'}><p className="link link-hover">Return & Refund Policy </p></Link>
+                    
 
                 </nav>
-                <nav>
+                <nav className="flex flex-col">
                     <h6 className=" text-white text-lg font-bold">Delux Mart</h6>
                     <a className="link link-hover">All Product</a>
-                    <a className="link link-hover">About Us</a>
+                    <Link to={'/aboutUs'}><p className="link link-hover">About Us</p></Link>
 
                 </nav>
             </div>

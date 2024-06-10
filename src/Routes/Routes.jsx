@@ -61,6 +61,8 @@ import MyOrder from "../Pages/Dashboard/MyOrder/MyOrder";
 import SearchResults from "../Pages/SearchResults/SearchResults";
 import PopularPodcut from "../Pages/PopularProduct/PopularPodcut";
 import JustForYou from "../Pages/JustForYou/JustForYou";
+import ReturnPolicy from "../Pages/ReturnPolicy/ReturnPolicy";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 
 export const router = createBrowserRouter([
@@ -268,6 +270,14 @@ export const router = createBrowserRouter([
             {
                 path:'/search',
                 element:<SearchResults></SearchResults>
+            },
+            {
+                path:'/returnPolicy',
+                element:<ReturnPolicy></ReturnPolicy>
+            },
+            {
+                path:'/aboutUs',
+                element:<AboutUs></AboutUs>
             },
         ]
     },

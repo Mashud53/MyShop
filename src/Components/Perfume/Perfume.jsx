@@ -123,7 +123,7 @@ const Perfume = () => {
                         <div className="flex flex-col justify-center items-center bg-black bg-opacity-50  h-full w-full py-10">
                             <h2 className="text-white text-xl font-Krona font-bold px-2 py-4">Enhance Your Charm with...</h2>
                             <Link to={'/perfume'}>
-                                <button className="text-white font-Krona font-bold hover:bg-cyan-500 px-2 py-1 border-2 border-cyan-500">Sop Now</button>
+                                <button className="text-white font-Krona font-bold hover:bg-cyan-500 px-2 py-1 border-2 border-cyan-500">Shop Now</button>
                             </Link>
                         </div>
 
