@@ -2,7 +2,7 @@
 
 const AboutUs = () => {
     return (
-        <div className="pt-28 pb-10">
+        <div className="pt-28 pb-10 px-4 lg:px-0">
             <h2 className="text-3xl font-bold">About Delux Mart</h2>
             <p className="py-2">
                 Welcome to Delux Mart, your one-stop destination for premium electronics and luxury goods. At Delux Mart, we are committed to bringing you the best selection of new and used mobiles, laptops, luxury perfumes, watches, leather items, and accessories. Our mission is to provide an exceptional online shopping experience for customers in the UAE and Bangladesh.

@@ -2,7 +2,7 @@
 
 const ReturnPolicy = () => {
     return (
-        <div className="pt-28 pb-10">
+        <div className="pt-28 pb-10 px-4 lg:px-0">
             <h2 className="text-3xl font-bold">Return & Refund Policy for Delux Mart</h2>
             <p className="py-2">
                 Thank you for shopping at Delux Mart! We aim to ensure your satisfaction with our products. This Return & Refund Policy outlines the terms and conditions for returning items and obtaining refunds for purchases made on our website, www.deluxmart.com.

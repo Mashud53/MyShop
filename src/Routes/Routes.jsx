@@ -63,6 +63,10 @@ import PopularPodcut from "../Pages/PopularProduct/PopularPodcut";
 import JustForYou from "../Pages/JustForYou/JustForYou";
 import ReturnPolicy from "../Pages/ReturnPolicy/ReturnPolicy";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import TermsConditions from "../Pages/TermsConditions/TermsConditions";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import Faq from "../Pages/Faq/Faq";
+import ShippingAndDelivery from "../Pages/ShippingAndDelivery/ShippingAndDelivery";
 
 
 export const router = createBrowserRouter([
@@ -276,8 +280,24 @@ export const router = createBrowserRouter([
                 element:<ReturnPolicy></ReturnPolicy>
             },
             {
+                path:'/termsConditons',
+                element:<TermsConditions></TermsConditions>
+            },
+            {
+                path:'/privecyPolicy',
+                element:<PrivacyPolicy></PrivacyPolicy>
+            },
+            {
                 path:'/aboutUs',
                 element:<AboutUs></AboutUs>
+            },
+            {
+                path:'/shippingAndDelivery',
+                element:<ShippingAndDelivery></ShippingAndDelivery>
+            },
+            {
+                path:'/faq',
+                element:<Faq></Faq>
             },
         ]
     },

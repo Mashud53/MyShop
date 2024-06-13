@@ -18,9 +18,9 @@ const Footer = () => {
                     <div className="flex justify-start items-center gap-4">
                         <Link to={'https://web.facebook.com/deluxmart'}><img className="cursor-pointer" src={facebook36} alt="" /></Link>
                         <Link to={'https://www.instagram.com/deluxmart1/'}><img className="cursor-pointer" src={instagram} alt="" /></Link>
-                        <Link to={'/'}><img className="cursor-pointer" src={tiktok} alt="" /></Link> 
+                        <Link to={'/'}><img className="cursor-pointer" src={tiktok} alt="" /></Link>
                         <Link to={'https://www.youtube.com/@deluxmart1'}><img className="cursor-pointer" src={youtube} alt="" /></Link>
-                        
+
 
                     </div>
 
@@ -44,11 +44,22 @@ const Footer = () => {
 
                 <nav className="text-white flex flex-col">
                     <h6 className=" text-white text-lg font-bold">Shopping with us</h6>
-                    <a className="link link-hover">Cash On Delivery</a>
-                    <a className="link link-hover">Delivery Option</a>
-                    <a className="link link-hover">Product Protection</a>
-                    <Link to={'/returnPolicy'}><p className="link link-hover">Return & Refund Policy </p></Link>
-                    
+                    <Link to={'/termsConditons'}>
+                        <p className="link link-hover">Terms & Conditions</p>
+                    </Link>
+                    <Link to={'/privecyPolicy'}>
+                        <p className="link link-hover">Privacy Policy</p>
+                    </Link>
+                    <Link to={'/returnPolicy'}>
+                        <p className="link link-hover">Return & Refund Policy </p>
+                    </Link>
+                    <Link to={'/shippingAndDelivery'}>
+                        <p className="link link-hover">Shipping & Delivery </p>
+                    </Link>
+                    <Link to={'/faq'}>
+                        <p className="link link-hover">Faq </p>
+                    </Link>
+
 
                 </nav>
                 <nav className="flex flex-col">
