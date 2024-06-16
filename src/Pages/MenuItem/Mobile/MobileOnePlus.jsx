@@ -3,6 +3,7 @@ import useProducts from "../../../Hooks/useProducts";
 import Loader from "../../../Components/Loader/Loader";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 import Heading from "../../../Components/Heading/Heading";
+import { Helmet } from "react-helmet-async";
 
 
 const MobileOnePlus = () => {
@@ -20,7 +21,7 @@ const MobileOnePlus = () => {
     if (isLoading) return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            One Plus
+            <Helmet><title>Delux Mart | Mobilephone</title></Helmet>
             
             {
                 onePlusProduct?.length > 0 ?

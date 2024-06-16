@@ -9,19 +9,18 @@ import youtube from '../../../assets/icon/youtube.png'
 import { Link } from "react-router-dom";
 
 
+
 const Footer = () => {
     return (
         <footer className="bg-[#232F3E] footer p-10 w-full mx-auto flex flex-col justify-center items-center font-catamaran text-neutral-content">
-            <div className="w-full flex flex-col md:flex-row md:justify-between justify-center items-start0">
+            <div className="w-full flex flex-col md:flex-row md:justify-around justify-center items-start">
                 <nav>
-                    <h6 className=" text-white text-lg font-bold">Follow Us</h6>
+                    <h6 className=" text-white text-lg font-bold pb-2">Follow Us</h6>
                     <div className="flex justify-start items-center gap-4">
                         <Link to={'https://web.facebook.com/deluxmart'}><img className="cursor-pointer" src={facebook36} alt="" /></Link>
                         <Link to={'https://www.instagram.com/deluxmart1/'}><img className="cursor-pointer" src={instagram} alt="" /></Link>
                         <Link to={'/'}><img className="cursor-pointer" src={tiktok} alt="" /></Link>
                         <Link to={'https://www.youtube.com/@deluxmart1'}><img className="cursor-pointer" src={youtube} alt="" /></Link>
-
-
                     </div>
 
                     <div className="mt-4">
@@ -43,7 +42,7 @@ const Footer = () => {
                 </nav>
 
                 <nav className="text-white flex flex-col">
-                    <h6 className=" text-white text-lg font-bold">Shopping with us</h6>
+                    <h6 className=" text-white text-lg font-bold pb-2">Shopping with us</h6>
                     <Link to={'/termsConditons'}>
                         <p className="link link-hover">Terms & Conditions</p>
                     </Link>
@@ -62,10 +61,22 @@ const Footer = () => {
 
 
                 </nav>
-                <nav className="flex flex-col">
-                    <h6 className=" text-white text-lg font-bold">Delux Mart</h6>
-                    <a className="link link-hover">All Product</a>
+                <nav className="flex flex-col text-white">
+                    <h6 className=" text-base font-bold uppercase mb-2">Delux Mart</h6>
+
+                    {/* <div className="flex items-center justify-center gap-2 mb-2 cursor-pointer bg-cyan-200 rounded-md shadow-md shadow-cyan-500 p-1">
+                        <img className="w-[40px]" src={logo} alt="" />
+                        <div className="text-black">
+                            <h6 className=" text-base font-bold uppercase">Delux Mart</h6>
+                            <p className="text-xs tracking-widest">An Online Store</p>
+                        </div>
+                    </div> */}
+                    <Link to={'/allProducts'}>
+                        <p className="link link-hover">All Product</p>
+                    </Link>
+
                     <Link to={'/aboutUs'}><p className="link link-hover">About Us</p></Link>
+                    <Link to={'/contactUs'}><p className="link link-hover">Contact Us</p></Link>
 
                 </nav>
             </div>

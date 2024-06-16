@@ -3,6 +3,7 @@ import useProducts from "../../../Hooks/useProducts";
 import Loader from "../../../Components/Loader/Loader";
 import Heading from "../../../Components/Heading/Heading";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
+import { Helmet } from "react-helmet-async";
 
 
 const MobileRealme = () => {
@@ -20,7 +21,7 @@ const MobileRealme = () => {
     if (isLoading) return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            Realme
+            <Helmet><title>Delux Mart | Mobilephone</title></Helmet>
 
             {
                 realmeProduct?.length > 0 ?

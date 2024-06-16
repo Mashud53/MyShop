@@ -67,6 +67,8 @@ import TermsConditions from "../Pages/TermsConditions/TermsConditions";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import Faq from "../Pages/Faq/Faq";
 import ShippingAndDelivery from "../Pages/ShippingAndDelivery/ShippingAndDelivery";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import AllProducts from "../Pages/AllProducts/AllProducts";
 
 
 export const router = createBrowserRouter([
@@ -270,6 +272,10 @@ export const router = createBrowserRouter([
                 path:'/justForYou',
                 element:<JustForYou></JustForYou>
             },
+            {
+                path:'/allProducts',
+                element:<AllProducts></AllProducts>
+            },
             // Search routs 
             {
                 path:'/search',
@@ -287,10 +293,7 @@ export const router = createBrowserRouter([
                 path:'/privecyPolicy',
                 element:<PrivacyPolicy></PrivacyPolicy>
             },
-            {
-                path:'/aboutUs',
-                element:<AboutUs></AboutUs>
-            },
+            
             {
                 path:'/shippingAndDelivery',
                 element:<ShippingAndDelivery></ShippingAndDelivery>
@@ -298,6 +301,14 @@ export const router = createBrowserRouter([
             {
                 path:'/faq',
                 element:<Faq></Faq>
+            },
+            {
+                path:'/aboutUs',
+                element:<AboutUs></AboutUs>
+            },
+            {
+                path:'/contactUs',
+                element:<ContactUs></ContactUs>
             },
         ]
     },

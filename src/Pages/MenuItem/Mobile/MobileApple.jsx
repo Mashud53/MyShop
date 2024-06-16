@@ -4,6 +4,7 @@ import useProducts from "../../../Hooks/useProducts";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 import Loader from "../../../Components/Loader/Loader";
 import Heading from "../../../Components/Heading/Heading";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -22,7 +23,7 @@ const MobileApple = () => {
     if (isLoading) return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            Apple
+            <Helmet><title>Delux Mart | Mobilephone</title></Helmet>
             
             {
                 appleProduct?.length > 0 ?

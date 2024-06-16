@@ -3,6 +3,7 @@ import Loader from '../../../Components/Loader/Loader';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
 import Heading from '../../../Components/Heading/Heading';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const LaptopApple = () => {
     const [allProducts, isLoading,] = useProducts();
@@ -19,7 +20,7 @@ const LaptopApple = () => {
     if(isLoading)return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            Apple
+            <Helmet><title>Delux Mart | MacBook</title></Helmet>
             
             {
                 appleProduct?.length > 0 ?

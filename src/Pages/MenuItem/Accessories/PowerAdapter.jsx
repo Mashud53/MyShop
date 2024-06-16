@@ -3,6 +3,7 @@ import useProducts from "../../../Hooks/useProducts";
 import Loader from "../../../Components/Loader/Loader";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 import Heading from "../../../Components/Heading/Heading";
+import { Helmet } from "react-helmet-async";
 
 
 const PowerAdapter = () => {
@@ -20,7 +21,7 @@ const PowerAdapter = () => {
     if(isLoading)return <Loader></Loader>
     return (
         <div className="pt-28 pb-10">
-            Power Adapter
+            <Helmet><title>Delux Mart | Accessories</title></Helmet>
             
             {
                 accessoriesProduct?.length > 0 ?
