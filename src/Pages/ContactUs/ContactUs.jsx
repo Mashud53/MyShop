@@ -3,6 +3,7 @@ import facebook from "../../assets/icon/facebook36.png"
 import instagram from "../../assets/icon/instagram.png"
 import tiktok from "../../assets/icon/tiktok.png"
 import youtube from "../../assets/icon/youtube.png"
+import twitter from "../../assets/icon/twitter.png"
 import { FaRegEnvelope } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 import { SiWhatsapp } from "react-icons/si";
@@ -76,14 +77,15 @@ const ContactUs = () => {
                                 </ReactWhatsapp>
                             </div>
                         </div>
-                        <div className="flex gap-4">
+                        <div className="flex items-center gap-4">
                             <Link to={'https://web.facebook.com/deluxmart'}><img className="cursor-pointer" src={facebook} alt="" /></Link>
                             <Link to={'https://www.instagram.com/deluxmart1/'}><img className="cursor-pointer" src={instagram} alt="" /></Link>
                             <Link to={'/'}><img className="cursor-pointer" src={tiktok} alt="" /></Link>
                             <Link to={'https://www.youtube.com/@deluxmart1'}><img className="cursor-pointer" src={youtube} alt="" /></Link>
+                            <Link to={'https://x.com/DeluxMart'}><img className="cursor-pointer bg-black w-[30px] h-[30px] rounded-lg" src={twitter} alt="" /></Link>
                         </div>
                     </div>
-                    
+
                     <div className="card shrink-0 w-full md:w-1/2 shadow-2xl bg-base-100 py-4">
                         <h2 className="text-center text-lg font-bold pb-2">Drop Your Message</h2>
                         <form ref={form} onSubmit={sendEmail} className="flex flex-col md:flex-row justify-around items-start gap-10">
@@ -140,7 +142,9 @@ const ContactUs = () => {
                                         className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-cyan-300 focus:outline-cyan-500 '
                                         name='message'
                                         placeholder="Write your message"
-                                        required></textarea>
+                                        required>
+
+                                    </textarea>
                                 </div>
                                 <div className="flex justify-between items-center gap-4">
                                     <button

@@ -69,6 +69,7 @@ import Faq from "../Pages/Faq/Faq";
 import ShippingAndDelivery from "../Pages/ShippingAndDelivery/ShippingAndDelivery";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AllProducts from "../Pages/AllProducts/AllProducts";
+import UsedDevice from "../Pages/UsedDevice/UsedDevice";
 
 
 export const router = createBrowserRouter([
@@ -275,6 +276,12 @@ export const router = createBrowserRouter([
             {
                 path:'/allProducts',
                 element:<AllProducts></AllProducts>
+            },
+
+            // used device 
+            {
+                path:'/usedDevice',
+                element:<UsedDevice></UsedDevice>
             },
             // Search routs 
             {

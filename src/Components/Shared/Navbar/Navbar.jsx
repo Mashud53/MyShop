@@ -34,14 +34,14 @@ const Navbar = () => {
                 {/* </ul>
                 </div> */}
                 <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
-                <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
+                <li><Link to={'/usedDevice'} className="text-base font-semibold">Used Device</Link></li>
                 <li><Link to={'/dashboard'} className="text-base font-semibold">Dashboard</Link></li>
                 <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
                 <>
                     <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
                     <SubmenuDropdown userRole={userRole} cart={cart}></SubmenuDropdown>
                     <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
-                    <li><Link to={'/'} className="text-base font-semibold">Used Device</Link></li>
+                    <li><Link to={'/usedDevice'} className="text-base font-semibold">Used Device</Link></li>
                     <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
                     <li><Link to={'/login'} className="text-base font-semibold">Login</Link></li>
                 </>
@@ -185,7 +185,9 @@ const Navbar = () => {
                         </ul> */}
                         </div>
                         <div className="dropdown dropdown-hover group">
-                            <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Used Device</div>
+                            <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">
+                               <Link to={'/usedDevice'}>Used Device</Link>
+                                </div>
 
                         </div>
                     </div>

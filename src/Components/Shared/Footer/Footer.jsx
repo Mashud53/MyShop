@@ -6,6 +6,7 @@ import facebook36 from '../../../assets/icon/facebook36.png'
 import instagram from '../../../assets/icon/instagram.png'
 import tiktok from '../../../assets/icon/tiktokround.png'
 import youtube from '../../../assets/icon/youtube.png'
+import twitter from '../../../assets/icon/twitter.png'
 import { Link } from "react-router-dom";
 
 
@@ -21,6 +22,7 @@ const Footer = () => {
                         <Link to={'https://www.instagram.com/deluxmart1/'}><img className="cursor-pointer" src={instagram} alt="" /></Link>
                         <Link to={'/'}><img className="cursor-pointer" src={tiktok} alt="" /></Link>
                         <Link to={'https://www.youtube.com/@deluxmart1'}><img className="cursor-pointer" src={youtube} alt="" /></Link>
+                        <Link to={'https://x.com/DeluxMart'}><img className="cursor-pointer w-[30px] h-[30px]" src={twitter} alt="" /></Link>
                     </div>
 
                     <div className="mt-4">
@@ -31,11 +33,11 @@ const Footer = () => {
                         </div>
                         <div className=" flex justify-start items-center gap-2 py-2 font-semibold">
                             <IoCall className="text-lg text-white"></IoCall>
-                            <p className="">01235468</p>
+                            <p className="">+971563782886, +8801819199923</p>
                         </div>
                         <div className=" flex justify-start items-center gap-2 font-semibold">
                             <SiWhatsapp className="text-lg text-green-500"></SiWhatsapp>
-                            <p className="">01235468</p>
+                            <p className="">+971563782886</p>
                         </div>
 
                     </div>
