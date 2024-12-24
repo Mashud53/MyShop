@@ -36,6 +36,9 @@ const SubmenuDropdown = () => {
 
     return (
         <div className="md:hidden">
+            <div className="text-base font-semibold hover:bg-neutral-200 active:text-cyan-300 p-1 rounded-lg px-3">
+                <Link to={'/allProducts'}>All Products</Link>
+                </div>
             <ul onClick={handleMobile} className="w-full cursor-pointer flex justify-between items-center text-base font-semibold hover:bg-neutral-200 active:text-cyan-300 p-1 rounded-lg px-3">
                 Mobile
                 {mobileOpen == true ? <IoIosArrowUp></IoIosArrowUp> : <IoIosArrowDown></IoIosArrowDown>}
@@ -66,7 +69,7 @@ const SubmenuDropdown = () => {
 
             </ul>}
 
-            <ul onClick={handleWatch} className="w-full cursor-pointer flex justify-between items-center text-base font-semibold hover:bg-neutral-200 active:text-cyan-300 p-1 rounded-lg px-3">
+            {/* <ul onClick={handleWatch} className="w-full cursor-pointer flex justify-between items-center text-base font-semibold hover:bg-neutral-200 active:text-cyan-300 p-1 rounded-lg px-3">
                 <Link to={'watch'}> Watch</Link>
                 {watchOpen == true ? <IoIosArrowUp></IoIosArrowUp> : <IoIosArrowDown></IoIosArrowDown>}
 
@@ -93,7 +96,7 @@ const SubmenuDropdown = () => {
                     <Link to={'accessory-speaker'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Speaker</li></Link>
 
 
-                </ul>}
+                </ul>} */}
 
         </div>
     );

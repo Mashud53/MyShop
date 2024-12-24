@@ -11,18 +11,21 @@ import NavCrtOrd from "../../NavCrtOrd/NavCrtOrd";
 import useCart from "../../../Hooks/useCart";
 import useRole from "../../../Hooks/useRole";
 import useOrder from "../../../Hooks/useOrder";
+import useMenus from "../../../Hooks/useMenus";
+import useSubmenus from "../../../Hooks/useSubmenus";
 
 
 
 const Navbar = () => {
-
+    const [allMenus] = useMenus()
+    const [subMenus] = useSubmenus()
     const { user, logOut } = useContext(AuthContext)
     const [userRole] = useRole();
     const [cart] = useCart();
     const [getOrder] = useOrder();
     const [searchValue, setSearchValue] = useState('');
     const navigate = useNavigate();
-
+    console.log(subMenus)
 
     const navOptions =
         <>
@@ -30,18 +33,70 @@ const Navbar = () => {
                 {/* <div className="dropdown group">
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"> */}
                 <SubmenuDropdown></SubmenuDropdown>
+                <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
+                {/* {
+                            allMenus.map(menu =>
+                                <div key={menu._id}
+                                    className="dropdown dropdown-hover group">
+                                    <div tabIndex={0} role="button" className="text-base font-semibold">{menu.menu}</div>
+                                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                        
+                                            {subMenus && subMenus.filter(item => item.menu.toLowerCase() === menu.menu.toLowerCase())
+                                            .map(filterItem =><div key={filterItem._id}>
+                                               <Link to={`/${filterItem.name}`}>
+                                               <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">{filterItem.name}</li>
+                                               </Link> 
+                                                </div>)
+                                            
+                                            }
+
+                                        
+                                    </ul>                             
+
+                                </div>)
+                        } */}
+
+                {
+                   allMenus && allMenus.map(menu => <div key={menu._id} className="collapse collapse-arrow bg-base-200">
+                        <input type="radio" name="my-accordion-2" />
+                        <div className="collapse-title text-xl font-medium">{menu.menu}</div>
+                      
+                        {subMenus && subMenus.filter(item => item.menu.toLowerCase() === menu.menu.toLowerCase())
+                            .map(filterItem => <div key={filterItem._id}
+                                className="collapse-content" 
+                            >
+                                
+                                <Link to={`/${filterItem.name}`}>
+                                    <div className="hover:bg-cyan-400 hover:rounded-lg hover:text-white py-1  ">{filterItem.name}</div>
+                                    
+                                </Link>
+                                
+                                
+                            </div>)
+                            
+
+                        }
+                       
+                        
+
+                    </div>)
+                }
+
+
+
 
                 {/* </ul>
                 </div> */}
-                <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
-                <li><Link to={'/usedDevice'} className="text-base font-semibold">Used Device</Link></li>
+
+
+
                 <li><Link to={'/dashboard'} className="text-base font-semibold">Dashboard</Link></li>
                 <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
                 <>
                     <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
                     <SubmenuDropdown userRole={userRole} cart={cart}></SubmenuDropdown>
                     <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
-                    <li><Link to={'/usedDevice'} className="text-base font-semibold">Used Device</Link></li>
+
                     <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
                     <li><Link to={'/login'} className="text-base font-semibold">Login</Link></li>
                 </>
@@ -116,7 +171,37 @@ const Navbar = () => {
                 </div>
                 <div className="hidden md:block w-full bg-white py-2 px-2">
                     <div className="w-full flex justify-center items-center gap-4">
+
+                        {
+                            allMenus.map(menu =>
+                                <div key={menu._id}
+                                    className="dropdown dropdown-hover group">
+                                    <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">{menu.menu}</div>
+                                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+
+                                        {subMenus && subMenus.filter(item => item.menu.toLowerCase() === menu.menu.toLowerCase())
+                                            .map(filterItem => <div key={filterItem._id}>
+                                                <Link to={`/${filterItem.name}`}>
+                                                    <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">{filterItem.name}</li>
+                                                </Link>
+                                            </div>)
+
+                                        }
+
+
+                                    </ul>
+
+                                </div>)
+                        }
+                        {/* -----------------------------------------    
                         <div className="dropdown dropdown-hover group">
+                            <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">
+                                <Link to={'/allProducts'}>All Products</Link>
+                            </div>
+
+                        </div>
+                        <div className="dropdown dropdown-hover group">
+
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Mobile</div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <Link to={'mobile-apple'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Apple</li></Link>
@@ -128,6 +213,8 @@ const Navbar = () => {
                                 <Link to={'mobile-sony'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Sony</li></Link>
                                 <Link to={'mobile-huawei'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Huwei</li></Link>
                                 <Link to={'mobile-realme'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Realme</li></Link>
+                                <Link to={'Vivo'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Vivo</li></Link>
+                                <Link to={'Honor'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Honor</li></Link>
                             </ul>
                         </div>
                         <div className="dropdown dropdown-hover group">
@@ -162,7 +249,8 @@ const Navbar = () => {
                                 <Link to={'accessory-speaker'}><li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Speaker</li></Link>
 
                             </ul>
-                        </div>
+                        </div> */}
+
                         {/* cover and galss ------------- */}
                         {/* <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Cover & Glass</div>
@@ -174,22 +262,17 @@ const Navbar = () => {
                                 <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">MacBook Screen Protector</li>
                             </ul>
                         </div> */}
-                        <div className="dropdown dropdown-hover group">
+                        {/* <div className="dropdown dropdown-hover group">
                             <Link to={'/perfume'}><div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">Perfume</div></Link>
-                            {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">Phone Cover</li>
-                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Screen Protector</a></li>
-                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>Phone Camera Protector</a></li>
-                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>MacBook Cover</a></li>
-                            <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white"><a>MacBook Screen Protector</a></li>
-                        </ul> */}
+                            
                         </div>
                         <div className="dropdown dropdown-hover group">
                             <div tabIndex={0} role="button" className="m-1 font-semibold group-hover:text-cyan-500">
-                               <Link to={'/usedDevice'}>Used Device</Link>
-                                </div>
+                                <Link to={'/usedDevice'}>Used Device</Link>
+                            </div>
 
                         </div>
+                        ------------------------------------------ */}
                     </div>
 
                 </div>

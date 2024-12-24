@@ -16,7 +16,7 @@ const Apple = () => {
     return (
         <>
         <div className="mt-32 pb-10">
-            <h2>Apple</h2>
+            
             <div >
                 {
                     brandProduct?.length>0 ? 

@@ -1,4 +1,5 @@
 
+
 import { TbFidgetSpinner } from 'react-icons/tb'
 
 const AddProductForm = ({
@@ -14,8 +15,12 @@ const AddProductForm = ({
     uploadButtonText3,
     uploadButtonText4,
     uploadButtonText5,
+    allMenus, 
+    subMenus, 
 
 }) => {
+
+   
     return (
         <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
             <form onSubmit={handleSubmit}>
@@ -44,21 +49,19 @@ const AddProductForm = ({
                                 required
                                 className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
                                 name='category'
+                                defaultValue=""
                             >
-                                <option value={'Mobile'}>Mobile</option>
-                                <option value={'Laptop'}>Laptop</option>
-                                <option value={'Women'}>Women</option>
-                                <option value={'Accessories'}>Accessories</option>
-                                <option value={'Watch'}>Watch</option>
-                                {/* <option value={'Shoe'}>Shoe</option> */}
-                                <option value={'Perfume'}>Perfume</option>
-                                <option value={'Toy'}>Toy</option>
+                                <option value="" disabled>
+                                    Select a category
+                                </option>
+                                {
+                                    allMenus && allMenus.map(item => (
+                                        <option value={item.menu} key={item._id}>
 
-                                {/* {categories.map(category => (
-                                    <option value={category.label} key={category.label}>
-                                        {category.label}
-                                    </option>
-                                ))} */}
+                                            {item.menu}
+                                        </option>
+                                    ))}
+
                             </select>
                         </div>
                         <div className='space-y-1 text-sm'>
@@ -69,8 +72,10 @@ const AddProductForm = ({
                                 required
                                 className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
                                 name='type'
+                                defaultValue=""
                             >
-                                <option value={'Smartphone'}>Smartphone</option>
+                                <option value="" disabled>Select product type</option>
+                                {/* <option value={'Smartphone'}>Smartphone</option>
                                 <option value={'Laptop'}>Laptop</option>
                                 <option value={'iPad'}>iPad</option>
                                 <option value={'Cloth'}>Cloth</option>
@@ -86,7 +91,15 @@ const AddProductForm = ({
                                 <option value={'Smart_Watch'}>Smart Watch</option>
                                 <option value={'Classic_Watch'}>Classic Watch</option>
                                 <option value={'Other'}>Fashion</option>
-                                <option value={'Other'}>Other</option>
+                                <option value={'Other'}>Other</option> */}
+
+                                {
+                                    subMenus && subMenus.map(item => (
+                                        <option value={item.name} key={item._id}>
+
+                                            {item.name}
+                                        </option>
+                                    ))}
 
                             </select>
                         </div>

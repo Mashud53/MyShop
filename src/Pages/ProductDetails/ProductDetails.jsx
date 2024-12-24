@@ -22,7 +22,7 @@ import YouMayLike from "./YouMayLike";
 
 const ProductDetails = () => {
     const product = useLoaderData();
-    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, currentPrice1, currentPrice2, currentPrice3, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5, category, type, productType } = product;
+    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, currentPrice1, currentPrice2, currentPrice3, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5, category, type} = product;
 
     const { user } = useAuth();
     const [, , refetch] = useCart()
@@ -205,9 +205,7 @@ const ProductDetails = () => {
                     {
                         brand?.length > 0 && <h2 className="mt-2 font-semibold">Brand: {brand}</h2>
                     }
-                    <div>
-                        <h2 className="font-bold  my-2">Condition: <span className="bg-cyan-300 w-14 px-2 py-1 text-center text-white rounded-lg ">{productType}</span></h2>
-                    </div>
+                    
                     <div className="flex flex-col justify-center items-start">
                         <label >Quantity</label>
                         <div className="flex justify-center items-center">

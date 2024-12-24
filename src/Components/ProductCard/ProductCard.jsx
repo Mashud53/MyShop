@@ -90,8 +90,8 @@ const ProductCard = ({ products }) => {
                 </figure>
                 <div className=" card-body relative text-center md:text-left ">
                     <h2 className="hidden md:block card-title md:text-left text-sm md:text-base lg:text-lg">{name.length > 20 ? <>{name.slice(0, 20) + '...'}</> : <>{name}</>}</h2>
-                    <h2 className="md:hidden card-title text-center text-sm md:text-base lg:text-lg">{name.length > 15 ? <p className="text-center">{name.slice(0, 15) + '...'}</p> : <p className="text-center">{name}</p>}</h2>
-                    <div className="flex items-center justify-center md:justify-start">
+                    <h2 className="md:hidden card-title text-center text-sm md:text-base lg:text-lg">{name.length > 15 ? <p className="text-center">{name.slice(0, 13) + '...'}</p> : <p className="text-center">{name}</p>}</h2>
+                    <div className="hidden md:flex items-center justify-center md:justify-start">
                         <div className=" rating rating-xs">
                             <input type="radio" name="rating-1" className="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
@@ -99,7 +99,7 @@ const ProductCard = ({ products }) => {
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
                         </div>
-                    </div>
+                     </div>
                     {/* <p className="md:text-left lg:text-lg text-sm">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
                     <p className="md:text-left lg:text-lg text-sm">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {currentPrice1}</p> */}
                     {

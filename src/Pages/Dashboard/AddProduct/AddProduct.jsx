@@ -5,12 +5,16 @@ import { useState } from "react";
 import { addProduct } from "../../../api/product";
 import Swal from "sweetalert2";
 import { useOutletContext } from "react-router-dom";
+import useMenus from "../../../Hooks/useMenus";
+import useSubmenus from "../../../Hooks/useSubmenus";
 
 
 
 const AddProduct = () => {
     const [loading, setLoading] = useState(false)
     const { setActive } = useOutletContext();
+    const [allMenus, isLoading, refetch]= useMenus();
+    const [subMenus, subLoading, subrefetch]= useSubmenus()
     const [uploadButtonText1, setUploadButtonText1] = useState('Upload Image')
     const [uploadButtonText2, setUploadButtonText2] = useState('Upload Image')
     const [uploadButtonText3, setUploadButtonText3] = useState('Upload Image')
@@ -157,7 +161,7 @@ const AddProduct = () => {
     }
     return (
         <div onClick={()=>setActive(true)} className="md:py-10">
-            <Helmet><title>My Shop || Add Room</title></Helmet>
+            <Helmet><title>My Shop || Add Product</title></Helmet>
             <h2 className="text-xl text-center font-bold uppercase pt-8 pb-4 border-b-2">Add Product</h2>
             <div className="mt-8">
             <AddProductForm handleSubmit={handleSubmit} 
@@ -171,7 +175,15 @@ const AddProduct = () => {
             uploadButtonText3={uploadButtonText3}
             uploadButtonText4={uploadButtonText4}
             uploadButtonText5={uploadButtonText5}
-            loading={loading}></AddProductForm>
+            loading={loading}
+            allMenus={allMenus }
+            isLoading ={isLoading}
+            refetch= {refetch}
+            subMenus={subMenus} 
+            subLoading={subLoading}
+            subrefetch={subrefetch}>
+                
+            </AddProductForm>
             </div>
 
         </div>

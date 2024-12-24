@@ -65,7 +65,7 @@ const ShopByBrand = () => {
 
                     <img className="w-[35px] md:w-[60px]" src={vivo} alt="" />
                 </div></Link>
-                <Link to={"Vivo"}><div className="h-[30px] md:h-[55px] flex justify-center items-center bg-base-100 border-2 border-gray-200 rounded-xl hover:border-cyan-300 shadow-sm">
+                <Link to={"Honor"}><div className="h-[30px] md:h-[55px] flex justify-center items-center bg-base-100 border-2 border-gray-200 rounded-xl hover:border-cyan-300 shadow-sm">
 
                     <img className="w-[45px] md:w-[70px]" src={honor} alt="honor" />
                 </div></Link>

@@ -5,6 +5,7 @@ import { TbHomeCog } from "react-icons/tb";
 import { PiListMagnifyingGlassDuotone } from "react-icons/pi";
 import { FaListCheck } from "react-icons/fa6";
 import { FaUserCog } from "react-icons/fa";
+import { LuListPlus, LuListX } from "react-icons/lu";
 
 const AdminMenu = () => {
     return (
@@ -13,6 +14,16 @@ const AdminMenu = () => {
                 icon={BsGraphUp}
                 label='Statistics'
                 address='/dashboard'
+            />
+            <MenuItem
+                icon={LuListPlus}
+                label='Add Menu'
+                address='add-menu'
+            />
+            <MenuItem
+                icon={LuListX}
+                label='Manage Menu'
+                address='manage-menu'
             />
             <MenuItem
                 icon={MdOutlineAddBusiness}
