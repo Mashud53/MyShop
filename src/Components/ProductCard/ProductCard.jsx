@@ -115,7 +115,7 @@ const ProductCard = ({ products }) => {
 
                 </div>
             </Link>
-            <div className=" card-actions mt-4 justify-end">
+            <div className=" card-actions justify-end">
                 <button onClick={() => handleAddtoCart(products)} className="hidden w-full md:flex justify-center items-center px-3 py-2  border-cyan-500 bg-cyan-400 group-hover:border-0 group-hover:text-white">Add to Cart <FaCartArrowDown className="ml-2"></FaCartArrowDown></button>
                 <button onClick={() => handleAddtoCart(products)} className="w-full md:hidden flex justify-center items-center px-3 py-2 border-cyan-500 group-hover:bg-cyan-500 group-hover:border-0 group-hover:text-white"><FaCartArrowDown className=""></FaCartArrowDown></button>
                 {/* <button onClick={() => handleAddtoCart(products)} className="w-full md:hidden flex justify-center items-center px-3 py-2 border-cyan-500 group-hover:bg-cyan-500 group-hover:border-0 group-hover:text-white">Buy Now</button> */}

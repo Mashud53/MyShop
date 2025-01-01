@@ -10,7 +10,7 @@ import useMenus from "../../../Hooks/useMenus";
 
 const AddMenu = () => {
     const [loading, setLoading] = useState(false)
-    const [allMenus, isLoading, refetch] = useMenus();
+    const [allMenus, , refetch] = useMenus();
     console.log(allMenus)
 
     const handleMenu = async (e) => {

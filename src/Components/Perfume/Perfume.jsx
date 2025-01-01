@@ -39,7 +39,7 @@ const Perfume = () => {
             setPerfumeProduct(perfume)
         }
     }, [allProducts])
-    console.log(perfumeProduct)
+    
 
     useEffect(() => {
         const updateSlidePreview = () => {

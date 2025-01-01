@@ -1,9 +1,9 @@
 import { BsGraphUp } from "react-icons/bs";
 import MenuItem from "./Sidebar/MenuItem";
-import { MdAddHomeWork, MdOutlineAddBusiness } from "react-icons/md";
-import { TbHomeCog } from "react-icons/tb";
+import { MdOutlineAddBusiness } from "react-icons/md";
+
 import { PiListMagnifyingGlassDuotone } from "react-icons/pi";
-import { FaListCheck } from "react-icons/fa6";
+import { FaListCheck,FaUpload,FaStubber  } from "react-icons/fa6";
 import { FaUserCog } from "react-icons/fa";
 import { LuListPlus, LuListX } from "react-icons/lu";
 
@@ -31,9 +31,9 @@ const AdminMenu = () => {
                 address='add-product'
             />
             <MenuItem
-                icon={MdAddHomeWork}
-                label='Add Property'
-                address='add-property'
+                icon={FaUpload }
+                label='Add Banner'
+                address='add-banner'
             />
             <MenuItem
                 icon={PiListMagnifyingGlassDuotone}
@@ -41,9 +41,9 @@ const AdminMenu = () => {
                 address='manage-product'
             />
             <MenuItem
-                icon={TbHomeCog}
-                label='Manage Property'
-                address='/dashboard'
+                icon={FaStubber}
+                label='Manage Banners'
+                address='manage-banner'
             />
             <MenuItem
                 icon={FaUserCog}

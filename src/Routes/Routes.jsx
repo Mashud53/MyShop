@@ -74,6 +74,8 @@ import AddMenu from "../Pages/Dashboard/AddMenu/AddMenu";
 import ManageMenu from "../Pages/Dashboard/ManageMenu/ManageMenu";
 import UpdateSubmenu from "../Pages/Dashboard/ManageMenu/UpdateSubmenu";
 import SubmenusProducts from "../Pages/SubmenusProduct/SubmenusProducts";
+import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
+import ManageBanner from "../Pages/Dashboard/ManageBanner/ManageBanner";
 
 
 export const router = createBrowserRouter([
@@ -359,6 +361,15 @@ export const router = createBrowserRouter([
             {
                 path: 'add-product',
                 element: <AdminHostRoute><AddProduct></AddProduct></AdminHostRoute>
+            },
+            {
+                path: 'add-banner',
+                element: <AdminHostRoute><AddBanner></AddBanner></AdminHostRoute>
+            },
+
+            {
+                path: 'manage-banner',
+                element: <AdminHostRoute><ManageBanner></ManageBanner></AdminHostRoute>
             },
             {
                 path: 'manage-product',

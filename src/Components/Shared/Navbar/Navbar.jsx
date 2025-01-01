@@ -17,6 +17,7 @@ import useSubmenus from "../../../Hooks/useSubmenus";
 
 
 const Navbar = () => {
+
     const [allMenus] = useMenus()
     const [subMenus] = useSubmenus()
     const { user, logOut } = useContext(AuthContext)
@@ -25,76 +26,20 @@ const Navbar = () => {
     const [getOrder] = useOrder();
     const [searchValue, setSearchValue] = useState('');
     const navigate = useNavigate();
-    console.log(subMenus)
+
 
     const navOptions =
         <>
             {user ? <><li ><Link to={'/'} className="text-base font-semibold active:text-cyan-300" >Home</Link></li>
-                {/* <div className="dropdown group">
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"> */}
-                <SubmenuDropdown></SubmenuDropdown>
+
                 <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
-                {/* {
-                            allMenus.map(menu =>
-                                <div key={menu._id}
-                                    className="dropdown dropdown-hover group">
-                                    <div tabIndex={0} role="button" className="text-base font-semibold">{menu.menu}</div>
-                                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                        
-                                            {subMenus && subMenus.filter(item => item.menu.toLowerCase() === menu.menu.toLowerCase())
-                                            .map(filterItem =><div key={filterItem._id}>
-                                               <Link to={`/${filterItem.name}`}>
-                                               <li className="hover:bg-cyan-400 hover:rounded-lg hover:text-white">{filterItem.name}</li>
-                                               </Link> 
-                                                </div>)
-                                            
-                                            }
-
-                                        
-                                    </ul>                             
-
-                                </div>)
-                        } */}
-
-                {
-                   allMenus && allMenus.map(menu => <div key={menu._id} className="collapse collapse-arrow bg-base-200">
-                        <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-xl font-medium">{menu.menu}</div>
-                      
-                        {subMenus && subMenus.filter(item => item.menu.toLowerCase() === menu.menu.toLowerCase())
-                            .map(filterItem => <div key={filterItem._id}
-                                className="collapse-content" 
-                            >
-                                
-                                <Link to={`/${filterItem.name}`}>
-                                    <div className="hover:bg-cyan-400 hover:rounded-lg hover:text-white py-1  ">{filterItem.name}</div>
-                                    
-                                </Link>
-                                
-                                
-                            </div>)
-                            
-
-                        }
-                       
-                        
-
-                    </div>)
-                }
-
-
-
-
-                {/* </ul>
-                </div> */}
-
-
+                <SubmenuDropdown allMenus={allMenus} subMenus={subMenus}></SubmenuDropdown>
 
                 <li><Link to={'/dashboard'} className="text-base font-semibold">Dashboard</Link></li>
                 <div onClick={logOut} className="px-3 py-1 cursor-pointer text-base font-semibold hover:bg-neutral-200 rounded-lg">Logout</div></> :
                 <>
                     <li><Link to={'/'} className="text-base font-semibold" >Home</Link></li>
-                    <SubmenuDropdown userRole={userRole} cart={cart}></SubmenuDropdown>
+                    <SubmenuDropdown allMenus={allMenus} subMenus={subMenus}></SubmenuDropdown>
                     <li><Link to={'/perfume'} className="text-base font-semibold">Perfume</Link></li>
 
                     <li><Link to={'/signup'} className="text-base font-semibold">Signup</Link></li>
@@ -118,11 +63,11 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="max-w-screen-xl navbar fixed top-0 z-[20] flex flex-col font-catamaran px-0 py-0">
+            <div className="max-w-screen-xl navbar fixed top-0 z-[30] flex flex-col font-catamaran px-0 py-0">
                 <div className="w-full navbar bg-cyan-400">
                     <div className="navbar-start">
                         {/* <a className=" font-bold uppercase">My Shop</a> */}
-                        <Link><img className="w-[150px]" src={logo} alt="" /></Link>
+                        <Link><img className="w-[150px] md:w-[200px]" src={logo} alt="" /></Link>
                     </div>
                     {/* search bar  */}
                     <div className="navbar-center hidden md:block">

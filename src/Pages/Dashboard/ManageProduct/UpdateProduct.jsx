@@ -4,14 +4,18 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { useLoaderData } from "react-router-dom";
 import { updateProduct } from "../../../api/product";
 import Swal from "sweetalert2";
+import useMenus from "../../../Hooks/useMenus";
+import useSubmenus from "../../../Hooks/useSubmenus";
 
 
 const UpdateProduct = () => {
 
     const product = useLoaderData()
+    const [allMenus] = useMenus();
+    const [subMenus] = useSubmenus()
     const { _id, name, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, category, type, brand, price1, price2, price3, currentPrice1, currentPrice2, currentPrice3, storage1, storage2, storage3, color1, color2, color3, color4, color5, color6, storageType, operatingSystem, operating_system, network, wirelessNetwork, wireless_network, screen, connector, screenSize, productType, desc, desc1, desc2, desc3, desc4, desc5 } = product;
     const [loading, setLoading] = useState(false)
-    // console.log(product)
+    console.log(product)
 
     // const [uploadButtonText1, setUploadButtonText1] = useState(image1)
     // const [uploadButtonText2, setUploadButtonText2] = useState(image2)
@@ -154,52 +158,48 @@ const UpdateProduct = () => {
                                     Category
                                 </label>
                                 <select
-
+                                    required
                                     className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
                                     name='category'
-                                    defaultValue={category ? category : ''}
+                                    defaultValue={category ? category: ""}
                                 >
-                                    <option value={'Mobile'}>Mobile</option>
-                                    <option value={'Laptop'}>Laptop</option>
-                                    <option value={'Women'}>Women</option>
-                                    <option value={'Accessories'}>Accessories</option>
-                                    <option value={'Watch'}>Watch</option>
-                                    {/* <option value={'Shoe'}>Shoe</option> */}
-                                    <option value={'Toy'}>Toy</option>
-                                    <option value={'Perfume'}>Toy</option>
+                                    <option value="" disabled>
+                                        Select a category
+                                    </option>
+                                    {
+                                        allMenus && allMenus.map(item => (
+                                            <option value={item.menu} key={item._id}>
 
+                                                {item.menu}
+                                            </option>
+                                        ))}
 
                                 </select>
                             </div>
                             <div className='space-y-1 text-sm'>
-                                <label htmlFor='type' className='block text-gray-600'>
-                                    Type
-                                </label>
-                                <select
+                            <label htmlFor='type' className='block text-gray-600'>
+                                Type
+                            </label>
+                            <select
+                                required
+                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                name='type'
+                                defaultValue={type? type :""}
+                            >
+                                <option value="" disabled>Select product type</option>                             
 
-                                    className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
-                                    name='type'
-                                    defaultValue={type ? type : ''}
-                                >
-                                    <option value={'Smartphone'}>Smartphone</option>
-                                    <option value={'Laptop'}>Laptop</option>
-                                    <option value={'iPad'}>iPad</option>
-                                    <option value={'Cloth'}>Cloth</option>
-                                    <option value={'Headphone'}>Headphone</option>
-                                    <option value={'Men'}>Men</option>
-                                    <option value={'Router'}>Router</option>
-                                    <option value={'Charger'}>Charger</option>
-                                    <option value={'Power_Bank'}>Power Bank</option>
-                                    <option value={'Wireless_Charger'}>Wireless Charger</option>
-                                    <option value={'Airpod'}>Airpod</option>
-                                    <option value={'Wirelesss_Headphone'}>Wirelesss Headphone</option>
-                                    <option value={'Speaker'}>Speaker</option>
-                                    <option value={'Smart_Watch'}>Smart Watch</option>
-                                    <option value={'Classic_Watch'}>Classic Watch</option>
-                                    <option value={'Other'}>Other</option>
+                                {
+                                    subMenus && subMenus.map(item => (
+                                        <option value={item.name} key={item._id}>
 
-                                </select>
-                            </div>
+                                            {item.name}
+                                        </option>
+                                    ))}
+
+                            </select>
+                        </div>
+                            
+                           
                             <div className='space-y-1 text-sm'>
                                 <label htmlFor='brand' className='block text-gray-600'>
                                     Brand
