@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 
 
-const Counter = () => {
+const Counter = ({item}) => {
     const [timeLift, setTimeLift] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+    // console.log(item?.startDate)
 
     useEffect(() => {
-        const targetDate = new Date('2025-01-15T00:00:00');
+        const targetDate = new Date(item?.deadLine);
 
         const updateCountdown = () => {
             const now = new Date();
             const total = targetDate - now;
+            // console.log(total)
 
             if (total <= 0) {
                 setTimeLift({ days: 0, hours: 0, minutes: 0, seconds: 0 })
@@ -27,7 +29,7 @@ const Counter = () => {
 
         return () => clearInterval(timer)
 
-    }, [])
+    }, [item?.deadLine])
 
     return (
         <div className="grid grid-flow-col gap-5 font-mono">

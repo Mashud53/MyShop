@@ -19,11 +19,10 @@ const Home = () => {
         <div className="min-h-[100vh] bg-[#f8f9fa] pt-20 md:pt-10 max-w-screen-xl pb-10">
             <Helmet><title>Delux Mart | Home</title></Helmet>
             <div className="banner-section hidden md:block mt-20">
-                    <Banner></Banner>
-                </div>
-            <div className="md:px-4">
-                
+                <Banner></Banner>
                 <Offer />
+            </div>
+            <div className="md:px-4">
                 <FeaturedProduct></FeaturedProduct>
                 <CategoryShoping></CategoryShoping>
                 <PopularProduct></PopularProduct>
