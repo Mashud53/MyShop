@@ -20,8 +20,9 @@ const Home = () => {
             <Helmet><title>Delux Mart | Home</title></Helmet>
             <div className="banner-section hidden md:block mt-20">
                 <Banner></Banner>
-                <Offer />
+
             </div>
+            <Offer />
             <div className="md:px-4">
                 <FeaturedProduct></FeaturedProduct>
                 <CategoryShoping></CategoryShoping>

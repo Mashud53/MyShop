@@ -3,12 +3,17 @@ import Swal from "sweetalert2";
 import { addShopByCategory } from "../../../api/banner";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { imageUpload } from "../../../api/utils";
+import useMenus from "../../../Hooks/useMenus";
+
+import MenuLoader from "../../../Components/Loader/Loader";
 
 
 const CategoryBanner = () => {
     const [loading, setLoading] = useState(false);
+    const [allMenus, isLoading, ] = useMenus()
     const [uploadButtonText, setUploadButtonText] = useState('Upload Image')
     const [uploadImg, setUploadimg] = useState("");
+    console.log(allMenus)
 
     const handleImageChange = image => {
         setUploadButtonText(image?.name)
@@ -19,7 +24,7 @@ const CategoryBanner = () => {
         const title = form.title.value;
         const image = form.image.files[0];
         const imgLink = form.imgLink.value;
-        const category = form.category.value;
+        // const category = form.category.value;
         setLoading(true)
         const imgUrl = image && await imageUpload(image)
         if (!imgUrl?.data?.display_url) {
@@ -34,13 +39,13 @@ const CategoryBanner = () => {
             setUploadimg(imgUrl.data.display_url)
 
         }
-        console.log('image upload link====', uploadImg)
+        console.log('image upload link====', uploadImg, imgLink)
 
         const uploadData = {
             title: title,
             image: uploadImg,
             imgLink: imgLink,
-            category:category
+            // category:category
         }
 
 
@@ -87,7 +92,7 @@ const CategoryBanner = () => {
             <form onSubmit={handleCategoryBAnner}>
                 <div className='grid grid-cols-1  gap-10'>
 
-                    <div className='space-y-1 text-sm'>
+                    {/* <div className='space-y-1 text-sm'>
                         <label htmlFor='title' className='block text-gray-600'>
                             Title
                         </label>
@@ -99,7 +104,7 @@ const CategoryBanner = () => {
                             placeholder='Title'
                             required
                         />
-                    </div>
+                    </div> */}
 
 
 
@@ -141,35 +146,27 @@ const CategoryBanner = () => {
 
                     </div>
                     <div className='space-y-1 text-sm'>
-                        <label htmlFor='type' className='block text-gray-600'>
-                            Category
-                        </label>
-                        <select
-                            required
-                            className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
-                            name='category'
-                            defaultValue=""
-                        >
-                            <option value={'Smartphone'}>Smartphone</option>
-                            <option value={'Laptop'}>Laptop</option>
-                            <option value={'iPad'}>iPad</option>
-                            <option value={'Cloth'}>Cloth</option>
-                            <option value={'Headphone'}>Headphone</option>
-                            <option value={'Men'}>Men</option>
-                            <option value={'Router'}>Router</option>
-                            <option value={'Charger'}>Charger</option>
-                            <option value={'Power_Bank'}>Power Bank</option>
-                            <option value={'Wireless_Charger'}>Wireless Charger</option>
-                            <option value={'Airpod'}>Airpod</option>
-                            <option value={'Wirelesss_Headphone'}>Wirelesss Headphone</option>
-                            <option value={'Speaker'}>Speaker</option>
-                            <option value={'Smart_Watch'}>Smart Watch</option>
-                            <option value={'Classic_Watch'}>Classic Watch</option>
-                            <option value={'Other'}>Fashion</option>
-                            <option value={'Other'}>Other</option>
+                            <label htmlFor='type' className='block text-gray-600 pl-2'>
+                              Title
+                            </label>
+                            <select
+                                required
+                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                name='title'
+                                defaultValue=""
+                            >
+                                <option value="" disabled>Select Menu</option>                             
 
-                        </select>
-                    </div>
+                                {
+                                   allMenus?.map(item => (
+                                        <option value={item.menu} key={item._id}>
+
+                                           {isLoading ? <>{MenuLoader}</>:<>{item.menu}</>} 
+                                        </option>
+                                    ))}
+
+                            </select>
+                        </div>
 
 
 
