@@ -258,8 +258,6 @@ const ProductDetails = () => {
 
             </div>
 
-
-
             <BuyNowModal
                 isOpen={isOpen}
                 closeModal={closeModal}

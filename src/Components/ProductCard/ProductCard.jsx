@@ -95,7 +95,7 @@ const ProductCard = ({ products }) => {
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
                         </div>
-                    </div>
+                     </div>
                     {/* <p className="md:text-left lg:text-lg text-sm">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {price1}</p>
                     <p className="md:text-left lg:text-lg text-sm">Price: <span className="ml-1">&#x62f;&#x2e;&#x625;</span> {currentPrice1}</p> */}
                     {

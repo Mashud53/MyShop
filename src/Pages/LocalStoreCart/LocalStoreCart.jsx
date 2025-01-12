@@ -103,7 +103,7 @@ const LocalStoreCart = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        displayCarts?.map((item, index) => <tr key={item._id}>
+                                        displayCarts?.map((item, index) => <tr key={index}>
                                             <th>
                                                 {index + 1}
                                             </th>
