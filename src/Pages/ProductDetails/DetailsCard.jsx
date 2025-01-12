@@ -17,10 +17,10 @@ const DetailsCard = ({products}) => {
     const handleView = async (id) => {
         const currentView = (view + 1)
         setView(currentView)
-        console.log(id, currentView)
-        const data = await updateViews(id, { views: currentView })
+        
+        await updateViews(id, { views: currentView })
 
-        console.log(data)
+      
 
     }
 

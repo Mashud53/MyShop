@@ -1,4 +1,5 @@
 
+
 import { TbFidgetSpinner } from 'react-icons/tb'
 
 const AddProductForm = ({
@@ -14,8 +15,12 @@ const AddProductForm = ({
     uploadButtonText3,
     uploadButtonText4,
     uploadButtonText5,
+    allMenus,
+    subMenus,
 
 }) => {
+
+
     return (
         <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
             <form onSubmit={handleSubmit}>
@@ -44,21 +49,19 @@ const AddProductForm = ({
                                 required
                                 className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
                                 name='category'
+                                defaultValue=""
                             >
-                                <option value={'Mobile'}>Mobile</option>
-                                <option value={'Laptop'}>Laptop</option>
-                                <option value={'Women'}>Women</option>
-                                <option value={'Accessories'}>Accessories</option>
-                                <option value={'Watch'}>Watch</option>
-                                {/* <option value={'Shoe'}>Shoe</option> */}
-                                <option value={'Perfume'}>Perfume</option>
-                                <option value={'Toy'}>Toy</option>
+                                <option value="" disabled>
+                                    Select a category
+                                </option>
+                                {
+                                    allMenus && allMenus.map(item => (
+                                        <option value={item.menu} key={item._id}>
 
-                                {/* {categories.map(category => (
-                                    <option value={category.label} key={category.label}>
-                                        {category.label}
-                                    </option>
-                                ))} */}
+                                            {item.menu}
+                                        </option>
+                                    ))}
+
                             </select>
                         </div>
                         <div className='space-y-1 text-sm'>
@@ -69,24 +72,17 @@ const AddProductForm = ({
                                 required
                                 className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
                                 name='type'
+                                defaultValue=""
                             >
-                                <option value={'Smartphone'}>Smartphone</option>
-                                <option value={'Laptop'}>Laptop</option>
-                                <option value={'iPad'}>iPad</option>
-                                <option value={'Cloth'}>Cloth</option>
-                                <option value={'Headphone'}>Headphone</option>
-                                <option value={'Men'}>Men</option>
-                                <option value={'Router'}>Router</option>
-                                <option value={'Charger'}>Charger</option>
-                                <option value={'Power_Bank'}>Power Bank</option>
-                                <option value={'Wireless_Charger'}>Wireless Charger</option>
-                                <option value={'Airpod'}>Airpod</option>
-                                <option value={'Wirelesss_Headphone'}>Wirelesss Headphone</option>
-                                <option value={'Speaker'}>Speaker</option>
-                                <option value={'Smart_Watch'}>Smart Watch</option>
-                                <option value={'Classic_Watch'}>Classic Watch</option>
-                                <option value={'Other'}>Fashion</option>
-                                <option value={'Other'}>Other</option>
+                                <option value="" disabled>Select product type</option>                             
+
+                                {
+                                    subMenus && subMenus.map(item => (
+                                        <option value={item.name} key={item._id}>
+
+                                            {item.name}
+                                        </option>
+                                    ))}
 
                             </select>
                         </div>
@@ -94,98 +90,19 @@ const AddProductForm = ({
                             <label htmlFor='brand' className='block text-gray-600'>
                                 Brand
                             </label>
-                            <select
-                                required
-                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
-                                name='brand'
-                            >
-                                <option value={'Apple'}>Apple</option>
-                                <option value={'Samsung'}>Samsung</option>
-                                <option value={'Google_Pixel'}>Google Pixel</option>
-                                <option value={'Xiaomi'}>Xiaomi</option>
-                                <option value={'One_PlUs'}>One Plus</option>
-                                <option value={'Oppo'}>Oppo</option>
-                                <option value={'Vivo'}>Vivo</option>
-                                <option value={'Huwei'}>Huwei</option>
-                                <option value={'Realme'}>Realme</option>
-                                <option value={'Sony'}>Sony</option>
-                                <option value={'Honor'}>Honor</option>
-                                <option value={'Hp'}>Hp</option>
-                                <option value={'Dell'}>Dell</option>
-                                <option value={'Lenovo'}>Lenovo</option>
-                                <option value={'Unknown'}>Rolex</option>
-                                <option value={'Unknown'}>Unknown</option>
-
-                            </select>
-                        </div>
-                        {/* <div className='space-y-1 text-sm'>
-                            <label htmlFor='brand' className='block text-gray-600'>
-                                Brand Name
-                            </label>
                             <input
                                 className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
                                 name='brand'
                                 id='brand'
                                 type='text'
-                                placeholder='Brand Name'
+                                placeholder='brand'
 
+                                required
                             />
-                        </div> */}
-                    </div>
-                    {/* ---------------------sub Category and meta data-------------------------  */}
-                    {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                        <div className='space-y-1 text-sm'>
-                            <label htmlFor='subCategory' className='block text-gray-600'>
-                                Sub Category
-                            </label>
-                            <select
-                                required
-                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
-                                name='category'
-                            >
-                                <option value={'Apple'}>Apple</option>
-                                <option value={'Samsung'}>Samsung</option>
-                                <option value={'Google_Pixel'}>Google Pixel</option>
-                                <option value={'Xiaomi'}>Xiaomi</option>
-                                <option value={'One_Plus'}>One Plus</option>
-                                <option value={'Oppo'}>Oppo</option>
-                                <option value={'Sony'}>Sony</option>
-                                <option value={'Huwei'}>Huwei</option>
-                                <option value={'Realme'}>Sony</option>
-                                <option value={'Vivo'}>Vivo</option>
-                                <option value={'Honor'}>Honor</option>
-                                <option value={'Lenovo'}>Lenovo</option>
-                                <option value={'Lenovo'}>Lenovo</option>
-                                <option value={'Lenovo'}>Lenovo</option>
-
-                                
-                            </select>
                         </div>
-                        <div className='space-y-1 text-sm'>
-                            <label htmlFor='type' className='block text-gray-600'>
-                                Type
-                            </label>
-                            <select
-                                required
-                                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
-                                name='type'
-                            >
-                                <option value={'Smartphone'}>Smartphone</option>
-                                <option value={'Laptop'}>Laptop</option>
-                                <option value={'iPad'}>iPad</option>
-                                <option value={'Cloth'}>Cloth</option>
-                                <option value={'Headphone'}>Headphone</option>
-                                <option value={'Men'}>Men</option>
-                                <option value={'Router'}>Router</option>
-                                <option value={'Charger'}>Charger</option>
-                                <option value={'PowerBank'}>Power Bank</option>
-                                <option value={'Other'}>Other</option>
-
-                            </select>
-                        </div>                        
-                       
-                    </div> */}
-
+                        
+                    </div>
+                   
 
                     {/* image uploade  */}
                     <div className='bg-white p-4'>

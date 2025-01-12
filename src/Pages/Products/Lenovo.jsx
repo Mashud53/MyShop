@@ -13,7 +13,7 @@ const Lenovo = () => {
     return (
         <>
             <div className="mt-32 pb-10">
-                <h2>Lenovo</h2>
+                
                 <div >
                     {
                         brandProduct?.length > 0 ?

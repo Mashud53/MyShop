@@ -17,7 +17,7 @@ const Dell = () => {
     return (
         <>
             <div className="mt-32 pb-10">
-                <h2>Dell</h2>
+               
                 <div >
                     {
                         brandProduct?.length > 0 ?

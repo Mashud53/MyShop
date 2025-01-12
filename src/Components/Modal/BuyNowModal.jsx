@@ -3,13 +3,13 @@ import { Fragment } from 'react'
 import DeliveryAddress from '../Form/DeliveryAddress'
 
 
-const BuyNowModal = ({ closeModal, isOpen, orderInfo, qt, _id }) => {
+const BuyNowModal = ({ closeModal, isOpen, orderInfo, qt, _id, customerName }) => {
 
    
     
     return (
         <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as='div' className='relative z-20' onClose={closeModal}>
+            <Dialog as='div' className=' relative z-20' onClose={closeModal}>
                 <Transition.Child
                     as={Fragment}
                     enter='ease-out duration-300'
@@ -22,8 +22,8 @@ const BuyNowModal = ({ closeModal, isOpen, orderInfo, qt, _id }) => {
                     <div className='fixed inset-0 bg-black bg-opacity-25' />
                 </Transition.Child>
 
-                <div className='fixed inset-0 overflow-y-auto'>
-                    <div className='flex w-full min-h-full items-center justify-center p-4 text-center'>
+                <div className='fixed inset-0 overflow-y-auto '>
+                    <div className='flex w-full min-h-full items-center justify-center px-4 mt-32 mb-8 text-center'>
                         <Transition.Child
                             as={Fragment}
                             enter='ease-out duration-300'
@@ -41,7 +41,7 @@ const BuyNowModal = ({ closeModal, isOpen, orderInfo, qt, _id }) => {
                                     Check Out
                                 </Dialog.Title>
 
-                                <DeliveryAddress closeModal={closeModal} orderInfo={orderInfo} qt={qt} _id={_id}></DeliveryAddress>
+                                <DeliveryAddress closeModal={closeModal} orderInfo={orderInfo} qt={qt} _id={_id} customerName={customerName}></DeliveryAddress>
                                 
                             </Dialog.Panel>
                         </Transition.Child>

@@ -18,7 +18,7 @@ const Sony = () => {
     return (
         <>
             <div className="mt-32 pb-10">
-                <h2>Sony</h2>
+                
                 <div >
                     {brandProduct?.length > 0 ?
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center font-catamaran text-base font-semibold  md:pt-10 mx-auto">

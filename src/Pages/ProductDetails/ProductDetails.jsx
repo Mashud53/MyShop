@@ -1,6 +1,6 @@
 
 
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import {useLoaderData } from "react-router-dom";
 import DetailsPagePhoto from "../../Components/DetailsPagePhoto/DetailsPagePhoto";
 import ProductRating from "../../Components/Rating/ProductRating";
 import ProductStorage from "../../Components/ProductStorage/ProductStorage";
@@ -17,20 +17,20 @@ import { addToCart } from "../../api/cart";
 import useCart from "../../Hooks/useCart";
 import Rating from "./Rating/Rating";
 import YouMayLike from "./YouMayLike";
-
+import useOrder from "../../Hooks/useOrder";
 
 
 const ProductDetails = () => {
     const product = useLoaderData();
-    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, currentPrice1, currentPrice2, currentPrice3, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5, category, type, productType } = product;
+    const { _id, image1, image2, image3, image4, image5, imageURL1, imageURL2, imageURL3, imageURL4, imageURL5, name, brand, price1, currentPrice1, currentPrice2, currentPrice3, price2, price3, storage1, storage2, storage3, storage_Type, operating_system, network, color1, color2, color3, screen, screenSize, wireless_network, desc, desc1, desc2, desc3, desc4, desc5, category, type } = product;
 
     const { user } = useAuth();
     const [, , refetch] = useCart()
+    const [, , orderRefetch] = useOrder();   
 
-    const location = useLocation()
-    const navigate = useNavigate();
-
-
+    // const [cartItem, setCartItem] = useState([])
+    // const previousCart = localStorage.getItem("deluxCart")
+    // setCartItem(JSON.parse(previousCart))
     const [price, setPrice] = useState(currentPrice1 > 0 ? currentPrice1 : price1);
     const [color, setColor] = useState(color1);
     const [storage, setStorage] = useState(storage1);
@@ -54,60 +54,36 @@ const ProductDetails = () => {
     }
 
     const buyHandle = async () => {
-        if (user && user?.email) {
-            const quantity = qt;
-            const totalPrice = quantity * price;
-            const selectedColor = color;
-            const buyer = user?.displayName;
-            const email = user.email;
-            const productId = _id;
-            const productName = name;
-            const productInfo = {
-                quantity, totalPrice, selectedColor, buyer, email, productId, storage, title: productName
-            }
-            console.log(productInfo)
-            setOrderInfo(productInfo)
-            setIsOpen(true)
-
+        const quantity = qt;
+        const totalPrice = quantity * price;
+        const selectedColor = color;
+        const email = user?.email;
+        const productId = _id;
+        const productName = name;
+        const productInfo = {
+            quantity, totalPrice, selectedColor, email, productId, storage, title: productName
         }
-        else {
-            Swal.fire({
-                title: "You are not Login",
-                text: "Please Login to Buy",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Login"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/login', { state: { from: location } })
-                    
-                }
-            });
-        }
-
-
+        console.log(productInfo)
+        setOrderInfo(productInfo)
+        setIsOpen(true)
+        orderRefetch();
 
     }
     const handleAddtoCart = async () => {
-        console.log(user?.email)
+        const cartItem = {
+
+            productId: _id,
+            name,
+            image: image1 ? image1 : imageURL1,
+            quantity: 1,
+            selectedColor: color,
+            storage,
+            price,
+            userEmail: user?.email,
+        }
         if (user && user?.email) {
 
-            const cartItem = {
-
-                productId: _id,
-                name,
-                image: image1 ? image1 : imageURL1,
-                quantity: 1,
-                selectedColor:color,
-                storage,
-                price,
-                userEmail: user.email,
-            }
-            console.log(cartItem)
             const data = await addToCart(cartItem)
-            console.log(data)
 
             if (data.insertedId) {
                 Swal.fire({
@@ -121,20 +97,17 @@ const ProductDetails = () => {
             }
         }
         else {
-            Swal.fire({
-                title: "You are not Login",
-                text: "Please Login to add to cart",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Login"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/login', { state: { from: location } })
-                   
-                }
-            });
+            const previousCart =JSON.parse(localStorage.getItem("deluxCart")) || [];
+            console.log(previousCart)
+            const uploadCart = [...previousCart, cartItem]            
+           localStorage.setItem("deluxCart", JSON.stringify(uploadCart))
+           Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${product.name} added to cart`,
+            showConfirmButton: false,
+            timer: 1500
+        });
         }
     }
 
@@ -142,7 +115,7 @@ const ProductDetails = () => {
 
 
     return (
-        <div className="pt-28 md:pt-32 px-10 lg:px-0">
+        <div className="pt-28 md:pt-32 px-10 ">
             <div className=" grid grid-rows grid-cols-1 md:grid-rows-1 md:grid-cols-2 md:gap-4 lg:gap-6 font-catamaran  lg:pb-10 pb-10 border-b-2 ">
                 <div className=" md:col-span-1 mb-8">
                     <DetailsPagePhoto image1={image1} image2={image2} image3={image3} image4={image4} image5={image5} imageURL1={imageURL1} imageURL2={imageURL2} imageURL3={imageURL3} imageURL4={imageURL4} imageURL5={imageURL5}></DetailsPagePhoto>
@@ -205,9 +178,7 @@ const ProductDetails = () => {
                     {
                         brand?.length > 0 && <h2 className="mt-2 font-semibold">Brand: {brand}</h2>
                     }
-                    <div>
-                        <h2 className="font-bold  my-2">Condition: <span className="bg-cyan-300 w-14 px-2 py-1 text-center text-white rounded-lg ">{productType}</span></h2>
-                    </div>
+
                     <div className="flex flex-col justify-center items-start">
                         <label >Quantity</label>
                         <div className="flex justify-center items-center">
@@ -294,7 +265,8 @@ const ProductDetails = () => {
                 closeModal={closeModal}
                 orderInfo={orderInfo}
                 qt={qt}
-                _id={_id}>
+                _id={_id}
+                customerName={user?.displayName}>
 
             </BuyNowModal>
 

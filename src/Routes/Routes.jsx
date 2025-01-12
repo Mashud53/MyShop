@@ -9,7 +9,6 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
-import AddProperty from "../Pages/Dashboard/AddProperty/AddProperty";
 import AdminRoute from "./AdminRoute";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import Profile from "../Pages/Dashboard/Profile/Profile";
@@ -70,6 +69,14 @@ import ShippingAndDelivery from "../Pages/ShippingAndDelivery/ShippingAndDeliver
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AllProducts from "../Pages/AllProducts/AllProducts";
 import UsedDevice from "../Pages/UsedDevice/UsedDevice";
+import Honor from "../Pages/Products/Honor";
+import AddMenu from "../Pages/Dashboard/AddMenu/AddMenu";
+import ManageMenu from "../Pages/Dashboard/ManageMenu/ManageMenu";
+import UpdateSubmenu from "../Pages/Dashboard/ManageMenu/UpdateSubmenu";
+import SubmenusProducts from "../Pages/SubmenusProduct/SubmenusProducts";
+import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
+import ManageBanner from "../Pages/Dashboard/ManageBanner/ManageBanner";
+import LocalStoreCart from "../Pages/LocalStoreCart/LocalStoreCart";
 
 
 export const router = createBrowserRouter([
@@ -85,10 +92,19 @@ export const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <ProductDetails></ProductDetails>,
-                loader: ({ params }) => fetch(`https://api.deluxmart.com/product/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
                 
             },
+            {
+                path:"/:menu",
+                element:<SubmenusProducts></SubmenusProducts>
+            },
+            {
+                path: '/my-cart',
+                element: <LocalStoreCart></LocalStoreCart>
+            },
             // brand product 
+            // ======================================================================>
             {
                 path: '/Apple',
                 element: <Apple></Apple>
@@ -141,7 +157,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/Honor',
-                element: <Vivo></Vivo>
+                element: <Honor></Honor>
 
             },
             {
@@ -283,6 +299,7 @@ export const router = createBrowserRouter([
                 path:'/usedDevice',
                 element:<UsedDevice></UsedDevice>
             },
+            // ============================================================================/> 
             // Search routs 
             {
                 path:'/search',
@@ -333,8 +350,31 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
+                path: 'add-menu',
+                element: <AdminHostRoute><AddMenu></AddMenu></AdminHostRoute>
+            },
+            {
+                path: 'manage-menu',
+                element: <AdminHostRoute><ManageMenu></ManageMenu></AdminHostRoute>
+            },
+            {
+                path: 'updatemenu/:id',
+                element: <AdminHostRoute><UpdateSubmenu></UpdateSubmenu> </AdminHostRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/submenu/${params.id}`),
+                
+            },
+            {
                 path: 'add-product',
                 element: <AdminHostRoute><AddProduct></AddProduct></AdminHostRoute>
+            },
+            {
+                path: 'add-banner',
+                element: <AdminHostRoute><AddBanner></AddBanner></AdminHostRoute>
+            },
+
+            {
+                path: 'manage-banner',
+                element: <AdminHostRoute><ManageBanner></ManageBanner></AdminHostRoute>
             },
             {
                 path: 'manage-product',
@@ -343,13 +383,10 @@ export const router = createBrowserRouter([
             {
                 path: 'updateProduct/:id',
                 element: <AdminHostRoute><UpdateProduct></UpdateProduct></AdminHostRoute>,
-                loader: ({ params }) => fetch(`https://api.deluxmart.com/product/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
                 
             },
-            {
-                path: 'add-property',
-                element: <AdminHostRoute><AddProperty></AddProperty></AdminHostRoute>
-            },
+          
             {
                 path: 'manage-users',
                 element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>

@@ -8,6 +8,7 @@ import tiktok from '../../../assets/icon/tiktokround.png'
 import youtube from '../../../assets/icon/youtube.png'
 import twitter from '../../../assets/icon/twitter.png'
 import { Link } from "react-router-dom";
+import logo from "../../../../src/assets/logo.png"
 
 
 
@@ -64,7 +65,8 @@ const Footer = () => {
 
                 </nav>
                 <nav className="flex flex-col text-white">
-                    <h6 className=" text-base font-bold uppercase mb-2">Delux Mart</h6>
+                    {/* <h6 className=" text-base font-bold uppercase mb-2">Delux Mart</h6> */}
+                    <img className="w-[150px] md:w-[200px] mb-4" src={logo} alt="Delux Mart"/>
 
                     {/* <div className="flex items-center justify-center gap-2 mb-2 cursor-pointer bg-cyan-200 rounded-md shadow-md shadow-cyan-500 p-1">
                         <img className="w-[40px]" src={logo} alt="" />

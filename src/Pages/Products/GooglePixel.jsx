@@ -18,7 +18,7 @@ const GooglePixel = () => {
     return (
         <>
         <div className="mt-32 pb-10">
-            <h2>Google Pixel</h2>
+            
             <div >
                 {isLoading ? <Loader></Loader> : brandProduct && brandProduct.length <= 0?<div className="w-full flex justify-center items-center min-h-[500px]">
                     <Heading title={"No Products are available"} center={true} subTitle={"Choose other category"}></Heading>
