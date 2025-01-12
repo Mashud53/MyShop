@@ -3,10 +3,11 @@ import useCategoryShop from "../../../Hooks/useCategoryShop";
 import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import axiosSecure from "../../../api";
+import Loader from "../../../Components/Loader/Loader";
 
 
 const ManageBanner = () => {
-    const [categoryItems, , refetch] = useCategoryShop()
+    const [categoryItems, isLoading , refetch] = useCategoryShop()
 
     const handleDelCategory=(id)=>{
         console.log(id)
@@ -38,6 +39,10 @@ const ManageBanner = () => {
         });
 
     }
+
+    if(isLoading){
+        return<Loader></Loader>
+    }
     return (
         <div>
             <Helmet><title>Delux Mart|| Manage Banner</title></Helmet>
@@ -49,7 +54,7 @@ const ManageBanner = () => {
                         categoryItems && categoryItems.map(item =>
                             <div key={item._id} className="avatar relative py-2">
                                 <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
-                                    <img src={item.image} />
+                                    <img src={item?.image || item?.imgLink} />
                                     <p>{item.title}</p>
                                     
                                 </div>

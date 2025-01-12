@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ProductBanner = () => {
     return (
-        <div className="hero h-[250px] md:h-[500px]" style={{ backgroundImage: 'url(https://lh3.googleusercontent.com/drive-viewer/AKGpihbI0brx9EGLJRLul-8ihDjBCU7mEJnIb_2OfbNpx-hkyMXeGQhJVe9G8RiNshvr9flN6ft1Yhyw6fGSxx_M2iD3B6iKkfuYtR4=s1600-rw-v1)' }}>
+        <div className="hero h-[250px] md:h-[500px]" style={{ backgroundImage: 'url(https://i.ibb.co.com/QHGDJTX/watch-banner.png)' }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content w-full flex justify-start items-center text-white pl-10">
                 <div className="font-Krona">

@@ -31,7 +31,7 @@ const Offer = () => {
                                     </div>
                                     <div className="max-w-md mt-2">
                                         {
-                                            item?.title && <h1 className="mb-5 text-white text-5xl font-bold">UP To <span className="text-6xl text-cyan-400 font-bold">{item.title}</span> OFF</h1>
+                                            item?.title && <h1 className="mb-5 text-white text-2xl  md:text-5xl font-bold">UP To <span className="text-4xl md:text-6xl text-cyan-400 font-bold">{item.title}</span> OFF</h1>
                                         }
 
                                         <button className="px-3 py-2 border-2 rounded-md border-cyan-400 hover:bg-cyan-400 text-white font-semibold">Shop Now</button>

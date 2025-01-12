@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <ProductDetails></ProductDetails>,
-                loader: ({ params }) => fetch(`https://delux-shop-server.vercel.app/product/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
                 
             },
             {
@@ -355,7 +355,7 @@ export const router = createBrowserRouter([
             {
                 path: 'updatemenu/:id',
                 element: <AdminHostRoute><UpdateSubmenu></UpdateSubmenu> </AdminHostRoute>,
-                loader: ({ params }) => fetch(`https://delux-shop-server.vercel.app/submenu/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/submenu/${params.id}`),
                 
             },
             {
@@ -378,7 +378,7 @@ export const router = createBrowserRouter([
             {
                 path: 'updateProduct/:id',
                 element: <AdminHostRoute><UpdateProduct></UpdateProduct></AdminHostRoute>,
-                loader: ({ params }) => fetch(`https://delux-shop-server.vercel.app/product/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
                 
             },
           

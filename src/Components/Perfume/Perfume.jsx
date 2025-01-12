@@ -118,7 +118,7 @@ const Perfume = () => {
             <div className="md:w-2/6">
                
                 <div className="relative md:h-[500px]">
-                    <img className="border-t-8 border-r-8 border-white h-[500px] md:h-full w-full " src="https://lh3.googleusercontent.com/drive-viewer/AKGpihb_hqxEwvgKeWcFANk2S9rL7uyrwLtbqBSa8t7KoagJ1Cj4YR3zEVS_VFkkiCK61JHqaNyVj3WA992KxBdWbBb3zxpA1zbVqB4=s1600-rw-v1" alt="" />
+                    <img className="border-t-8 border-r-8 border-white h-[500px] md:h-full w-full " src="https://i.ibb.co.com/VptbyMc/silhouette-young-girl-who-is-perfuming-front-window-darkness-1.jpg" alt="" />
                     <div className="absolute bottom-0  w-full">
                         <div className="flex flex-col justify-center items-center bg-black bg-opacity-50  h-full w-full py-10">
                             <h2 className="text-white text-xl font-Krona font-bold px-2 py-4">Enhance Your Charm with...</h2>

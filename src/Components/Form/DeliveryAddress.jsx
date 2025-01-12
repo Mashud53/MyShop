@@ -7,12 +7,12 @@ import { updateSales } from "../../api/product";
 
 
 
-const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt, _id }) => {
+const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt, _id, customerName }) => {
 
     const [loading, setLoading] = useState(false)
-   
 
-   
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const form = e.target;
@@ -21,8 +21,10 @@ const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt, _id }) => {
         const city = form.city.value;
         const phone = form.mobile.value;
         const date = new Date();
+        const primaryName = form.name.value;
+        const buyer = customerName || primaryName
 
-        const contactInfo = { street, appartment, city, phone, date, status: 'pending' }
+        const contactInfo = { buyer, street, appartment, city, phone, date, status: 'pending' }
 
         const orderInfo = Object.assign({}, contactInfo, productInfo)
 
@@ -54,6 +56,22 @@ const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt, _id }) => {
                         <h2 className="font-semibold">Country / Region</h2>
                         <h2 className="">United Arab Emirates</h2>
                     </div>
+                    {
+                        !customerName &&
+                        <div className='space-y-1 text-sm'>
+                            <label htmlFor='street' className='block text-gray-600'>
+                                Name
+                            </label>
+                            <input
+                                className='w-full px-4 py-3 text-gray-800 border border-cyan-300 focus:outline-cyan-500 rounded-md '
+                                name='name'
+                                id='name'
+                                type='text'
+                                placeholder='Name'
+                                required
+                            />
+                        </div>
+                    }
                     <div className='space-y-1 text-sm'>
                         <label htmlFor='street' className='block text-gray-600'>
                             Street Address
@@ -108,30 +126,49 @@ const DeliveryAddress = ({ closeModal, orderInfo: productInfo, qt, _id }) => {
                 </div>
                 <div className="w-full lg:w-2/5">
                     <div className='mt-10 bg-white border-2 p-6 font-sans'>
-                        <div className='mt-2 text-right'>
-                            <div className='flex justify-end items-center text-base text-gray-500'>
-                                Sub Total Price: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>{productInfo?.totalPrice}</p>
-                            </div>
-                        </div>
-                        <div className='mt-2 text-right'>
-                            <div className='flex justify-end items-center text-base text-gray-500'>
-                                Quantity: <p>{qt}</p>
-                            </div>
-                        </div>
-                        <div className='mt-2 text-right'>
-                            <div className='flex justify-end items-center text-base text-gray-500'>
-                                Shiping Cost: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>0</p>
-                            </div>
-                        </div>
-                        <div className='mt-2 text-right'>
-                            <div className='flex justify-end items-center text-base text-gray-500'>
-                                Total Price: <span className=" font-semibold mr-1 ml-4">&#x62f;&#x2e;&#x625;</span><p>{productInfo?.totalPrice}</p>
-                            </div>
-                        </div>
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* row 1 */}
+                                <tr className="bg-base-200">
+                                   
+                                    <td>Sub Total Price</td>                                    
+                                    <td>&#x62f;&#x2e;&#x625; {productInfo?.totalPrice}</td>
+                                </tr>
+                                {/* row 2 */}
+                                <tr>
+                                    
+                                    <td>Quantity </td>                                    
+                                    <td>{qt}</td>
+                                </tr>
+                                {/* row 3 */}
+                                <tr>
+                                    
+                                    <td>Shiping Cost</td>
+                                    <td>00</td>
+                                </tr>
+                                <tr className="font-bold">
+                                    
+                                    <td>Total Price</td>
+                                    <td >&#x62f;&#x2e;&#x625; {productInfo.totalPrice}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <hr className='mt-8 ' />
                         <h2 className='font-semibold'>Payment Method</h2>
                         <h2>Cash on delivery</h2>
                     </div>
+                    </div>
+                    {/* --------------------- */}
+                    
+                    {/* ......................  */}
 
                     <div className="flex justify-between items-center gap-4">
                         <button

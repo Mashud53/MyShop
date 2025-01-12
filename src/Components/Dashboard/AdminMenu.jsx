@@ -30,15 +30,16 @@ const AdminMenu = () => {
                 label='Add Product'
                 address='add-product'
             />
-            <MenuItem
-                icon={FaUpload }
-                label='Add Banner'
-                address='add-banner'
-            />
+           
             <MenuItem
                 icon={PiListMagnifyingGlassDuotone}
                 label='Manage Product'
                 address='manage-product'
+            />
+             <MenuItem
+                icon={FaUpload }
+                label='Add Banner'
+                address='add-banner'
             />
             <MenuItem
                 icon={FaStubber}
